@@ -8,6 +8,7 @@ import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import QuizIcon from '@mui/icons-material/Quiz';
 import ChatIcon from '@mui/icons-material/Chat';
 import SearchAppBar from '../Search/Search';
+import { LoginButton, LogoutButton } from '../Button/Button';
 
 function Navbar(props) {
   const [value, setValue] = React.useState(0);
@@ -42,7 +43,12 @@ function Navbar(props) {
           </Tabs>
         </Toolbar>
 
-        <SearchAppBar />
+        <div className="nav_btns">
+          <SearchAppBar />
+          <div className="nav_btn">
+            <LoginButton />
+          </div>
+        </div>
       </div>
     </AppBar>
   );
