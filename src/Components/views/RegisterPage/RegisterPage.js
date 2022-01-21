@@ -1,7 +1,16 @@
 import React from 'react';
+import Header from '../../../utils/Header/Header';
+import Navbar from '../../../utils/Navbar/Navbar';
+import Footer from '../../../utils/Footer/Footer';
 
 function RegisterPage(props) {
-  return <div>RegisterPage 레지스터</div>;
+  return (
+    <div className="page">
+      <Navbar />
+      RegisterPage
+      <Footer />
+    </div>
+  );
 }
 
 export default RegisterPage;
