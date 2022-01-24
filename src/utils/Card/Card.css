@@ -1,0 +1,15 @@
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card_vote,
+.card_area,
+.card_views,
+.card_answers {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
