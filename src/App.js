@@ -6,11 +6,15 @@ import RegisterPage from './components/views/RegisterPage/RegisterPage';
 import MyAnswer from './components/views/MyAnswer/MyAnswer';
 import MyQuestion from './components/views/MyQuestions/MyQuestions';
 import Ranking from './components/views/Ranking/Ranking';
+import Footer from './utils/Footer/Footer';
+import Navbar from './utils/Navbar/Navbar';
 
 function App() {
   return (
     <div className="App">
       <Router>
+        <Footer />
+        <Navbar />
         <Routes>
           <Route exact path="/" element={<LandingPage />} />
           <Route exact path="/login" element={<LoginPage />} />
