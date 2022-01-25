@@ -17,7 +17,7 @@ function Navbar(props) {
     setValue(newValue);
   };
   return (
-    <AppBar position="static">
+    <AppBar position="static" color="primary">
       <div className="nav">
         <Toolbar>
           <Tabs value={value} onChange={handleChange} aria-label="Main Tabs">
