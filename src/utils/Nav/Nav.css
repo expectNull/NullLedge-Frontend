@@ -1,0 +1,19 @@
+a {
+  text-decoration: none;
+  padding: 5px;
+  color: rgba(160, 151, 151, 0.849);
+}
+
+a:hover {
+  color: rgba(0, 0, 0, 0.849);
+}
+
+.clicked {
+  color: rgba(0, 0, 0, 0.849);
+  border-right: 3px solid rgb(230, 191, 63);
+  background-color: beige;
+}
+
+.unclicked {
+  border-right: 3px solid rgb(255, 255, 255);
+}
