@@ -1,35 +1,12 @@
 import './App.css';
-import {
-  BrowserRouter as BRouter,
-  Routes,
-  Route,
-  Link,
-} from 'react-router-dom';
-import LandingPage from './components/views/LandingPage/LandingPage';
-import LoginPage from './components/views/LoginPage/LoginPage';
-import RegisterPage from './components/views/RegisterPage/RegisterPage';
-import MyAnswer from './components/views/MyAnswer/MyAnswer';
-import MyQuestion from './components/views/MyQuestions/MyQuestions';
-import Ranking from './components/views/Ranking/Ranking';
-import Footer from './utils/Footer/Footer';
-import Navbar from './utils/Navbar/Navbar';
+import { BrowserRouter as BRouter } from 'react-router-dom';
+import { Router } from './Router';
 
 function App() {
   return (
     <div className="App">
       <BRouter>
-        <Footer />
-        <Navbar />
-        <Routes>
-          <Route exact path="/" element={<LandingPage />} />
-          <Route exact path="/login" element={<LoginPage />} />
-          <Route exact path="/register" element={<RegisterPage />} />
-          <Route exact path="/myanswer" element={<MyAnswer />} />
-          <Route exact path="/myanswer/:userId" element={<MyAnswer />} />
-          <Route exact path="/myquestions" element={<MyQuestion />} />
-          <Route exact path="/myquestions/:userId" element={<MyQuestion />} />
-          <Route exact path="/ranking" element={<Ranking />} />
-        </Routes>
+        <Router />
       </BRouter>
     </div>
   );

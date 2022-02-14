@@ -1,4 +1,3 @@
-import './Navbar.css';
 import React from 'react';
 import { Route, Link } from 'react-router-dom';
 import { AppBar, Tabs, Tab } from '@material-ui/core';
@@ -7,7 +6,6 @@ import Toolbar from '@mui/material/Toolbar';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import QuizIcon from '@mui/icons-material/Quiz';
 import ChatIcon from '@mui/icons-material/Chat';
-import SearchAppBar from '../Search/Search';
 import { LoginButton, LogoutButton } from '../Button/Button';
 
 function Navbar(props) {
@@ -42,13 +40,6 @@ function Navbar(props) {
             />
           </Tabs>
         </Toolbar>
-
-        <div className="nav_btns">
-          <SearchAppBar />
-          <div className="nav_btn">
-            <LoginButton />
-          </div>
-        </div>
       </div>
     </AppBar>
   );
