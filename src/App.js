@@ -1,5 +1,10 @@
 import './App.css';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import {
+  BrowserRouter as BRouter,
+  Routes,
+  Route,
+  Link,
+} from 'react-router-dom';
 import LandingPage from './components/views/LandingPage/LandingPage';
 import LoginPage from './components/views/LoginPage/LoginPage';
 import RegisterPage from './components/views/RegisterPage/RegisterPage';
@@ -12,7 +17,7 @@ import Navbar from './utils/Navbar/Navbar';
 function App() {
   return (
     <div className="App">
-      <Router>
+      <BRouter>
         <Footer />
         <Navbar />
         <Routes>
@@ -25,7 +30,7 @@ function App() {
           <Route exact path="/myquestions/:userId" element={<MyQuestion />} />
           <Route exact path="/ranking" element={<Ranking />} />
         </Routes>
-      </Router>
+      </BRouter>
     </div>
   );
 }
