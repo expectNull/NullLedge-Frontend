@@ -8,7 +8,6 @@ import MyQuestion from './components/views/MyQuestions/MyQuestions';
 import Ranking from './components/views/Ranking/Ranking';
 import Footer from './utils/Footer/Footer';
 import Navbar from './utils/Navbar/Navbar';
-import ResponsiveAppBar from './utils/ResponsiveAppbar/ResponsiveAppbar';
 
 function App() {
   return (
@@ -16,7 +15,6 @@ function App() {
       <Router>
         <Footer />
         <Navbar />
-        <ResponsiveAppBar />
         <Routes>
           <Route exact path="/" element={<LandingPage />} />
           <Route exact path="/login" element={<LoginPage />} />

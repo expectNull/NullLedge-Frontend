@@ -1,8 +1,8 @@
 import React from 'react';
 import './LandingPage.css';
-import Header from '../../../utils/Header/Header';
-import BasicRating from '../../../utils/Rating/Rating';
-import Card from '../../../utils/Card/Card';
+import Header from '../../utils/Header/Header';
+import BasicRating from '../../utils/Rating/Rating';
+import Card from '../../utils/Card/Card';
 
 function LandingPage(props) {
   return (
