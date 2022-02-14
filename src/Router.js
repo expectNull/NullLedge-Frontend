@@ -5,7 +5,7 @@ import LandingPage from './component/LandingPage/LandingPage';
 import LoginPage from './component/LoginPage/LoginPage';
 import MyPage from './component/MyPage/My';
 import PostPage from './component/PostPage/Post';
-import Ranking from './component/Ranking/Ranking';
+import { Ranking } from './component/Ranking/Ranking';
 import RegisterPage from './component/RegisterPage/RegisterPage';
 import SettingPage from './component/SettingPage/Setting';
 
@@ -16,6 +16,7 @@ export function Router() {
       <Route exact path="/" element={<LandingPage />} />
       <Route exact path="/login" element={<LoginPage />} />
       <Route exact path="/mypage" element={<MyPage />} />
+      <Route exact path="/mypage/:name" element={<MyPage />} />
       <Route exact path="/post" element={<PostPage />} />
       <Route exact path="/ranking" element={<Ranking />} />
       <Route exact path="/register" element={<RegisterPage />} />
