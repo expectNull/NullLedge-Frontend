@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import Prism from 'prismjs';
 import 'prismjs/themes/prism.css';
-import './Editor.css';
+import './MyEditor.css';
 
 import '@toast-ui/editor/dist/toastui-editor.css';
 import { Editor } from '@toast-ui/react-editor';
@@ -14,7 +14,7 @@ import 'tui-color-picker/dist/tui-color-picker.css';
 import '@toast-ui/editor-plugin-color-syntax/dist/toastui-editor-plugin-color-syntax.css';
 import colorSyntax from '@toast-ui/editor-plugin-color-syntax';
 
-function EditorPage({ props }) {
+function MyEditor({ props }) {
   const editorRef = useRef();
   const handleSave = () => {
     const editorInstance = editorRef.current.getInstance();
@@ -32,6 +32,7 @@ function EditorPage({ props }) {
         previewStyle={props}
         plugins={[colorSyntax, [codeSyntaxHighlight, { highlighter: Prism }]]}
         width="100vh"
+        height="80vh"
         ref={editorRef}
       />
 
@@ -42,4 +43,4 @@ function EditorPage({ props }) {
   );
 }
 
-export default EditorPage;
+export default MyEditor;

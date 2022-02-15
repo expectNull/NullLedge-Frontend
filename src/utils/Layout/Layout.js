@@ -4,6 +4,8 @@ import React from 'react';
 import { Box } from '@material-ui/core';
 import { Nav, RightNav } from '../Nav/Nav';
 
+import { UserCard } from '../UserCard/UserCard';
+
 export function Layout({ children }) {
   const page = window.location.href.split('/')[3];
 

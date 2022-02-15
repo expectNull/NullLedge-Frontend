@@ -10,17 +10,17 @@ import {
   Paper,
   Menu,
   Typography,
-  Stack,
-  Button,
-  ButtonGroup,
   Tabs,
   Tab,
+  Stack,
+  Button,
 } from '@mui/material';
 
 import SearchIcon from '@mui/icons-material/Search';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import Avatar from '@mui/material/Avatar';
 import { styled } from '@mui/material/styles';
+import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 
 import { NotificationsIcon, LogoIcon } from '../Icon/Icon';
 
@@ -120,59 +120,61 @@ function Header() {
   );
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" color="primary">
-        <Toolbar>
-          <Link href="/" underline="none" color="white">
-            <LogoIcon />
-          </Link>
-          <Search className="Search">
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </Search>
-          <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-            <IconButton
-              size="large"
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
-            >
-              <Avatar alt="Image" src="image from BE" />
-            </IconButton>
-            <IconButton
-              size="large"
-              aria-label="show new notifications"
-              color="inherit"
-            >
-              <NotificationsIcon props={17}></NotificationsIcon>
-            </IconButton>
-          </Box>
-          <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              size="large"
-              aria-label="show more"
-              aria-controls={mobileMenuId}
-              aria-haspopup="true"
-              onClick={handleMobileMenuOpen}
-              color="inherit"
-            >
-              <MoreIcon />
-            </IconButton>
-          </Box>
-        </Toolbar>
-      </AppBar>
-      {renderMobileMenu}
-      {renderMenu}
-    </Box>
+    <>
+      <Box sx={{ flexGrow: 1 }}>
+        <AppBar position="static" color="primary">
+          <Toolbar>
+            <Link href="/" underline="none" color="white">
+              <LogoIcon />
+            </Link>
+            <Search className="Search">
+              <SearchIconWrapper>
+                <SearchIcon />
+              </SearchIconWrapper>
+              <StyledInputBase
+                placeholder="Search…"
+                inputProps={{ 'aria-label': 'search' }}
+              />
+            </Search>
+            <Box sx={{ flexGrow: 1 }} />
+            <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+              <IconButton
+                size="large"
+                edge="end"
+                aria-label="account of current user"
+                aria-controls={menuId}
+                aria-haspopup="true"
+                onClick={handleProfileMenuOpen}
+                color="inherit"
+              >
+                <Avatar alt="Image" src="image from BE" />
+              </IconButton>
+              <IconButton
+                size="large"
+                aria-label="show new notifications"
+                color="inherit"
+              >
+                <NotificationsIcon props={17}></NotificationsIcon>
+              </IconButton>
+            </Box>
+            <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+              <IconButton
+                size="large"
+                aria-label="show more"
+                aria-controls={mobileMenuId}
+                aria-haspopup="true"
+                onClick={handleMobileMenuOpen}
+                color="inherit"
+              >
+                <MoreIcon />
+              </IconButton>
+            </Box>
+          </Toolbar>
+        </AppBar>
+        {renderMobileMenu}
+        {renderMenu}
+      </Box>
+    </>
   );
 }
 
@@ -199,9 +201,27 @@ function QuestionHeader() {
     setValue(newValue);
   };
   return (
-    <div>
-      <Typography variant="h3">Questions</Typography>
-      <Box sx={{ width: '100%' }}>
+    <>
+      <Stack
+        direction="row"
+        justifyContent="space-around"
+        alignItems="baseline"
+        spacing={40}
+      >
+        <Typography variant="h3">Questions</Typography>
+        <Button variant="contained" color="primary">
+          <QuestionMarkIcon />
+          Ask Question
+          <QuestionMarkIcon />
+        </Button>
+      </Stack>
+
+      <Stack
+        direction="row"
+        justifyContent="flex-end"
+        alignItems="baseline"
+        spacing={8}
+      >
         <Tabs value={value} onChange={handleChange} aria-label="Sorting Tabs">
           <Tab value="newest" label="Newest" />
           <Tab value="like" label="Like" />
@@ -209,8 +229,8 @@ function QuestionHeader() {
           <Tab value="unsolved" label="unsolved" />
           <Tab value="solved" label="solved" />
         </Tabs>
-      </Box>
-    </div>
+      </Stack>
+    </>
   );
 }
 function TagHeader() {
