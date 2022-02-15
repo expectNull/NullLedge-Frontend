@@ -13,13 +13,13 @@ const Nav = () => {
 
   return (
     <Stack className="sidebar">
-      <Link to="/" className={(isClick('', page), 'nav_link')}>
+      <Link to="/" className={isClick('', page) + ' nav_link'}>
         All Questions
       </Link>
-      <Link to="/tags" className={(isClick('tags', page), 'nav_link')}>
+      <Link to="/tags" className={isClick('tags', page) + ' nav_link'}>
         Tags
       </Link>
-      <Link to="/ranking" className={(isClick('ranking', page), 'nav_link')}>
+      <Link to="/ranking" className={isClick('ranking', page) + ' nav_link'}>
         Rank
       </Link>
     </Stack>
