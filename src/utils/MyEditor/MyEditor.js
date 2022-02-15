@@ -32,11 +32,11 @@ function MyEditor({ props }) {
         previewStyle={props}
         plugins={[colorSyntax, [codeSyntaxHighlight, { highlighter: Prism }]]}
         width="100vh"
-        height="80vh"
+        height="75vh"
         ref={editorRef}
       />
 
-      <Button onClick={handleSave} variant="contained">
+      <Button id="save_btn" onClick={handleSave} variant="contained">
         Save
       </Button>
     </div>

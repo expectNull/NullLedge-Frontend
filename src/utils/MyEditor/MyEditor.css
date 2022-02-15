@@ -2,3 +2,7 @@
   margin: 0;
   justify-content: center;
 }
+
+#save_btn {
+  margin: 1vh;
+}

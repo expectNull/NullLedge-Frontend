@@ -1,3 +1,41 @@
 .EditorForm {
   margin: 1vh 0;
+  text-align: center;
+}
+
+input:focus {
+  outline: none;
+}
+
+#tag_txt::-webkit-input-placeholder {
+  color: #1976d2;
+}
+
+#title_txt {
+  width: 90%;
+  padding: 1vh;
+  border: none;
+  font-size: 30px;
+  border-bottom: solid 3px #ababab;
+  font-weight: bold;
+  margin-bottom: 0.5vh;
+  box-sizing: border-box;
+}
+
+#tag_txt {
+  /* width: 90%; */
+  padding: 1vh;
+  border: none;
+  font-size: 15px;
+  border-bottom: solid 3px #ababab;
+  font-weight: bold;
+  margin-bottom: 0.5vh;
+  color: #1976d2;
+}
+
+.tagGroup {
+  max-height: 5vh;
+  width: 90%;
+  display: inline-block;
+  text-align: left;
 }
