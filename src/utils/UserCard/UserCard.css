@@ -1,0 +1,29 @@
+.user_card {
+  box-sizing: border-box;
+  width: 200px;
+  height: fit-content;
+  padding: 5px 6px 7px 7px;
+  border: 1px solid black;
+}
+
+.user_date {
+  margin-top: 1px;
+  margin-bottom: 4px;
+  white-space: nowrap;
+}
+
+.user_pic {
+  width: 32px;
+  height: 32px;
+}
+
+.user_container {
+  display: flex;
+}
+
+.user_info {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-left: 8px;
+  width: calc(100% - 40px);
+}
