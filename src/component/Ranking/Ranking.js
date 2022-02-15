@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { RankLayout } from '../../utils/Layout/Layout';
+import { Layout } from '../../utils/Layout/Layout';
 import RankCard from '../../utils/RankCard/RankCard';
 
 function Ranking() {
   return (
     <>
-      <RankLayout>
+      <Layout>
         <RankCard
           idx="1"
           name="Jang"
@@ -15,7 +15,7 @@ function Ranking() {
           reply="3"
           ask="23"
         />
-      </RankLayout>
+      </Layout>
     </>
   );
 }
