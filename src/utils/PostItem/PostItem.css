@@ -1,0 +1,58 @@
+.post_container,
+.post_user_container {
+  display: flex;
+}
+
+.post_numbers {
+  width: 150px;
+  margin-right: 10px;
+}
+
+.post_like,
+.post_ans,
+.post_view {
+  padding: 0.3vh;
+  margin-right: 0.3vh;
+  margin-bottom: 0.3vh;
+  text-align: right;
+}
+
+.post_ans {
+  background-color: #62b47d;
+  border-radius: 0.4vh;
+}
+
+.post_view {
+  color: #cd8951;
+}
+.post_inside {
+  width: 100%;
+  text-align: left;
+}
+
+.post_content {
+  margin: 0.2vh 0vh 0.1vh;
+}
+
+.post_user {
+  background-color: white;
+  text-decoration: none;
+}
+
+.post_name {
+  text-decoration: none;
+  display: inline-block;
+}
+
+.vertical_center {
+  vertical-align: middle;
+}
+
+.svg_margin {
+  margin-right: 0.3vh;
+}
+
+.post_date {
+  color: #acb3b9;
+  font-size: 1.4vh;
+}
