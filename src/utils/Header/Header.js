@@ -7,16 +7,24 @@ import {
   Toolbar,
   IconButton,
   MenuItem,
+  Paper,
   Menu,
+  Typography,
+  Stack,
+  Button,
+  ButtonGroup,
+  Tabs,
+  Tab,
 } from '@mui/material';
 
 import SearchIcon from '@mui/icons-material/Search';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import Avatar from '@mui/material/Avatar';
+import { styled } from '@mui/material/styles';
 
 import { NotificationsIcon, LogoIcon } from '../Icon/Icon';
 
-export default function Header() {
+function Header() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -167,3 +175,49 @@ export default function Header() {
     </Box>
   );
 }
+
+function QuestionHeader() {
+  const Item = styled(Paper)(({ theme }) => ({
+    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+    ...theme.typography.body2,
+    padding: theme.spacing(1),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  }));
+
+  const [value, setValue] = React.useState('newest');
+
+  React.useEffect(() => {
+    showSortedPage(value);
+  }, [value]);
+
+  const showSortedPage = sortOption => {
+    console.log(sortOption);
+  };
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+  return (
+    <div>
+      <Typography variant="h3">Questions</Typography>
+      <Box sx={{ width: '100%' }}>
+        <Tabs value={value} onChange={handleChange} aria-label="Sorting Tabs">
+          <Tab value="newest" label="Newest" />
+          <Tab value="like" label="Like" />
+          <Tab value="view" label="View" />
+          <Tab value="unsolved" label="unsolved" />
+          <Tab value="solved" label="solved" />
+        </Tabs>
+      </Box>
+    </div>
+  );
+}
+function TagHeader() {
+  return;
+}
+function UsersHeader() {
+  return;
+}
+
+export { Header, QuestionHeader, TagHeader, UsersHeader };
