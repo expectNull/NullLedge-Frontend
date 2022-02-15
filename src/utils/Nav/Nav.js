@@ -8,7 +8,7 @@ function isClick(base, target) {
   return 'unclicked';
 }
 
-const Nav = () => {
+function Nav() {
   const page = window.location.href.split('/')[3];
 
   return (
@@ -24,6 +24,24 @@ const Nav = () => {
       </Link>
     </Stack>
   );
-};
+}
 
-export default Nav;
+function RightNav() {
+  const page = window.location.href.split('/')[3];
+
+  return (
+    <Stack className="sidebar">
+      <Link to="/" className={isClick('', page) + ' nav_link'}>
+        All Questions
+      </Link>
+      <Link to="/tags" className={isClick('tags', page) + ' nav_link'}>
+        Tags
+      </Link>
+      <Link to="/ranking" className={isClick('ranking', page) + ' nav_link'}>
+        Rank
+      </Link>
+    </Stack>
+  );
+}
+
+export { Nav, RightNav };

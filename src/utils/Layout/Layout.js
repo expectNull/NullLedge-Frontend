@@ -2,7 +2,7 @@ import './Layout.css';
 import React from 'react';
 
 import { Box } from '@material-ui/core';
-import Nav from '../Nav/Nav';
+import { Nav, RightNav } from '../Nav/Nav';
 
 export function Layout({ children }) {
   const page = window.location.href.split('/')[3];
@@ -35,7 +35,7 @@ export function Layout({ children }) {
             <>{children}</>
           )}
         </div>
-        <Nav />
+        <RightNav />
       </Box>
     </div>
   );
