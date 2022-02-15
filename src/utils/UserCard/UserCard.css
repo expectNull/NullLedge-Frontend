@@ -7,6 +7,7 @@
 }
 
 .user_date {
+  text-align: left;
   margin-top: 1px;
   margin-bottom: 4px;
   white-space: nowrap;
