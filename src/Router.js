@@ -7,6 +7,7 @@ import PostPage from './component/PostPage/Post';
 import { Ranking } from './component/Ranking/Ranking';
 import RegisterPage from './component/RegisterPage/RegisterPage';
 import SettingPage from './component/SettingPage/Setting';
+import TagPage from './component/TagPage/TagPage';
 
 export function Router() {
   return (
@@ -19,6 +20,7 @@ export function Router() {
       <Route exact path="/ranking" element={<Ranking />} />
       <Route exact path="/register" element={<RegisterPage />} />
       <Route exact path="/setting" element={<SettingPage />} />
+      <Route exact path="/tags" element={<TagPage />} />
     </Routes>
   );
 }
