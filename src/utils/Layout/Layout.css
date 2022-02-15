@@ -6,3 +6,10 @@
 .layout_box {
   height: 100vh;
 }
+.layout {
+  display: inline-block;
+}
+
+.content {
+  width: 75vh;
+}
