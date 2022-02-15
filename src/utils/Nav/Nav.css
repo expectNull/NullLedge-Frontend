@@ -1,6 +1,6 @@
 a {
   text-decoration: none;
-  padding: 5px;
+  padding: 15px;
   color: rgba(160, 151, 151, 0.849);
 }
 
@@ -16,4 +16,8 @@ a:hover {
 
 .unclicked {
   border-right: 3px solid rgb(255, 255, 255);
+}
+
+.sidebar {
+  min-width: 15vh;
 }

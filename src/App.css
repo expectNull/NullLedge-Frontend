@@ -19,6 +19,7 @@ body {
 #root {
   align-items: center;
   height: 100%;
+  min-width: 50vh;
 }
 .App-header {
   background-color: #282c34;

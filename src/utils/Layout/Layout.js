@@ -8,6 +8,7 @@ export function Layout({ children }) {
   return (
     <>
       <Box
+        className="layout_box"
         sx={{
           display: 'flex',
         }}
@@ -23,6 +24,7 @@ export function RankLayout({ children }) {
   return (
     <>
       <Box
+        className="layout_box"
         sx={{
           display: 'flex',
         }}

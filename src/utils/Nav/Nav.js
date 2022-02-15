@@ -12,7 +12,7 @@ const Nav = () => {
   const page = window.location.href.split('/')[3];
 
   return (
-    <Stack>
+    <Stack className="sidebar">
       <Link to="/" className={isClick('', page)}>
         All Questions
       </Link>

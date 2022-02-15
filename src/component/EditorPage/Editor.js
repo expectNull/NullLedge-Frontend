@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import Prism from 'prismjs';
 import 'prismjs/themes/prism.css';
+import './Editor.css';
 
 import '@toast-ui/editor/dist/toastui-editor.css';
 import { Editor } from '@toast-ui/react-editor';
@@ -25,13 +26,15 @@ function EditorPage({}) {
     console.log(getContent_html);
   };
   return (
-    <div className="page">
+    <div className="Editor">
       <Editor
         initialValue="# 내용을 입력해주세요."
         previewStyle="vertical"
         plugins={[colorSyntax, [codeSyntaxHighlight, { highlighter: Prism }]]}
+        width="100vh"
         ref={editorRef}
       />
+
       <Button onClick={handleSave} variant="contained">
         Save
       </Button>
