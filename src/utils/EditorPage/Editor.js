@@ -14,7 +14,7 @@ import 'tui-color-picker/dist/tui-color-picker.css';
 import '@toast-ui/editor-plugin-color-syntax/dist/toastui-editor-plugin-color-syntax.css';
 import colorSyntax from '@toast-ui/editor-plugin-color-syntax';
 
-function EditorPage({}) {
+function EditorPage({ props }) {
   const editorRef = useRef();
   const handleSave = () => {
     const editorInstance = editorRef.current.getInstance();
@@ -29,7 +29,7 @@ function EditorPage({}) {
     <div className="Editor">
       <Editor
         initialValue="# 내용을 입력해주세요."
-        previewStyle="vertical"
+        previewStyle={props}
         plugins={[colorSyntax, [codeSyntaxHighlight, { highlighter: Prism }]]}
         width="100vh"
         ref={editorRef}

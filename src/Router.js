@@ -1,6 +1,5 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
-import EditorPage from './component/EditorPage/Editor';
 import LandingPage from './component/LandingPage/LandingPage';
 import LoginPage from './component/LoginPage/LoginPage';
 import MyPage from './component/MyPage/My';
@@ -12,7 +11,6 @@ import SettingPage from './component/SettingPage/Setting';
 export function Router() {
   return (
     <Routes>
-      <Route exact path="/Editor" element={<EditorPage />} />
       <Route exact path="/" element={<LandingPage />} />
       <Route exact path="/login" element={<LoginPage />} />
       <Route exact path="/mypage" element={<MyPage />} />

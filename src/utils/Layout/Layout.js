@@ -14,7 +14,7 @@ export function Layout({ children }) {
         }}
       >
         <Nav />
-        {children}
+        <div className="remain_layout">{children}</div>
       </Box>
     </>
   );

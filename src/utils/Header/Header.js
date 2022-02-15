@@ -16,7 +16,7 @@ import Avatar from '@mui/material/Avatar';
 
 import { NotificationsIcon, LogoIcon } from '../Icon/Icon';
 
-export default function Header() {
+function Header() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -167,3 +167,15 @@ export default function Header() {
     </Box>
   );
 }
+
+function QuestionHeader() {
+  return;
+}
+function TagHeader() {
+  return;
+}
+function UsersHeader() {
+  return;
+}
+
+export { Header, QuestionHeader, TagHeader, UsersHeader };
