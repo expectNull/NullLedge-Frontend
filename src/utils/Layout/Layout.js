@@ -37,7 +37,6 @@ export function Layout({ children }) {
             <>{children}</>
           )}
         </div>
-        <UserCard name="Jang" postIdx={3} />
       </Box>
     </div>
   );

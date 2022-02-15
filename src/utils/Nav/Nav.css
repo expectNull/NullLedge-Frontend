@@ -19,5 +19,6 @@ a:hover {
 }
 
 .sidebar {
+  min-width: 20vh;
   width: auto;
 }
