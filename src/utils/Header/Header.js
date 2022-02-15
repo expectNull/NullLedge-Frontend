@@ -192,7 +192,7 @@ function QuestionHeader() {
   }, [value]);
 
   const showSortedPage = sortOption => {
-    alert(sortOption);
+    console.log(sortOption);
   };
 
   const handleChange = (event, newValue) => {
