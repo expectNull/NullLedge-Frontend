@@ -16,6 +16,8 @@ import {
   Button,
 } from '@mui/material';
 
+import './Header.css';
+
 import SearchIcon from '@mui/icons-material/Search';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import Avatar from '@mui/material/Avatar';
@@ -71,8 +73,8 @@ function Header() {
       <Link href="/setting" underline="none" color="inherit">
         <MenuItem onClick={handleMenuClose}>Setting</MenuItem>
       </Link>
-      <Link href="/" underline="none" color="inherit">
-        <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
+      <Link href="/login" underline="none" color="inherit">
+        <MenuItem onClick={handleMenuClose}>Login</MenuItem>
       </Link>
     </Menu>
   );
@@ -209,7 +211,7 @@ function QuestionHeader() {
         spacing={40}
       >
         <Typography variant="h3">Questions</Typography>
-        <Button variant="contained" color="primary">
+        <Button variant="contained" color="primary" className="save_btn">
           <QuestionMarkIcon />
           Ask Question
           <QuestionMarkIcon />
