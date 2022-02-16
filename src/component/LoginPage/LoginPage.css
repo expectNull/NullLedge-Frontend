@@ -1,0 +1,80 @@
+.loginpage {
+  text-align: center;
+  margin: 10vh;
+}
+
+.loginDiv {
+  display: inline-block;
+  text-align: left;
+  width: 30vw;
+}
+
+.loginbtn {
+  min-width: 30vw;
+  height: 40px;
+  border-radius: 5px;
+  margin: 10px 0px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 19px;
+  color: #ffffff;
+  background: #5999ff;
+  border: none;
+  cursor: pointer;
+}
+
+.googlebtn {
+  min-width: 30vw;
+  height: 40px;
+  border-radius: 5px;
+  margin: 10px 0px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 19px;
+  color: #ffffff;
+  background: #2d3748;
+  border: none;
+  cursor: pointer;
+}
+
+.field {
+  border: 1px solid #e8e8e8;
+  box-sizing: border-box;
+  border-radius: 5px;
+  min-width: 30vw;
+  height: 40px;
+  display: inline-block;
+  margin: 5px 0px 20px;
+}
+
+.register {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 19px;
+  text-decoration: none;
+}
+
+h1 {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 35px;
+  color: #1a202c;
+}
+
+label {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 19px;
+  margin: 10px 0px;
+  color: #4a5568;
+}
