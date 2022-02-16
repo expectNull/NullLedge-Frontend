@@ -22,7 +22,6 @@ import SearchIcon from '@mui/icons-material/Search';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import Avatar from '@mui/material/Avatar';
 import { styled } from '@mui/material/styles';
-import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 
 import { NotificationsIcon, LogoIcon } from '../Icon/Icon';
 
@@ -212,9 +211,9 @@ function QuestionHeader() {
       >
         <Typography variant="h3">Questions</Typography>
         <Button variant="contained" color="primary" className="save_btn">
-          <QuestionMarkIcon />
-          Ask Question
-          <QuestionMarkIcon />
+          <Link href="/ask" underline="none" color="inherit">
+            Ask Question
+          </Link>
         </Button>
       </Stack>
 
