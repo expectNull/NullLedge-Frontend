@@ -39,3 +39,8 @@ input:focus {
   display: inline-block;
   text-align: left;
 }
+
+#save_btn {
+  margin: 1vh;
+  display: inline-block;
+}

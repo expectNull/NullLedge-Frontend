@@ -56,12 +56,12 @@ function EditorPage(props) {
             onKeyPress={appKeyPress}
           />
         </div>
-
         <MyEditor
           props={'vertical'}
           refProps={editorRef}
           changeProps={onContentChange}
         />
+        <br />
         <Button id="save_btn" onClick={handleSave} variant="contained">
           Save
         </Button>
