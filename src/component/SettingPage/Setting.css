@@ -1,0 +1,99 @@
+.SettingPage {
+  text-align: center;
+}
+
+.helper {
+  margin: 30px;
+  display: inline-block;
+  text-align: left;
+  width: 70vw;
+}
+
+.SettingPage h1 {
+  display: inline;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 35px;
+  text-align: center;
+  margin: 0 0 0 10px;
+  color: #3a3a3a;
+}
+
+.userImg {
+  width: 100px;
+  height: 100px;
+  border: 2px solid #24354f;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.nickname {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 28px;
+  text-align: center;
+
+  color: #3a3a3a;
+}
+
+.intro {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+
+  color: #3a3a3a;
+}
+
+.userInfo {
+  margin-top: 30px;
+}
+
+.userInfoChange {
+  margin-top: 30px;
+}
+
+.userInfoChange tbody tr td {
+  padding: 5px 10px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  color: #3a3a3a;
+}
+
+.userInfoChange tbody tr td input {
+  width: 180px;
+  height: 30px;
+  background: #ffffff;
+  border: 1px solid #e8e8e8;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+.userInfoChange tbody tr td textarea {
+  background: #ffffff;
+  border: 1px solid #e8e8e8;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+.idField {
+  background: #eeeeee !important;
+}
+
+.userInfoChange tbody tr td textarea:focus {
+  outline: none;
+}
+
+hr {
+  width: 70vw;
+  border: 1px solid #808080;
+  opacity: 0.3;
+}
