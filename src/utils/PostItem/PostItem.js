@@ -56,7 +56,6 @@ Now I'm trying to check out the remote test branch. I've tried: git ...`}</p>
           </Stack>
         </Stack>
       </div>
-      <hr />
     </>
   );
 }
