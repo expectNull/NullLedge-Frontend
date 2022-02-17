@@ -10,7 +10,7 @@ function MyPage({ children }) {
   return (
     <div className="MyPage">
       <div className="helper">
-        <h1>Infomation</h1>
+        <h1>Information</h1>
         <hr></hr>
         <table className="userInfo1">
           <tbody>

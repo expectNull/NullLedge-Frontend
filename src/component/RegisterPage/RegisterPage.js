@@ -21,7 +21,9 @@ function RegisterPage(props) {
         <br />
         <input id="repwField" type="password" className="field" />
         <br />
-        <button className="registerBtn">Register now</button>
+        <Link to="/login">
+          <button className="registerBtn">Register now</button>
+        </Link>
       </div>
     </div>
   );
