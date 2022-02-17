@@ -6,10 +6,10 @@ import { Layout } from '../../utils/Layout/Layout';
 import { QuestionHeader } from '../../utils/Header/Header';
 import { PostItem } from '../../utils/PostItem/PostItem';
 
-async function LandingPage(props) {
+function LandingPage(props) {
   async function getPostItem() {
     var response = await axios.post(process.env.REACT_APP_API_URL + '/getpost');
-    console.log(response);
+    console.log(response.data);
   }
   getPostItem();
 
