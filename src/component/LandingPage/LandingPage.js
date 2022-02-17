@@ -6,12 +6,13 @@ import { Layout } from '../../utils/Layout/Layout';
 import { QuestionHeader } from '../../utils/Header/Header';
 import { PostItem } from '../../utils/PostItem/PostItem';
 
-function LandingPage(props) {
-  const getPostItem = () => {
-    var response = axios.post(process.env.REACT_APP_API_URL + '/getpost');
+async function LandingPage(props) {
+  async function getPostItem() {
+    var response = await axios.post(process.env.REACT_APP_API_URL + '/getpost');
     console.log(response);
-  };
+  }
   getPostItem();
+
   return (
     <>
       <Layout>
