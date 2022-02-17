@@ -1,5 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Header from '../../utils/Header/Header';
+
 import './LoginPage.css';
 
 function LoginPage(props) {
@@ -18,11 +20,7 @@ function LoginPage(props) {
         <button className="loginbtn">Login now</button>
         <button className="googlebtn">Sign-in with Google</button>
         <span>
-          Don't have an account?
-          <a className="register" href="/#">
-            {' '}
-            Join free today
-          </a>
+          Don't have an account? <Link to="/register">Make account now</Link>
         </span>
       </div>
     </div>
