@@ -240,5 +240,8 @@ function TagHeader() {
 function UsersHeader() {
   return;
 }
+function PostHeader() {
+  return;
+}
 
-export { Header, QuestionHeader, TagHeader, UsersHeader };
+export { Header, QuestionHeader, TagHeader, UsersHeader, PostHeader };
