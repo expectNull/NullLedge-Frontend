@@ -11,5 +11,6 @@
 }
 
 .content {
-  width: 90vh;
+  width: 60vw;
+  min-width: 800px;
 }

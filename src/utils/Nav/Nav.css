@@ -18,7 +18,12 @@ a:hover {
   border-right: 3px solid rgb(255, 255, 255);
 }
 
-.sidebar {
+.sidebarLeft {
+  min-width: 20vh;
+  width: auto;
+}
+
+.sidebarRight {
   min-width: 20vh;
   width: auto;
 }
