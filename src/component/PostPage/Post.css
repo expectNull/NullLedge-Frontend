@@ -1,0 +1,17 @@
+.titleDiv {
+  text-align: left;
+  margin: 0 1vw;
+}
+
+.titleDiv span {
+  margin-right: 30px;
+}
+
+.titleDiv h1 {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 35px;
+  color: #1a202c;
+}
