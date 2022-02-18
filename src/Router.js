@@ -18,6 +18,7 @@ export function Router() {
       <Route exact path="/mypage" element={<MyPage />} />
       <Route exact path="/mypage/:name" element={<MyPage />} />
       <Route exact path="/post" element={<PostPage />} />
+      <Route exact path="/post/:postid" element={<PostPage />} />
       <Route exact path="/ranking" element={<Ranking />} />
       <Route exact path="/register" element={<RegisterPage />} />
       <Route exact path="/setting" element={<SettingPage />} />

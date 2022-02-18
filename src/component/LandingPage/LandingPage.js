@@ -28,6 +28,7 @@ function LandingPage() {
         ) : (
           posts.map(item => (
             <PostItem
+              post_id={item['post_id']}
               like={item['like_cnt']}
               ans={item['ans_cnt']}
               view={item['view_cnt']}

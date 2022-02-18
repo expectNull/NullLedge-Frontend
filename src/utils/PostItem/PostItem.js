@@ -9,7 +9,16 @@ import SvgIcon from '@mui/material/SvgIcon';
 import CampaignIcon from '@mui/icons-material/Campaign';
 
 // <PostItem name="질문인데 이걸로 어떻게 해야함" writer="Kim" postIdx="5" />;
-export function PostItem({ like, ans, view, post_nm, ymd, user_nm, content }) {
+export function PostItem({
+  post_id,
+  like,
+  ans,
+  view,
+  post_nm,
+  ymd,
+  user_nm,
+  content,
+}) {
   // SQL 쿼리로 Like, answers, post의 이름, 날짜, 작성자 정보
 
   return (
@@ -35,7 +44,10 @@ export function PostItem({ like, ans, view, post_nm, ymd, user_nm, content }) {
         </Stack>
 
         <Stack className="post_inside">
-          <Link to="/" style={{ textDecoration: 'none', color: '#33a7ff' }}>
+          <Link
+            to={`/post/${post_id}`}
+            style={{ textDecoration: 'none', color: '#33a7ff' }}
+          >
             {post_nm}
           </Link>
 
