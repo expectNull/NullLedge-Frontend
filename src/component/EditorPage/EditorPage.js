@@ -23,6 +23,7 @@ function EditorPage(props) {
       //kind_point_amt -> 초기값 -1 설정 VS NULL
       //PARENT_POST_ID -> NULL
     };
+    console.log(html_content);
     await axios.post(process.env.REACT_APP_API_URL + '/setpost', info);
   }
 
@@ -34,6 +35,7 @@ function EditorPage(props) {
   const onContentChange = e => {
     const editorInstance = editorRef.current.getInstance();
     const getContent_html = editorInstance.getHTML();
+    // console.log(editorInstance.getMarkdown());
     setContent(getContent_html);
   };
   const onProIdChange = e => {
