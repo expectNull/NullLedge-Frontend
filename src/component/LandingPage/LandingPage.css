@@ -1,3 +1,11 @@
 progress {
   width: 95%;
 }
+
+.loadingBar {
+  text-align: center;
+}
+
+stack {
+  display: inline-block;
+}

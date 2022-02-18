@@ -5,6 +5,7 @@ import axios from 'axios';
 import { Layout } from '../../utils/Layout/Layout';
 import { Header } from '../../utils/Header/Header';
 import { PostItem } from '../../utils/PostItem/PostItem';
+import LoadingBar from '../../utils/LoadingBar/LoadingBar';
 import './LandingPage.css';
 
 async function getPostItem() {
@@ -25,7 +26,12 @@ function LandingPage() {
     <>
       <Layout>
         {posts.length === 0 ? (
-          <progress />
+          <div className="loadingBar">
+            <LoadingBar />
+            <LoadingBar />
+            <LoadingBar />
+            <LoadingBar />
+          </div>
         ) : (
           posts.map(item => (
             <PostItem
