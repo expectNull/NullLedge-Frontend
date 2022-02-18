@@ -42,7 +42,10 @@ export function PostItem({ name, writer, postIdx }) {
 Now I'm trying to check out the remote test branch. I've tried: git ...`}</p>
 
           <Stack direction="row" justifyContent="flex-end" alignItems="center">
-            <Link to={`/mypage/${writer}`} style={{ marginRight: '2vh' }}>
+            <Link
+              to={`/mypage/${writer}`}
+              style={{ marginRight: '2vh', textDecoration: 'none' }}
+            >
               <Chip
                 avatar={
                   <Avatar alt="Natacha" src="/static/images/avatar/1.jpg" />
