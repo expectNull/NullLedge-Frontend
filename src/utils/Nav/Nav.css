@@ -10,8 +10,8 @@ a:hover {
 
 .clicked {
   color: rgba(0, 0, 0, 0.849);
-  border-right: 3px solid rgb(230, 191, 63);
-  background-color: beige;
+  border-right: 3px solid rgba(30, 114, 209, 40);
+  background-color: rgba(220, 220, 221, 0.3);
 }
 
 .unclicked {
