@@ -3,8 +3,8 @@ import './Nav.css';
 import { Link } from 'react-router-dom';
 import Stack from '@mui/material/Stack';
 
-function isClick(base, target) {
-  if (base === target) return 'clicked';
+function isClick(target, base) {
+  if (target.includes(base)) return 'clicked';
   return 'unclicked';
 }
 
@@ -13,13 +13,13 @@ function Nav() {
 
   return (
     <Stack className="sidebar">
-      <Link to="/" className={isClick('', page) + ' nav_link'}>
+      <Link to="/" className={isClick(['', 'post'], page) + ' nav_link'}>
         All Questions
       </Link>
-      <Link to="/tags" className={isClick('tags', page) + ' nav_link'}>
+      <Link to="/tags" className={isClick(['tags'], page) + ' nav_link'}>
         Tags
       </Link>
-      <Link to="/ranking" className={isClick('ranking', page) + ' nav_link'}>
+      <Link to="/ranking" className={isClick(['ranking'], page) + ' nav_link'}>
         Rank
       </Link>
     </Stack>
@@ -31,13 +31,13 @@ function RightNav() {
 
   return (
     <Stack className="sidebar">
-      <Link to="/" className={isClick('', page) + ' nav_link'}>
+      <Link to="/" className={isClick(['', 'post'], page) + ' nav_link'}>
         All Questions
       </Link>
-      <Link to="/tags" className={isClick('tags', page) + ' nav_link'}>
+      <Link to="/tags" className={isClick(['tags'], page) + ' nav_link'}>
         Tags
       </Link>
-      <Link to="/ranking" className={isClick('ranking', page) + ' nav_link'}>
+      <Link to="/ranking" className={isClick(['ranking'], page) + ' nav_link'}>
         Rank
       </Link>
     </Stack>
