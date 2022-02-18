@@ -12,7 +12,7 @@ function Nav() {
   const page = window.location.href.split('/')[3];
 
   return (
-    <Stack className="sidebar">
+    <Stack className="sidebarLeft">
       <Link to="/" className={isClick(['', 'post'], page) + ' nav_link'}>
         All Questions
       </Link>
@@ -30,7 +30,7 @@ function RightNav() {
   const page = window.location.href.split('/')[3];
 
   return (
-    <Stack className="sidebar">
+    <Stack className="sidebarRight">
       <Link to="/" className={isClick(['', 'post'], page) + ' nav_link'}>
         All Questions
       </Link>

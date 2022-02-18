@@ -7,10 +7,30 @@ function PostPage({}) {
     <>
       <Layout>
         <div className="titleDiv">
-          <h1>Hi</h1>
-          <span>Asked {9} days ago</span>
-          <span>Active {6} days ago</span>
-          <span>Viewed {200} times</span>
+          <h1>
+            바보들아 안궁금 바보들아 안궁금 바보들아 안궁금하다니까 바보들아 난
+            큰 듯 해 헤이~
+          </h1>
+          <table>
+            <tbody>
+              <tr>
+                <td>
+                  <span className="key">Asked</span>
+                  <span className="value">{9} days ago</span>
+                </td>
+                <td>
+                  <span className="key">Active</span>
+                  <span className="value">{6} days ago</span>
+                </td>
+                <td>
+                  <span className="key">View</span>
+                  <span className="value">{200} days ago</span>
+                </td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
           <hr></hr>
         </div>
       </Layout>
