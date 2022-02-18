@@ -5,6 +5,7 @@ import axios from 'axios';
 import { Layout } from '../../utils/Layout/Layout';
 import { Header } from '../../utils/Header/Header';
 import { PostItem } from '../../utils/PostItem/PostItem';
+import './LandingPage.css';
 
 async function getPostItem() {
   var response = await axios.post(process.env.REACT_APP_API_URL + '/getpost');
@@ -24,7 +25,7 @@ function LandingPage() {
     <>
       <Layout>
         {posts.length === 0 ? (
-          <span>loading...</span>
+          <progress />
         ) : (
           posts.map(item => (
             <PostItem
