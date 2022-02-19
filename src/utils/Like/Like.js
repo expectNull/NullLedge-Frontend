@@ -51,13 +51,12 @@ const Like = ({ like_cnt }) => {
         <tr>
           <td>
             <span className="key">
-              <IconButton size="small">
+              <IconButton size="small" onClick={like === 1 ? Cancel : Up}>
                 <ThumbUpIcon
                   fontSize="small"
                   className="likebtn"
                   color={like === 1 ? 'primary' : ''}
                   className="icon"
-                  onClick={like === 1 ? Cancel : Up}
                 />
               </IconButton>
             </span>
@@ -65,13 +64,12 @@ const Like = ({ like_cnt }) => {
           </td>
           <td>
             <span className="key">
-              <IconButton size="small">
+              <IconButton size="small" onClick={like === -1 ? Cancel : Down}>
                 <ThumbDownIcon
                   fontSize="small"
                   className="likebtn"
                   color={like === -1 ? 'primary' : ''}
                   className="icon"
-                  onClick={like === -1 ? Cancel : Down}
                 />
               </IconButton>
             </span>
