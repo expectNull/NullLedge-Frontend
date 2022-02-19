@@ -1,6 +1,6 @@
 .titleDiv {
   text-align: left;
-  margin: 0 1vw;
+  padding: 5px;
 }
 
 .titleDiv span {
@@ -45,4 +45,12 @@
 
 .titleDiv .evaluation {
   float: right;
+}
+
+.usercard-helper {
+  text-align: right;
+}
+
+.usercard-helper {
+  margin: 0 1vw;
 }
