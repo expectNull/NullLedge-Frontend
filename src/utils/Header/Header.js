@@ -259,7 +259,7 @@ function PostHeader({ post_nm, ymd, view, like }) {
           </tr>
         </tbody>
       </table>
-      <Like className="evaluation" like={like} />
+      <Like className="evaluation" like_cnt={like} />
       <hr></hr>
     </div>
   );

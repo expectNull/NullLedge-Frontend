@@ -1,49 +1,61 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
+
 import { Layout } from '../../utils/Layout/Layout';
 import { PostHeader } from '../../utils/Header/Header';
 import { UserCard } from '../../utils/UserCard/UserCard';
-import ThumbUpIcon from '@mui/icons-material/ThumbUp';
-import ThumbDownIcon from '@mui/icons-material/ThumbDown';
+import LoadingBar from '../../utils/LoadingBar/LoadingBar';
 import PostViewer from '../../utils/PostViewer/PostViewer';
 
 import './Post.css';
 
+async function getPostItem(id) {
+  var response = await axios.post(
+    process.env.REACT_APP_API_URL + '/getPostead',
+    null,
+    { params: { id } },
+  );
+  return response;
+}
+
 function PostPage() {
   let [posts, setPosts] = useState([]);
 
+  const { postid } = useParams();
   useEffect(async () => {
-    let ret = await (await getPostItem()).data;
+    let ret = await (await getPostItem(postid)).data;
     setPosts(ret);
   }, []);
-  const { postid } = useParams();
-  console.log(postid);
 
-  async function getPostItem() {
-    var response = await axios.post(process.env.REACT_APP_API_URL + '/getpost');
-    return response;
-  }
+  useEffect(() => {
+    console.log(posts[0]);
+  }, [posts]);
 
   return (
     <>
       <Layout>
-        <div className="titleDiv">
+        {posts.length === 0 ? (
+          <div className="loadingBar">
+            <LoadingBar />
+            <LoadingBar />
+          </div>
+        ) : (
           <PostHeader
-            post_nm="바보들아 안궁금 바보들아 안궁금 바보들아 안궁금하다니까"
-            ymd="2022-02-19 21:43"
-            view={200}
-            like={200}
+            post_nm={posts[0].post_nm}
+            ymd={posts[0].post_ymd}
+            view={posts[0].view_cnt}
+            like={posts[0].like_cnt}
           />
+        )}
 
-          {/* {posts.map(item => (
+        {/* {posts.map(item => (
           <PostViewer content={atob(item['content'])} />
         ))} */}
-          <UserCard className="usercard" />
-          {/*
+        <UserCard className="usercard" />
+        {/*
             commentList 넣을 예정
           */}
-        </div>
       </Layout>
     </>
   );

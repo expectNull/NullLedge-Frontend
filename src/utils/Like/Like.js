@@ -73,7 +73,7 @@ const Like = ({ like_cnt }) => {
                 />
               </IconButton>
             </span>
-            <span className="bad">{'  ' + like_cnt}</span>
+            <span className="bad"></span>
           </td>
         </tr>
       </tbody>
