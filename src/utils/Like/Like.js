@@ -6,6 +6,9 @@ import SvgIcon from '@mui/material/SvgIcon';
 import ArrowDropUpSharpIcon from '@mui/icons-material/ArrowDropUpSharp';
 import ArrowDropDownSharpIcon from '@mui/icons-material/ArrowDropDownSharp';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import ThumbDownIcon from '@mui/icons-material/ThumbDown';
+import { IconButton } from '@mui/material';
 
 const theme = createTheme({
   palette: {
@@ -26,51 +29,57 @@ function buttonColor(bool) {
   }
 }
 
-// 예시 <Like post="이거 되냐" writer="장신형" />
-const Like = ({ post, writer }) => {
+const Like = ({ like_cnt }) => {
   // like cnt를 계산 or Props로 전달
-  const [isUp, setIsup] = useState(false);
-  const [isDown, setIsdown] = useState(false);
+  const [like, setLike] = useState(0);
 
   function Up() {
-    if (isDown) {
-      alert('You already Voted!');
-      return;
-    }
-    setIsup(isUp => !isUp);
+    setLike(1);
   }
 
   function Down() {
-    if (isUp) {
-      alert('You already Voted!');
-      return;
-    }
-    setIsdown(isDown => !isDown);
+    setLike(-1);
+  }
+
+  function Cancel() {
+    setLike(0);
   }
 
   return (
-    <Stack>
-      <ThemeProvider theme={theme}>
-        <Button onClick={Up}>
-          <SvgIcon
-            fontSize="large"
-            component={ArrowDropUpSharpIcon}
-            color={isUp ? 'secondary' : 'primary'}
-          />
-        </Button>
-
-        <span>{post}</span>
-        <span>{writer}</span>
-
-        <Button onClick={Down}>
-          <SvgIcon
-            fontSize="large"
-            component={ArrowDropDownSharpIcon}
-            color={isDown ? 'secondary' : 'primary'}
-          />
-        </Button>
-      </ThemeProvider>
-    </Stack>
+    <table className="evaluation">
+      <tbody>
+        <tr>
+          <td>
+            <span className="key">
+              <IconButton size="small">
+                <ThumbUpIcon
+                  fontSize="small"
+                  className="likebtn"
+                  color={like === 1 ? 'primary' : ''}
+                  className="icon"
+                  onClick={like === 1 ? Cancel : Up}
+                />
+              </IconButton>
+            </span>
+            <span className="good">{'  ' + like_cnt}</span>
+          </td>
+          <td>
+            <span className="key">
+              <IconButton size="small">
+                <ThumbDownIcon
+                  fontSize="small"
+                  className="likebtn"
+                  color={like === -1 ? 'primary' : ''}
+                  className="icon"
+                  onClick={like === -1 ? Cancel : Down}
+                />
+              </IconButton>
+            </span>
+            <span className="bad">{'  ' + like_cnt}</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   );
 };
 
