@@ -3,9 +3,8 @@ import { useParams } from 'react-router-dom';
 import { PostItem } from '../../utils/PostItem/PostItem';
 import './My.css';
 
-function MyPage({ children }) {
+function MyPage() {
   const { name } = useParams();
-  console.log(name);
 
   return (
     <div className="MyPage">

@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 // <UserCard name="Jang" postIdx={3} />
-export function UserCard({ name, postIdx }) {
+export function UserCard({ name, nullpoint }) {
   // postIdx를 통해 쿼리 던지기. => 질문의 날짜, 시간을 가져옴, 질문자 답변자 구분 필요
   const date = window.Date.now();
   const page = window.location.href.split('/')[3];
@@ -26,7 +26,7 @@ export function UserCard({ name, postIdx }) {
             </td>
           </tr>
           <tr>
-            <td className="nullPoint">nullPoint : {0}</td>
+            <td className="nullPoint">nullPoint : {nullpoint}</td>
           </tr>
           <tr>
             <td className="intro">{'intro'}</td>
