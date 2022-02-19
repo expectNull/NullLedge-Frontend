@@ -9,28 +9,23 @@ export function UserCard({ name, postIdx }) {
   const page = window.location.href.split('/')[3];
 
   return (
-    <div className="user_card">
-      <div className="user_date">
-        <span className="span_date">{date}</span>
-      </div>
-      <div className="user_container">
-        <Link to={`/mypage/${name}`}>
-          <img
-            className="user_pic"
-            src="https://i.stack.imgur.com/6OJea.jpg?s=64&g=1"
-          />
-        </Link>
-        <div className="user_info">
-          <Link
-            to={`/mypage/${name}`}
-            style={{ color: 'blue', textDecoration: 'none' }}
-          >
-            {name}
-          </Link>
-          <span title="NP">{postIdx}</span>
-          <span title="Answers">{postIdx}</span>
-        </div>
-      </div>
+    <div className="usercard-helper">
+      <table className="usercard">
+        <tbody>
+          <tr>
+            <td className="imgbox" rowSpan={3}>
+              <img src="userimg.png" className="userImg"></img>
+            </td>
+            <td className="nickname">{'nickname'}</td>
+          </tr>
+          <tr>
+            <td className="nullPoint">nullPoint : {0}</td>
+          </tr>
+          <tr>
+            <td className="intro">{'intro'}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   );
 }
