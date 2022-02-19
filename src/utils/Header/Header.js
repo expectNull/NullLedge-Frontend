@@ -240,8 +240,28 @@ function TagHeader() {
 function UsersHeader() {
   return;
 }
-function PostHeader() {
-  return;
+function PostHeader({ post_nm, ymd, view, like }) {
+  return (
+    <div className="titleDiv">
+      <h1>{post_nm}</h1>
+      <table>
+        <tbody>
+          <tr>
+            <td>
+              <span className="key">Asked</span>
+              <span className="value">{ymd}</span>
+            </td>
+            <td>
+              <span className="key">View</span>
+              <span className="value">{view} times</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <Like className="evaluation" like={like} />
+      <hr></hr>
+    </div>
+  );
 }
 
 export { Header, QuestionHeader, TagHeader, UsersHeader, PostHeader };
