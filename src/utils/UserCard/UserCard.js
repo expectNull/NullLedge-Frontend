@@ -14,9 +14,16 @@ export function UserCard({ name, postIdx }) {
         <tbody>
           <tr>
             <td className="imgbox" rowSpan={3}>
-              <img src="userimg.png" className="userImg"></img>
+              <Link to={'/mypage/' + name}>
+                <img src="userimg.png" className="userImg"></img>
+              </Link>
             </td>
-            <td className="nickname">{'nickname'}</td>
+
+            <td>
+              <Link className="nickname" to={'/mypage/' + name}>
+                {'nickname'}
+              </Link>
+            </td>
           </tr>
           <tr>
             <td className="nullPoint">nullPoint : {0}</td>

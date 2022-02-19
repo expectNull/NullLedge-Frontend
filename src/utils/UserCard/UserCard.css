@@ -42,3 +42,8 @@
 .usercard-helper {
   margin: 0 1vw;
 }
+
+.usercard .nickname {
+  text-decoration: none;
+  font-size: 16px;
+}
