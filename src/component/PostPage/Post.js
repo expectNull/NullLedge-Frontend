@@ -23,14 +23,13 @@ function PostPage() {
   let [posts, setPosts] = useState([]);
 
   const { postid } = useParams();
-  useEffect(async () => {
-    let ret = await (await getPostItem(postid)).data;
-    setPosts(ret);
-  }, []);
-
   useEffect(() => {
-    console.log(posts[0]);
-  }, [posts]);
+    const getStuff = async () => {
+      let ret = await (await getPostItem(postid)).data;
+      setPosts(ret);
+    };
+    getStuff();
+  }, []);
 
   return (
     <>

@@ -14,12 +14,14 @@ async function getPostItem() {
 }
 
 function LandingPage() {
-  const [load, setLoad] = useState(false);
   let [posts, setPosts] = useState([]);
 
-  useEffect(async () => {
-    let ret = await (await getPostItem()).data;
-    setPosts(ret);
+  useEffect(() => {
+    const getStuff = async () => {
+      let ret = await (await getPostItem()).data;
+      setPosts(ret);
+    };
+    getStuff();
   }, []);
 
   return (
