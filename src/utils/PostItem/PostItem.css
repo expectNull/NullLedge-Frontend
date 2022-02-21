@@ -56,3 +56,9 @@
   color: #acb3b9;
   font-size: 1.4vh;
 }
+
+.post_container .post_content {
+  word-break: 'break-all';
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

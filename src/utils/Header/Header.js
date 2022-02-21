@@ -122,7 +122,7 @@ function Header() {
   );
 
   return (
-    <>
+    <div className="mainheader">
       <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static" color="primary">
           <Toolbar>
@@ -176,7 +176,7 @@ function Header() {
         {renderMobileMenu}
         {renderMenu}
       </Box>
-    </>
+    </div>
   );
 }
 

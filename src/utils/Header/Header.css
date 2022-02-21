@@ -1,3 +1,9 @@
 .save_btn {
   min-width: 10vh;
 }
+
+.mainheader {
+  position: fixed;
+  top: 0px;
+  width: 100%;
+}
