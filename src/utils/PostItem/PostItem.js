@@ -28,8 +28,9 @@ export function PostItem({
     <>
       <hr />
       <div className="post_container">
+        {/* left div */}
         <Stack className="post_numbers">
-          <span className="post_like">{like} Likes</span>
+          <div className="post_like">{like} Likes</div>
 
           <div className="post_ans">
             <SvgIcon
@@ -43,16 +44,19 @@ export function PostItem({
             </span>
           </div>
 
-          <span className="post_view">{view} Views</span>
+          <div className="post_view">{view} Views</div>
         </Stack>
 
+        {/* right div */}
         <Stack className="post_inside">
-          <Link
-            to={`/post/${post_id}`}
-            style={{ textDecoration: 'none', color: '#33a7ff' }}
-          >
-            {post_nm}
-          </Link>
+          <div className="content_nm">
+            <Link
+              to={`/post/${post_id}`}
+              style={{ textDecoration: 'none', color: '#33a7ff' }}
+            >
+              <p className="post_nm">{post_nm}</p>
+            </Link>
+          </div>
 
           <div className="content_div">
             <Link
@@ -63,22 +67,24 @@ export function PostItem({
             </Link>
           </div>
 
-          <Stack direction="row" justifyContent="flex-end" alignItems="center">
-            <Link
-              to={`/mypage/${user_nm}`}
-              style={{ marginRight: '2vh', textDecoration: 'none' }}
-            >
-              <Chip
-                avatar={
-                  <Avatar alt="Natacha" src="/static/images/avatar/1.jpg" />
-                }
-                label="Avatar"
-                variant="outlined"
-                clickable
-              />
-            </Link>
-            <span className="post_date">asked {ymd}</span>
-          </Stack>
+          <div className="card-helper">
+            <Stack className="card" direction="row" alignItems="center">
+              <Link
+                to={`/mypage/${user_nm}`}
+                style={{ marginRight: '2vh', textDecoration: 'none' }}
+              >
+                <Chip
+                  avatar={
+                    <Avatar alt="Natacha" src="/static/images/avatar/1.jpg" />
+                  }
+                  label="Avatar"
+                  variant="outlined"
+                  clickable
+                />
+              </Link>
+              <div className="post_date">asked {ymd}</div>
+            </Stack>
+          </div>
         </Stack>
       </div>
     </>
