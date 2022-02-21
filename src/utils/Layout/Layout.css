@@ -6,11 +6,18 @@
 .layout_box {
   height: 100vh;
 }
+
 .layout {
   display: inline-block;
+  margin-top: 64px;
 }
 
-.content {
+@media screen and (max-width: 600px) {
+  .layout {
+    margin-top: 56px;
+  }
+}
+.layout .content {
   width: 60vw;
   min-width: 400px;
 }
