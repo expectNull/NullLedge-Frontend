@@ -1,14 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
-import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
-import SvgIcon from '@mui/material/SvgIcon';
-import ArrowDropUpSharpIcon from '@mui/icons-material/ArrowDropUpSharp';
-import ArrowDropDownSharpIcon from '@mui/icons-material/ArrowDropDownSharp';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ThumbDownIcon from '@mui/icons-material/ThumbDown';
 import { IconButton } from '@mui/material';
+import axios from 'axios';
 
 const theme = createTheme({
   palette: {
@@ -23,27 +19,49 @@ const theme = createTheme({
   },
 });
 
-function buttonColor(bool) {
-  if (bool) {
-    return;
-  }
+async function setLikePost(check, post_id, user_id, value) {
+  // check == 0 : 처음 접속한 경우 where, insert 사용
+  // check == 1 : 좋아요를 누른 경우로 update 사용
+  const info = {
+    post_id: Number(post_id),
+    user_id: user_id,
+    value: value,
+  };
+  await axios.post(
+    `${process.env.REACT_APP_API_URL}${check ? '/setLike' : '/setLikeInit'}`,
+    info,
+  );
 }
 
-const Like = ({ like_cnt }) => {
-  // like cnt를 계산 or Props로 전달
+const Like = ({ like_cnt, post_id }) => {
+  // user_id 체크 필요.
+  // like_cnt를 State를 사용해서 바뀔 때마다 새롭게 뿌릴수 있도록 함.
   const [like, setLike] = useState(0);
+  const [cnt, setCnt] = useState(like_cnt);
 
-  function Up() {
+  async function Up() {
     setLike(1);
+    setCnt(cnt => cnt + 1);
+    await setLikePost(1, post_id, 1, 1);
   }
 
-  function Down() {
+  async function Down() {
     setLike(-1);
+    await setLikePost(1, post_id, 1, -1);
   }
 
-  function Cancel() {
+  async function Cancel() {
+    if (like) setCnt(cnt => cnt - 1);
     setLike(0);
+    await setLikePost(1, post_id, 1, 0);
   }
+
+  useEffect(() => {
+    const LikeInit = async () => {
+      await setLikePost(0, post_id, 1, 0);
+    };
+    LikeInit();
+  }, []);
 
   return (
     <table className="evaluation">
@@ -60,7 +78,7 @@ const Like = ({ like_cnt }) => {
                 />
               </IconButton>
             </span>
-            <span className="good">{'  ' + like_cnt}</span>
+            <span className="good">{'  ' + cnt}</span>
           </td>
           <td>
             <span className="key">

@@ -21,8 +21,8 @@ async function getPostItem(id) {
 
 function PostPage() {
   let [posts, setPosts] = useState([]);
-
   const { postid } = useParams();
+
   useEffect(() => {
     const getStuff = async () => {
       let ret = await (await getPostItem(postid)).data;
@@ -45,6 +45,7 @@ function PostPage() {
             ymd={posts[0].post_ymd}
             view={posts[0].view_cnt}
             like={posts[0].like_cnt}
+            post_id={postid}
           />
         )}
 

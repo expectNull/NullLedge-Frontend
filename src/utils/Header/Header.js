@@ -241,7 +241,7 @@ function TagHeader() {
 function UsersHeader() {
   return;
 }
-function PostHeader({ post_nm, ymd, view, like }) {
+function PostHeader({ post_nm, ymd, view, like, post_id }) {
   return (
     <div className="titleDiv">
       <h1>{post_nm}</h1>
@@ -259,7 +259,7 @@ function PostHeader({ post_nm, ymd, view, like }) {
           </tr>
         </tbody>
       </table>
-      <Like className="evaluation" like_cnt={like} />
+      <Like className="evaluation" like_cnt={like} post_id={post_id} />
       <hr></hr>
     </div>
   );
