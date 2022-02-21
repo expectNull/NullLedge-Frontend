@@ -57,8 +57,40 @@
   font-size: 1.4vh;
 }
 
+.post_container .post_nm {
+  word-break: 'break-all';
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 20px;
+  margin: 5px 0px !important;
+}
+
 .post_container .post_content {
   word-break: 'break-all';
   overflow: hidden;
   text-overflow: ellipsis;
+  height: 40px;
+}
+
+.post_container .post_like,
+.post_container .post_ans,
+.post_container .post_view {
+  margin-bottom: 5px;
+}
+
+.post_numbers div {
+  width: 8vw;
+  min-width: 120px;
+}
+
+.post_inside {
+  min-width: 400px;
+}
+
+.card-helper {
+  text-align: right;
+}
+
+.card-helper .card {
+  display: inline-block;
 }
