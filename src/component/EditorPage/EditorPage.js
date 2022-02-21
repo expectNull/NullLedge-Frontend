@@ -26,7 +26,14 @@ function EditorPage(props) {
       //PARENT_POST_ID -> NULL
     };
     console.log(html_content);
-    await axios.post(process.env.REACT_APP_API_URL + '/setpost', info);
+    var response = await axios.post(
+      process.env.REACT_APP_API_URL + '/setpost',
+      info,
+    );
+    // if(e.data)
+    console.log(response);
+    console.log(response.data);
+    console.log(response.data.errno);
   }
 
   const onTitleChange = e => {
@@ -53,7 +60,7 @@ function EditorPage(props) {
     }
   };
   return (
-    <>
+    <div className="layout">
       <div className="EditorForm">
         <input
           type="text"
@@ -79,8 +86,11 @@ function EditorPage(props) {
           />
         </div>
         <MyEditor
-          props={'vertical'}
+          initialProps={'# 내용을 입력해주세요. '}
+          previewProps={'vertical'}
           refProps={editorRef}
+          widthProps={'100vh'}
+          heightProps={'75vh'}
           changeProps={onContentChange}
         />
         <br />
@@ -88,7 +98,7 @@ function EditorPage(props) {
           Save
         </Button>
       </div>
-    </>
+    </div>
   );
 }
 
