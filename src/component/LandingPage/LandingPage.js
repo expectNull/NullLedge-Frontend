@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 import { Layout } from '../../utils/Layout/Layout';
-import { Header } from '../../utils/Header/Header';
+import { Header, QuestionHeader } from '../../utils/Header/Header';
 import { PostItem } from '../../utils/PostItem/PostItem';
 import LoadingBar from '../../utils/LoadingBar/LoadingBar';
 import './LandingPage.css';
@@ -27,6 +27,7 @@ function LandingPage() {
   return (
     <>
       <Layout>
+        <QuestionHeader />
         {posts.length === 0 ? (
           <div className="loadingBar">
             <LoadingBar />
