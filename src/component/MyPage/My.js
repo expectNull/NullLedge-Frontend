@@ -32,17 +32,27 @@ function MyPage({ children }) {
           <h2>My Question</h2>
           <div className="questionList">
             <PostItem
-              name="질문인데 이걸로 어떻게 해야함"
-              writer="Kim"
-              postIdx="5"
+              post_id="1"
+              like="0"
+              ans="0"
+              view="0"
+              post_nm="name"
+              ymd="2022-02-21"
+              user_nm="hi"
+              content="hello"
             />
           </div>
           <h2>My Answer</h2>
           <div className="answerList">
             <PostItem
-              name="질문인데 이걸로 어떻게 해야함"
-              writer="Kim"
-              postIdx="5"
+              post_id="1"
+              like="0"
+              ans="0"
+              view="0"
+              post_nm="name"
+              ymd="2022-02-21"
+              user_nm="hi"
+              content="hello"
             />
           </div>
         </div>
