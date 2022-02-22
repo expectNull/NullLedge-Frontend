@@ -5,6 +5,7 @@ import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ThumbDownIcon from '@mui/icons-material/ThumbDown';
 import { IconButton } from '@mui/material';
 import axios from 'axios';
+import wait from 'waait';
 
 const theme = createTheme({
   palette: {
@@ -35,32 +36,55 @@ async function setLikePost(check, post_id, user_id, value) {
 
 const Like = ({ like_cnt, post_id }) => {
   // user_id 체크 필요.
-  // like_cnt를 State를 사용해서 바뀔 때마다 새롭게 뿌릴수 있도록 함.
-  const [like, setLike] = useState(0);
+  const [like, setLike] = useState(null);
   const [cnt, setCnt] = useState(like_cnt);
 
+  async function getLikePost(post_id) {
+    const info = { post_id: Number(post_id) };
+
+    setCnt(
+      await (
+        await axios.post(`${process.env.REACT_APP_API_URL}/getLike`, info)
+      ).data,
+    );
+  }
+
   async function Up() {
+    // SQL의 Update문이 2밀리초를 소요하기 때문에 대기 해야함.
     setLike(1);
-    setCnt(cnt => cnt + 1);
     await setLikePost(1, post_id, 1, 1);
+    await wait(2);
+    await getLikePost(post_id);
   }
 
   async function Down() {
     setLike(-1);
     await setLikePost(1, post_id, 1, -1);
+    await wait(2);
+    await getLikePost(post_id);
   }
 
   async function Cancel() {
-    if (like) setCnt(cnt => cnt - 1);
     setLike(0);
     await setLikePost(1, post_id, 1, 0);
+    await wait(2);
+    await getLikePost(post_id);
   }
 
   useEffect(() => {
+    const setLikeInit = async () => {
+      const info = { post_id: Number(post_id), user_id: 1 };
+      setLike(
+        await (
+          await axios.post(`${process.env.REACT_APP_API_URL}/checkLike`, info)
+        ).data,
+      );
+    };
     const LikeInit = async () => {
       await setLikePost(0, post_id, 1, 0);
     };
     LikeInit();
+    setLikeInit();
   }, []);
 
   return (
@@ -69,7 +93,11 @@ const Like = ({ like_cnt, post_id }) => {
         <tr>
           <td>
             <span className="key">
-              <IconButton size="small" onClick={like === 1 ? Cancel : Up}>
+              <IconButton
+                size="small"
+                onClick={like === 1 ? Cancel : Up}
+                disabled={like === null ? true : false}
+              >
                 <ThumbUpIcon
                   fontSize="small"
                   className="likebtn"
@@ -82,7 +110,11 @@ const Like = ({ like_cnt, post_id }) => {
           </td>
           <td>
             <span className="key">
-              <IconButton size="small" onClick={like === -1 ? Cancel : Down}>
+              <IconButton
+                size="small"
+                onClick={like === -1 ? Cancel : Down}
+                disabled={like === null ? true : false}
+              >
                 <ThumbDownIcon
                   fontSize="small"
                   className="likebtn"
