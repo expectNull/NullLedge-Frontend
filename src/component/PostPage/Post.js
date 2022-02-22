@@ -11,6 +11,7 @@ import PostViewer from '../../utils/PostViewer/PostViewer';
 import './Post.css';
 import MyEditor from '../../utils/MyEditor/MyEditor';
 import { Button } from '@mui/material';
+import CommentList from '../../utils/CommentList/CommentList';
 
 async function getPostItem(id) {
   var response = await axios.post(
@@ -94,6 +95,7 @@ function PostPage() {
         {/*
             commentList 넣을 예정
           */}
+        <CommentList />
         <hr />
         <div>
           <MyEditor
