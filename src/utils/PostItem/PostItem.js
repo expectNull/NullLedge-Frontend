@@ -8,7 +8,6 @@ import Chip from '@mui/material/Chip';
 import SvgIcon from '@mui/material/SvgIcon';
 import CampaignIcon from '@mui/icons-material/Campaign';
 
-// <PostItem name="질문인데 이걸로 어떻게 해야함" writer="Kim" postIdx="5" />;
 export function PostItem({
   post_id,
   like,

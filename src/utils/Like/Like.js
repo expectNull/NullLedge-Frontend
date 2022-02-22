@@ -53,21 +53,21 @@ const Like = ({ like_cnt, post_id }) => {
     // SQL의 Update문이 2밀리초를 소요하기 때문에 대기 해야함.
     setLike(1);
     await setLikePost(1, post_id, 1, 1);
-    await wait(2);
+    await wait(20);
     await getLikePost(post_id);
   }
 
   async function Down() {
     setLike(-1);
     await setLikePost(1, post_id, 1, -1);
-    await wait(2);
+    await wait(20);
     await getLikePost(post_id);
   }
 
   async function Cancel() {
     setLike(0);
     await setLikePost(1, post_id, 1, 0);
-    await wait(2);
+    await wait(20);
     await getLikePost(post_id);
   }
 

@@ -3,13 +3,15 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 import { Layout } from '../../utils/Layout/Layout';
-import { Header, QuestionHeader } from '../../utils/Header/Header';
+import { QuestionHeader } from '../../utils/Header/Header';
 import { PostItem } from '../../utils/PostItem/PostItem';
 import LoadingBar from '../../utils/LoadingBar/LoadingBar';
 import './LandingPage.css';
 
 async function getPostItem() {
-  var response = await axios.post(process.env.REACT_APP_API_URL + '/getpost');
+  var response = await axios.post(
+    process.env.REACT_APP_API_URL + '/getLandingPost',
+  );
   return response;
 }
 
