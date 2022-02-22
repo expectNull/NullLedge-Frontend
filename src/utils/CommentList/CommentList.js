@@ -1,5 +1,6 @@
 import Comment from '../../utils/Comment/Comment';
 import React, { memo, useRef, ReactText, useEffect } from 'react';
+import { Button, Stack } from '@mui/material';
 import textRef from 'react';
 import { Link } from 'react-router-dom';
 import './CommentList.css';
@@ -21,7 +22,12 @@ export default function CommentList({ parent_page_idx }) {
         <Comment order_idx={2} />
         <Comment order_idx={3} />
       </ul>
-      <textarea placeholder="Add a comment"></textarea>
+      <Stack direction="row" spacing={2}>
+        <textarea placeholder="Add a comment"></textarea>
+        <Button className="save_btn" variant="contained">
+          Add
+        </Button>
+      </Stack>
     </div>
   );
 }
