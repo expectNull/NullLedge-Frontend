@@ -46,22 +46,17 @@ function PostPage() {
 
   async function savePost() {
     const info = {
-      // title: title,
-      // tags: 'tags',
-      // html_content: html_content,
-      // user_id: 1,
-      // problem_id: Number(ProId),
-      // type_gb: 0,
-      // //view_cnt -> mysql 초기값 0 설정
-      // //kind_point_amt -> 초기값 -1 설정 VS NULL
-      // //PARENT_POST_ID -> NULL
+      parent_post_id: postid,
+      html_content: html_content,
+      user_id: 1,
+      type_gb: 1,
     };
     console.log(html_content);
     console.log({ postid });
-    // var response = await axios.post(
-    //   process.env.REACT_APP_API_URL + '/setpost',
-    //   info,
-    // );
+    var response = await axios.post(
+      process.env.REACT_APP_API_URL + '/setReply',
+      info,
+    );
     // console.log(response);
     // console.log(response.data);
     // console.log(response.data.errno);
@@ -74,67 +69,81 @@ function PostPage() {
   return (
     <>
       <Layout>
-        {posts === -1 ? (
-          <div className="loadingBar">
-            <LoadingBar />
-            <LoadingBar />
-          </div>
-        ) : (
-          <>
-            <PostHeader
-              post_nm={posts.post_nm}
-              ymd={posts.post_ymd}
-              view={posts.view_cnt}
-              like={posts.like_cnt}
-              post_id={postid}
-            />
-            <PostViewer content={posts.content} />
-            <UserCard
-              className="usercard"
-              name={posts.user_nm}
-              np={posts.user_np}
-              status={posts.user_status}
-            />
-          </>
-        )}
-        {/* 질문글의 댓글임. */}
-        <CommentList parent_id={postid} />
-        <hr />
-        Answers <br />
-        <br />
-        <br />
-        <br />
-        {/* 답변글들 뿌리기 */}
-        {replys === -1 ? (
-          <LoadingBar />
-        ) : (
-          replys.map(item => (
+        <div
+          style={{
+            border: '2px solid black',
+            margin: '10px',
+            padding: '10px',
+          }}
+        >
+          {posts === -1 ? (
+            <div className="loadingBar">
+              <LoadingBar />
+              <LoadingBar />
+            </div>
+          ) : (
             <>
-              <PostViewer content={item.content} />
+              <PostHeader
+                post_nm={posts.post_nm}
+                ymd={posts.post_ymd}
+                view={posts.view_cnt}
+                like={posts.like_cnt}
+                post_id={postid}
+              />
+              <PostViewer content={posts.content} />
               <UserCard
                 className="usercard"
-                name={item.user_nm}
-                np={item.user_np}
-                status={item.user_status}
+                name={posts.user_nm}
+                np={posts.user_np}
+                status={posts.user_status}
               />
-              <CommentList parent_id={item.post_id} />
             </>
-          ))
-        )}
-        <hr />
-        <div>
-          <MyEditor
-            initialProps={'# 답글을 작성해주세요. '}
-            previewProps={'tab'}
-            heightProps={'30vh'}
-            refProps={editorRef}
-            changeProps={onContentChange}
-          />
+          )}
+          {/* 질문글의 댓글임. */}
+          <CommentList parent_id={postid} />
+          <hr />
+          <br />
+          <br />
+          <br />
+          <h1>답 글</h1> <br />
+          {/* 답변글들 뿌리기 */}
+          {replys === -1 ? (
+            <LoadingBar />
+          ) : (
+            replys.map(item => (
+              <div
+                style={{
+                  border: '0.5px solid rgb(25, 108, 200)',
+                  margin: '10px',
+                  padding: '10px',
+                }}
+              >
+                <PostViewer content={item.content} />
+                <UserCard
+                  className="usercard"
+                  name={item.user_nm}
+                  np={item.user_np}
+                  status={item.user_status}
+                />
+                <CommentList parent_id={item.post_id} />
+              </div>
+            ))
+          )}
+          <hr />
+          <div>
+            <MyEditor
+              initialProps={'# 답글을 작성해주세요. '}
+              previewProps={'tab'}
+              heightProps={'30vh'}
+              refProps={editorRef}
+              changeProps={onContentChange}
+            />
+          </div>
+          <Button id="save_btn" variant="contained" onClick={handleSave}>
+            답글 달기
+          </Button>
+          <hr />
         </div>
-        <Button id="save_btn" variant="contained" onClick={handleSave}>
-          답글 달기
-        </Button>
-        <hr />
       </Layout>
     </>
   );
