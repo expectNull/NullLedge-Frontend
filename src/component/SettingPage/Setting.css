@@ -82,6 +82,8 @@
   border: 1px solid #e8e8e8;
   box-sizing: border-box;
   border-radius: 5px;
+
+  resize: none;
 }
 
 .idField {
