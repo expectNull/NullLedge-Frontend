@@ -1,0 +1,31 @@
+.comment_div {
+  text-align: left;
+  list-style: none;
+}
+
+.comment_div .comment_idx,
+.comment_div .comment {
+  font-family: Roboto;
+  font-style: normal;
+}
+
+.comment_div .comment {
+  font-size: 14px;
+  margin-right: 10px;
+}
+
+.comment_div .comment_idx,
+.comment_div .name {
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.comment_div .comment_idx {
+  vertical-align: top;
+  padding: 10px;
+}
+
+.comment_div .ymd {
+  margin-top: 5px;
+  font-size: 12px;
+}
