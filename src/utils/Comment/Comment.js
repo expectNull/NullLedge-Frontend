@@ -1,40 +1,57 @@
 import './Comment.css';
 import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import LoadingBar from '../LoadingBar/LoadingBar';
 
-export default function Comment({ comment_idx, order_idx }) {
+async function getCommentItem(idx) {
+  const info = {
+    post_id: Number(idx),
+  };
+  return await (
+    await axios.post(process.env.REACT_APP_API_URL + '/getCommentItem', info)
+  ).data;
+}
+
+export default function Comment({ post_id }) {
+  // 여기 order_idx를 ol의 리스트 표시로 할 수 있나여??
+  const [info, setInfo] = useState(-1);
+
+  useEffect(() => {
+    const getStuff = async () => {
+      setInfo(await getCommentItem(post_id));
+    };
+    getStuff();
+  }, []);
+
   return (
     <li className="comment_div">
       <hr />
-      <table>
-        <tbody>
-          <tr>
-            {/* order_idx */}
-            <td className="comment_idx">{order_idx}</td>
-            {/* get comment from comment_idx */}
-            <td className="comment">
-              your code is sucks. your code is sucks. your code is sucks. your
-              code is sucks. your code is sucks. your code is sucks. your code
-              is sucks. your code is sucks. your code is sucks. your code is
-              sucks. your code is sucks. your code is sucks. your code is sucks.
-              your code is sucks. your code is sucks. your code is sucks. your
-              code is sucks. your code is sucks. your code is sucks. your code
-              is sucks. your code is sucks. your code is sucks. your code is
-              sucks. your code is sucks. your code is sucks. your code is sucks.
-              your code is sucks. your code is sucks. your code is sucks. your
-              code is sucks.
-              {/* put ymd */}
-              <div className="ymd">
-                {' - '}
-                <Link className="name" to={`/mypage/${'name'}`}>
-                  {'name'}
-                </Link>
-                {'   '}
-                {'2022-02-22 16:58'}
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+
+      {info === -1 ? (
+        <LoadingBar />
+      ) : (
+        <table>
+          <tbody>
+            <tr>
+              {/* order_idx */}
+              <td className="comment_idx">{post_id}</td>
+              <td className="comment">
+                {info.content}
+
+                <div className="ymd">
+                  {' - '}
+                  <Link className="name" to={`/mypage/${info.user_nm}`}>
+                    {info.user_nm}
+                  </Link>
+                  {'   '}
+                  {info.post_ymd}
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      )}
     </li>
   );
 }

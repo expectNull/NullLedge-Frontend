@@ -1,26 +1,39 @@
+import React, { useEffect, useState } from 'react';
+
+import LoadingBar from '../LoadingBar/LoadingBar';
 import Comment from '../../utils/Comment/Comment';
-import React, { memo, useRef, ReactText, useEffect } from 'react';
+
 import { Button, Stack } from '@mui/material';
-import textRef from 'react';
-import { Link } from 'react-router-dom';
 import './CommentList.css';
-import { useCallback } from 'react';
+import axios from 'axios';
 
-export default function CommentList({ parent_page_idx }) {
-  // get comment list from parent_page_idx
-  function something() {
-    return {
-      /* comment li's */
+async function getSomething(id, pos) {
+  const info = {
+    post_id: Number(id),
+  };
+
+  return await (
+    await axios.post(`${process.env.REACT_APP_API_URL}/${pos}`, info)
+  ).data;
+}
+
+export default function CommentList({ parent_id }) {
+  const [comments, setComments] = useState(-1);
+
+  useEffect(() => {
+    const getStuff = async () => {
+      setComments(await getSomething(parent_id, 'getCommentList'));
     };
-  }
-
+    getStuff();
+  }, []);
   return (
     <div className="comment_list">
       <ul>
-        {something}
-        <Comment order_idx={1} />
-        <Comment order_idx={2} />
-        <Comment order_idx={3} />
+        {comments === -1 ? (
+          <LoadingBar />
+        ) : (
+          comments.map(item => <Comment post_id={item} />)
+        )}
       </ul>
       <Stack direction="row" spacing={2}>
         <textarea placeholder="Add a comment"></textarea>

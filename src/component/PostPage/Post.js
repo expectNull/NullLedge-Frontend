@@ -7,31 +7,32 @@ import { PostHeader } from '../../utils/Header/Header';
 import { UserCard } from '../../utils/UserCard/UserCard';
 import LoadingBar from '../../utils/LoadingBar/LoadingBar';
 import PostViewer from '../../utils/PostViewer/PostViewer';
+import CommentList from '../../utils/CommentList/CommentList';
+import MyEditor from '../../utils/MyEditor/MyEditor';
 
 import './Post.css';
-import MyEditor from '../../utils/MyEditor/MyEditor';
 import { Button } from '@mui/material';
-import CommentList from '../../utils/CommentList/CommentList';
 
-async function getPostItem(id) {
-  var response = await axios.post(
-    process.env.REACT_APP_API_URL + '/getPostead',
-    null,
-    { params: { id } },
-  );
-  return response;
+async function getSomething(id, pos) {
+  const info = {
+    post_id: Number(id),
+  };
+
+  return await (
+    await axios.post(`${process.env.REACT_APP_API_URL}/${pos}`, info)
+  ).data;
 }
 
 function PostPage() {
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState(-1);
+  const [replys, setreplys] = useState(-1);
   const [html_content, setContent] = useState('');
-
   const { postid } = useParams();
 
   useEffect(() => {
     const getStuff = async () => {
-      let ret = await (await getPostItem(postid)).data;
-      setPosts(ret);
+      setPosts(await getSomething(postid, 'getAsk'));
+      setreplys(await getSomething(postid, 'getReplys'));
     };
     getStuff();
   }, []);
@@ -73,7 +74,7 @@ function PostPage() {
   return (
     <>
       <Layout>
-        {posts.length === 0 ? (
+        {posts === -1 ? (
           <div className="loadingBar">
             <LoadingBar />
             <LoadingBar />
@@ -81,21 +82,45 @@ function PostPage() {
         ) : (
           <>
             <PostHeader
-              post_nm={posts[0].post_nm}
-              ymd={posts[0].post_ymd}
-              view={posts[0].view_cnt}
-              like={posts[0].like_cnt}
+              post_nm={posts.post_nm}
+              ymd={posts.post_ymd}
+              view={posts.view_cnt}
+              like={posts.like_cnt}
               post_id={postid}
             />
-            <PostViewer content={posts[0].content} />
+            <PostViewer content={posts.content} />
+            <UserCard
+              className="usercard"
+              name={posts.user_nm}
+              np={posts.user_np}
+              status={posts.user_status}
+            />
           </>
         )}
-
-        <UserCard className="usercard" />
-        {/*
-            commentList 넣을 예정
-          */}
-        <CommentList />
+        {/* 질문글의 댓글임. */}
+        <CommentList parent_id={postid} />
+        <hr />
+        Answers <br />
+        <br />
+        <br />
+        <br />
+        {/* 답변글들 뿌리기 */}
+        {replys === -1 ? (
+          <LoadingBar />
+        ) : (
+          replys.map(item => (
+            <>
+              <PostViewer content={item.content} />
+              <UserCard
+                className="usercard"
+                name={item.user_nm}
+                np={item.user_np}
+                status={item.user_status}
+              />
+              <CommentList parent_id={item.post_id} />
+            </>
+          ))
+        )}
         <hr />
         <div>
           <MyEditor
