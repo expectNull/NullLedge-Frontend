@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import Prism from 'prismjs';
 import 'prismjs/themes/prism.css';
 import './MyEditor.css';
@@ -13,15 +13,22 @@ import 'tui-color-picker/dist/tui-color-picker.css';
 import '@toast-ui/editor-plugin-color-syntax/dist/toastui-editor-plugin-color-syntax.css';
 import colorSyntax from '@toast-ui/editor-plugin-color-syntax';
 
-function MyEditor({ props, changeProps, refProps }) {
+function MyEditor({
+  initialProps,
+  previewProps,
+  changeProps,
+  widthProps,
+  refProps,
+  heightProps,
+}) {
   return (
     <div className="Editor">
       <Editor
-        initialValue="# 내용을 입력해주세요."
-        previewStyle={props}
+        initialValue={initialProps}
+        previewStyle={previewProps}
         plugins={[colorSyntax, [codeSyntaxHighlight, { highlighter: Prism }]]}
-        width="100vh"
-        height="75vh"
+        width={widthProps}
+        height={heightProps}
         onChange={changeProps}
         ref={refProps}
       />

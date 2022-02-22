@@ -203,20 +203,22 @@ function QuestionHeader() {
     setValue(newValue);
   };
   return (
-    <>
-      <Stack
-        direction="row"
-        justifyContent="space-around"
-        alignItems="baseline"
-        spacing={40}
-      >
-        <Typography variant="h3">Questions</Typography>
-        <Button variant="contained" color="primary" className="save_btn">
+    <div className="question_header">
+      <div className="top_header">
+        <div className="header_title">
+          <h1>Questions</h1>
+        </div>
+        <Button
+          className="ask_button"
+          variant="contained"
+          color="primary"
+          className="save_btn"
+        >
           <Link href="/ask" underline="none" color="inherit">
             Ask Question
           </Link>
         </Button>
-      </Stack>
+      </div>
 
       <Stack
         direction="row"
@@ -232,7 +234,7 @@ function QuestionHeader() {
           <Tab value="solved" label="solved" />
         </Tabs>
       </Stack>
-    </>
+    </div>
   );
 }
 function TagHeader() {
