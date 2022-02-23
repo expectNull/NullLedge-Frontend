@@ -14,9 +14,8 @@ import '@toast-ui/editor-plugin-color-syntax/dist/toastui-editor-plugin-color-sy
 import colorSyntax from '@toast-ui/editor-plugin-color-syntax';
 
 function MyEditor({
-  initialProps,
+  // initialProps,
   previewProps,
-  changeProps,
   widthProps,
   refProps,
   heightProps,
@@ -24,12 +23,12 @@ function MyEditor({
   return (
     <div className="Editor">
       <Editor
-        initialValue={initialProps}
+        placeholder="# 답변을 작성해주세요."
+        // initialValue={initialProps}
         previewStyle={previewProps}
         plugins={[colorSyntax, [codeSyntaxHighlight, { highlighter: Prism }]]}
         width={widthProps}
         height={heightProps}
-        onChange={changeProps}
         ref={refProps}
       />
     </div>

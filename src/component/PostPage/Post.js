@@ -28,7 +28,9 @@ function spreadDiv(item) {
       <PostViewer className="postviewer" content={item.content} />
       <div style={{ textAlign: 'right' }}>
         <div>
-          <span>답글이 마음에 드시나요?</span>
+          <span>
+            <b>답글이 마음에 드시나요?</b>
+          </span>
           <Like className="like" like_cnt={0} post_id={item.post_id} />
         </div>
         <UserCard
@@ -55,7 +57,7 @@ async function getSomething(id, pos) {
 function PostPage() {
   const [posts, setPosts] = useState(-1);
   const [replys, setreplys] = useState(-1);
-  const [html_content, setContent] = useState('');
+  const [html_content, setContent] = useState(-1);
   const { postid } = useParams();
 
   useEffect(() => {
@@ -67,11 +69,6 @@ function PostPage() {
   }, []);
 
   const editorRef = useRef();
-  const onContentChange = e => {
-    const editorInstance = editorRef.current.getInstance();
-    const getContent_html = editorInstance.getHTML();
-    setContent(getContent_html);
-  };
 
   async function savePost() {
     const info = {
@@ -80,19 +77,36 @@ function PostPage() {
       user_id: 1,
       type_gb: 1,
     };
-    console.log(html_content);
-    console.log({ postid });
+
     var response = await axios.post(
       process.env.REACT_APP_API_URL + '/setReply',
       info,
     );
-    // console.log(response);
-    // console.log(response.data);
-    // console.log(response.data.errno);
+    if (response.data.length === 0) {
+      alert('작성이 완료되었습니다.');
+    }
   }
 
-  const handleSave = () => {
-    savePost();
+  useEffect(() => {
+    // console.log(html_content);
+  }, [html_content]);
+  useEffect(async () => {
+    if (typeof html_content == 'number') {
+      return;
+    }
+    await savePost();
+    window.location.href = `/post/${postid}`;
+  }, [html_content]);
+
+  const handleSave = async () => {
+    const editorInstance = await editorRef.current.getInstance();
+    const getContent_html = await editorInstance.getHTML();
+    const getContent_md = await editorInstance.getMarkdown();
+    if (getContent_md.length == 0) {
+      alert('공백입니다.');
+      return;
+    }
+    setContent(getContent_html);
   };
 
   return (
@@ -135,11 +149,10 @@ function PostPage() {
           <hr />
           <div>
             <MyEditor
-              initialProps={'# 답글을 작성해주세요. '}
+              // initialProps={'# 답글을 작성해주세요. '}
               previewProps={'tab'}
               heightProps={'30vh'}
               refProps={editorRef}
-              changeProps={onContentChange}
             />
           </div>
           <Button id="save_btn" variant="contained" onClick={handleSave}>

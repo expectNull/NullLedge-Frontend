@@ -1,6 +1,6 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import axios from 'axios';
-
+import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import MyEditor from '../../utils/MyEditor/MyEditor';
 import Tag from '../../utils/Tag/Tag';
@@ -25,40 +25,47 @@ function EditorPage(props) {
       //kind_point_amt -> 초기값 -1 설정 VS NULL
       //PARENT_POST_ID -> NULL
     };
-    console.log(html_content);
     var response = await axios.post(
       process.env.REACT_APP_API_URL + '/setpost',
       info,
     );
-    // if(e.data)
-    console.log(response);
-    console.log(response.data);
-    console.log(response.data.errno);
+    if (response.data.length === 0) {
+      alert('작성이 완료되었습니다.');
+    }
+    return response;
   }
 
   const onTitleChange = e => {
     e.preventDefault();
     setTitle(e.target.value);
   };
-
-  const onContentChange = e => {
-    const editorInstance = editorRef.current.getInstance();
-    const getContent_html = editorInstance.getHTML();
-    // console.log(editorInstance.getMarkdown());
-    setContent(getContent_html);
-  };
   const onProIdChange = e => {
     e.preventDefault();
     setProId(e.target.value);
   };
-  const handleSave = () => {
-    savePost();
+  const handleSave = async () => {
+    if (title.length == 0) {
+      alert('제목은 공백일 수 없습니다.');
+      return;
+    }
+    const editorInstance = await editorRef.current.getInstance();
+    const getContent_html = await editorInstance.getHTML();
+    alert('세팅');
+    setContent(getContent_html);
   };
   const appKeyPress = e => {
     if (e.key === 'Enter') {
       alert('33');
     }
   };
+
+  useEffect(async () => {
+    if (html_content.length != 0) {
+      await savePost();
+      window.location.href = `/`;
+    }
+  }, [html_content]);
+
   return (
     <div className="layout">
       <div className="EditorForm">
@@ -86,14 +93,14 @@ function EditorPage(props) {
           />
         </div>
         <MyEditor
-          initialProps={'# 내용을 입력해주세요. '}
+          // initialProps={'# 내용을 입력해주세요. '}
           previewProps={'vertical'}
           refProps={editorRef}
           widthProps={'100vh'}
           heightProps={'75vh'}
-          changeProps={onContentChange}
         />
         <br />
+
         <Button id="save_btn" onClick={handleSave} variant="contained">
           Save
         </Button>

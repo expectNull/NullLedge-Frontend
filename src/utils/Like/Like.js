@@ -85,8 +85,8 @@ const Like = ({ like_cnt, post_id }) => {
     const LikeInit = async () => {
       await setLikePost(0, post_id, 1, 0);
     };
-    LikeInit();
     setLikeInit();
+    LikeInit();
   }, []);
 
   return (
