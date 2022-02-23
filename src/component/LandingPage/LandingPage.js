@@ -8,11 +8,29 @@ import { PostItem } from '../../utils/PostItem/PostItem';
 import LoadingBar from '../../utils/LoadingBar/LoadingBar';
 import './LandingPage.css';
 
+let idx = 0;
+
 async function getPostItem() {
   var response = await axios.post(
     process.env.REACT_APP_API_URL + '/getLandingPost',
   );
   return response;
+}
+
+function spreadDiv(item) {
+  return (
+    <PostItem
+      key={idx++}
+      post_id={item['post_id']}
+      like={item['like_cnt']}
+      ans={item['ans_cnt']}
+      view={item['view_cnt']}
+      post_nm={item['post_nm']}
+      ymd={item['post_ymd']}
+      user_nm={item['user_nm']}
+      content={item['content']}
+    />
+  );
 }
 
 function LandingPage() {
@@ -38,18 +56,7 @@ function LandingPage() {
             <LoadingBar />
           </div>
         ) : (
-          posts.map(item => (
-            <PostItem
-              post_id={item['post_id']}
-              like={item['like_cnt']}
-              ans={item['ans_cnt']}
-              view={item['view_cnt']}
-              post_nm={item['post_nm']}
-              ymd={item['post_ymd']}
-              user_nm={item['user_nm']}
-              content={item['content']}
-            />
-          ))
+          posts.map(item => spreadDiv(item))
         )}
         <hr />
       </Layout>
