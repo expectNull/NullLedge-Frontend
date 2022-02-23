@@ -7,6 +7,8 @@ import { IconButton } from '@mui/material';
 import axios from 'axios';
 import wait from 'waait';
 
+import './Like.css';
+
 const theme = createTheme({
   palette: {
     primary: {

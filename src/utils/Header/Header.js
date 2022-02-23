@@ -123,7 +123,7 @@ function Header() {
 
   return (
     <div className="mainheader">
-      <Box sx={{ flexGrow: 1 }}>
+      <Box sx={{ flexGrow: 1, backgroundColor: 'primary.main', opacity: '1' }}>
         <AppBar position="static" color="primary">
           <Toolbar>
             <Link href="/" underline="none" color="white">
