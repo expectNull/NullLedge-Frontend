@@ -9,10 +9,39 @@ import LoadingBar from '../../utils/LoadingBar/LoadingBar';
 import PostViewer from '../../utils/PostViewer/PostViewer';
 import CommentList from '../../utils/CommentList/CommentList';
 import MyEditor from '../../utils/MyEditor/MyEditor';
+import Like from '../../utils/Like/Like';
 
 import './Post.css';
 import { Button } from '@mui/material';
 
+let idx = 0;
+function spreadDiv(item) {
+  return (
+    <div
+      key={idx++}
+      style={{
+        border: '0.5px solid rgb(25, 108, 200)',
+        padding: '10px',
+        margin: '0 0 20px',
+      }}
+    >
+      <PostViewer className="postviewer" content={item.content} />
+      <div style={{ textAlign: 'right' }}>
+        <div>
+          <span>답글이 마음에 드시나요?</span>
+          <Like className="like" like_cnt={0} post_id={item.post_id} />
+        </div>
+        <UserCard
+          className="usercard"
+          name={item.user_nm}
+          np={item.user_np}
+          status={item.user_status}
+        />
+      </div>
+      <CommentList parent_id={item.post_id} />
+    </div>
+  );
+}
 async function getSomething(id, pos) {
   const info = {
     post_id: Number(id),
@@ -67,18 +96,16 @@ function PostPage() {
   };
 
   return (
-    <>
+    <div className="postPage">
       <Layout>
         <div
           style={{
-            border: '2px solid black',
             margin: '10px',
             padding: '10px',
           }}
         >
           {posts === -1 ? (
             <div className="loadingBar">
-              <LoadingBar />
               <LoadingBar />
             </div>
           ) : (
@@ -102,33 +129,9 @@ function PostPage() {
           {/* 질문글의 댓글임. */}
           <CommentList parent_id={postid} />
           <hr />
-          <br />
-          <br />
-          <br />
-          <h1>답 글</h1> <br />
+          <h1 className="answer">Answers</h1>
           {/* 답변글들 뿌리기 */}
-          {replys === -1 ? (
-            <LoadingBar />
-          ) : (
-            replys.map(item => (
-              <div
-                style={{
-                  border: '0.5px solid rgb(25, 108, 200)',
-                  margin: '10px',
-                  padding: '10px',
-                }}
-              >
-                <PostViewer content={item.content} />
-                <UserCard
-                  className="usercard"
-                  name={item.user_nm}
-                  np={item.user_np}
-                  status={item.user_status}
-                />
-                <CommentList parent_id={item.post_id} />
-              </div>
-            ))
-          )}
+          {replys === -1 ? <LoadingBar /> : replys.map(item => spreadDiv(item))}
           <hr />
           <div>
             <MyEditor
@@ -145,7 +148,7 @@ function PostPage() {
           <hr />
         </div>
       </Layout>
-    </>
+    </div>
   );
 }
 

@@ -5,3 +5,21 @@
   display: inline-block;
   text-align: left;
 }
+
+.toastui-editor-contents h1,
+.toastui-editor-contents h2,
+.toastui-editor-contents h3,
+.toastui-editor-contents h4,
+.toastui-editor-contents p {
+  border-bottom: none !important;
+  margin: 2px 0px !important;
+}
+
+.toastui-editor-contents p {
+  font-size: 14px;
+}
+
+.toastui-editor-contents {
+  text-align: left;
+  padding: 10px 5px !important;
+}

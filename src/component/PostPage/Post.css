@@ -46,3 +46,16 @@
 .titleDiv .evaluation {
   float: right;
 }
+
+.postPage .answer {
+  text-align: left;
+  margin: 50px 0px 10px !important;
+}
+
+.postPage .like {
+  display: inline-block;
+}
+
+.postPage .postviewer {
+  text-align: right;
+}
