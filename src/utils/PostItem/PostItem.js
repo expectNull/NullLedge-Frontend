@@ -19,9 +19,7 @@ export function PostItem({
   content,
 }) {
   // SQL 쿼리로 Like, answers, post의 이름, 날짜, 작성자 정보
-  console.log(content);
   let parsedContent = content.replaceAll(/(<([^>]+)>)/gi, ' ');
-  console.log(parsedContent);
 
   return (
     <>
