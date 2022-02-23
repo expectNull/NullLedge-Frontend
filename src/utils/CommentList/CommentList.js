@@ -42,7 +42,7 @@ export default function CommentList({ parent_id }) {
   const [content, setContent] = useState(-1);
   const handleAdd = async (editorRef, post_id) => {
     if (editorRef.current.value.length === 0) {
-      console.log('비어있음');
+      alert('댓글이 비어있습니다.');
       return;
     }
     setContent(editorRef.current.value);
