@@ -50,7 +50,6 @@ function EditorPage(props) {
     }
     const editorInstance = await editorRef.current.getInstance();
     const getContent_html = await editorInstance.getHTML();
-    alert('세팅');
     setContent(getContent_html);
   };
   const appKeyPress = e => {
