@@ -48,3 +48,7 @@ input:focus {
   margin: 1vh;
   display: inline-block;
 }
+
+#tag_container {
+  display: flex;
+}
