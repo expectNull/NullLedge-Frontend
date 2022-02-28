@@ -14,12 +14,13 @@
 .toastui-editor-contents h6,
 .toastui-editor-contents p {
   border-bottom: none !important;
-  margin: 2px 0px !important;
+  font-weight: bold !important;
 }
 
 .toastui-editor-contents p,
 .toastui-editor div {
-  font-size: 2vh;
+  font-size: 16px;
+  font-weight: normal !important;
 }
 
 .toastui-editor-contents {
