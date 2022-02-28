@@ -37,9 +37,16 @@ async function saveComment(post_id, comment_content, user_id) {
   // console.log(response.data.errno);
 }
 
+let idx = 1;
+
+function getIdx() {
+  return idx++;
+}
+
 export default function CommentList({ parent_id }) {
   const [comments, setComments] = useState(-1);
   const [content, setContent] = useState(-1);
+  idx = 1;
   const handleAdd = async (editorRef, post_id) => {
     if (editorRef.current.value.length === 0) {
       alert('댓글이 비어있습니다.');
@@ -74,7 +81,7 @@ export default function CommentList({ parent_id }) {
         {comments === -1 ? (
           <LoadingBar />
         ) : (
-          comments.map(item => <Comment post_id={item} />)
+          comments.map(item => <Comment post_id={item} idx={getIdx()} />)
         )}
       </ul>
       <Stack direction="row" spacing={2}>
