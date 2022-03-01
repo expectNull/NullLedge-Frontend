@@ -108,14 +108,14 @@ function EditorPage(props) {
             placeholder="문제 번호 입력"
             onChange={onProIdChange}
           />
+          <input
+            type="text"
+            id="tag_txt"
+            placeholder="태그 입력"
+            onKeyUp={onKeyUp}
+          />
 
           <div id="tag_container">
-            <input
-              type="text"
-              id="tag_txt"
-              placeholder="태그 입력"
-              onKeyUp={onKeyUp}
-            />
             <div id="tag_list"></div>
           </div>
         </div>
