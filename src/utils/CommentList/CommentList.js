@@ -59,7 +59,6 @@ export default function CommentList({ parent_id }) {
     const getStuff = async () => {
       setComments(await getSomething(parent_id, 'getCommentList'));
     };
-    console.log(comments);
     getStuff();
   }, []);
 

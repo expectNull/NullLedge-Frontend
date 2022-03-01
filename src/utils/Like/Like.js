@@ -84,11 +84,11 @@ const Like = ({ like_cnt, post_id }) => {
     };
     const LikeInit = async () => {
       await setLikePost(0, post_id, 1, 0);
+      await getLikePost(post_id);
     };
     setLikeInit();
     LikeInit();
   }, []);
-
   return (
     <table className="evaluation">
       <tbody>
