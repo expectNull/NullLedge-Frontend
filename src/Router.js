@@ -23,6 +23,7 @@ export function Router() {
       <Route exact path="/register" element={<RegisterPage />} />
       <Route exact path="/setting" element={<SettingPage />} />
       <Route exact path="/tags" element={<TagPage />} />
+      <Route exact path="/tags/:value" element={<TagPage />} />
       <Route exact path="/ask" element={<EditorPage />} />
     </Routes>
   );

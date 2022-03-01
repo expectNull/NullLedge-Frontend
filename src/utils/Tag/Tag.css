@@ -1,4 +1,4 @@
-#tag_list .tags {
+.tags {
   /* margin-top: 5px;
   background: #ffeee7;
   border-radius: 56px;
@@ -18,7 +18,8 @@
   border: 0.3vh solid transparent;
   border-radius: 2vh;
   margin-right: 0.7vh;
-  color: #ffffff;
-  background-color: #4db6ac;
+  color: #ffffff !important;
+  text-decoration: none;
+  background-color: #3b8ad9;
   cursor: pointer;
 }

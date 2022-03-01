@@ -1,5 +1,8 @@
-import * as React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import LoadingBar from '../../utils/LoadingBar/LoadingBar';
 import Like from '../../utils/Like/Like';
+import Tag from '../../utils/Tag/Tag';
 import Link from '@mui/material/Link';
 import { Search, StyledInputBase, SearchIconWrapper } from './HeaderStyled';
 import {
@@ -237,31 +240,73 @@ function QuestionHeader() {
     </div>
   );
 }
-function TagHeader() {
+
+function TagHeader({ value }) {
+  return (
+    <div className="question_header">
+      <div className="top_header">
+        <div className="header_title">
+          <h1>{value ? `Tag : ${value}` : `Tags`}</h1>
+        </div>
+      </div>
+    </div>
+  );
   return;
 }
 function UsersHeader() {
   return;
 }
+
+async function getTag(postId) {
+  const info = {
+    post_id: Number(postId),
+  };
+
+  return await (
+    await axios.post(`${process.env.REACT_APP_API_URL}/getPostTag`, info)
+  ).data;
+}
+
 function PostHeader({ post_nm, ymd, view, like, post_id }) {
+  const [tags, setTags] = useState(-1);
+  let idx = 0;
+
+  useEffect(() => {
+    const getStuff = async () => {
+      setTags(await getTag(post_id));
+    };
+    getStuff();
+  }, []);
+
   return (
     <div className="titleDiv">
       <h1>{post_nm}</h1>
-      <table>
-        <tbody>
-          <tr>
-            <td>
-              <span className="key">Asked</span>
-              <span className="value">{ymd}</span>
-            </td>
-            <td>
-              <span className="key">View</span>
-              <span className="value">{view} times</span>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <Like className="evaluation" like_cnt={like} post_id={post_id} />
+      <div>
+        <table>
+          <tbody>
+            <tr>
+              <td>
+                <span className="key">Asked</span>
+                <span className="value">{ymd}</span>
+              </td>
+              <td>
+                <span className="key">View</span>
+                <span className="value">{view} times</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <Like className="evaluation" like_cnt={like} post_id={post_id} />
+      </div>
+
+      {tags === -1 ? (
+        <LoadingBar />
+      ) : (
+        tags.map(item => {
+          idx++;
+          return <Tag idx={idx} value={item} />;
+        })
+      )}
       <hr></hr>
     </div>
   );
