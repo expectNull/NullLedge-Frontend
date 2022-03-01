@@ -6,6 +6,7 @@ import { Layout } from '../../utils/Layout/Layout';
 import { QuestionHeader } from '../../utils/Header/Header';
 import { PostItem } from '../../utils/PostItem/PostItem';
 import LoadingBar from '../../utils/LoadingBar/LoadingBar';
+import Notice from '../../utils/Notice/Notice';
 import './LandingPage.css';
 
 let idx = 0;
@@ -46,6 +47,7 @@ function LandingPage() {
 
   return (
     <>
+      <Notice />
       <Layout>
         <QuestionHeader />
         {posts.length === 0 ? (
