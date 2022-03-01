@@ -35,7 +35,7 @@ function spreadDiv(item) {
 }
 
 function LandingPage() {
-  let [posts, setPosts] = useState([]);
+  let [posts, setPosts] = useState(-1);
 
   useEffect(() => {
     const getStuff = async () => {
@@ -50,13 +50,15 @@ function LandingPage() {
       <Notice />
       <Layout>
         <QuestionHeader />
-        {posts.length === 0 ? (
+        {posts === -1 ? (
           <div className="loadingBar">
             <LoadingBar />
             <LoadingBar />
             <LoadingBar />
             <LoadingBar />
           </div>
+        ) : posts.length === 0 ? (
+          <h2>게시글이 아직 없어요. 질문을 작성 해 볼까요?</h2>
         ) : (
           posts.map(item => spreadDiv(item))
         )}
