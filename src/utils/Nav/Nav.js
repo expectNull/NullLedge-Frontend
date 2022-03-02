@@ -16,9 +16,9 @@ function Nav() {
       <Link to="/" className={isClick(['', 'post'], page) + ' nav_link'}>
         All Questions
       </Link>
-      <Link to="/tags" className={isClick(['tags'], page) + ' nav_link'}>
+      <a href="/tags" className={isClick(['tags'], page) + ' nav_link'}>
         Tags
-      </Link>
+      </a>
       <Link to="/ranking" className={isClick(['ranking'], page) + ' nav_link'}>
         Rank
       </Link>
