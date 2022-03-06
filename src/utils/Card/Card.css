@@ -15,9 +15,10 @@
 }
 
 .noticeCard {
+  display: inline-block;
   border-collapse: collapse;
   text-align: left;
-  width: 300px;
+  width: 290px;
   margin: 2px 0px;
   padding-bottom: 10px;
   /* background-color: aqua; */

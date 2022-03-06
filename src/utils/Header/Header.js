@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import LoadingBar from '../../utils/LoadingBar/LoadingBar';
 import Like from '../../utils/Like/Like';
@@ -29,11 +29,15 @@ import Avatar from '@mui/material/Avatar';
 import { styled } from '@mui/material/styles';
 
 import { NotificationsIcon, LogoIcon } from '../Icon/Icon';
+import { ConstructionOutlined } from '@mui/icons-material';
 
 function Header() {
+  const el = useRef();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const [noticeList, setNoticeList] = React.useState('hiddenDiv');
+  const [menuList, setMenuList] = React.useState('hiddenDiv');
+  const [scroll, setScroll] = React.useState('null');
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -46,12 +50,55 @@ function Header() {
     setMobileMoreAnchorEl(null);
   };
 
-  const handleNoticeListIsOpen = () => {
-    if (noticeList === 'hiddenDiv') {
-      setNoticeList('openDiv');
-    } else {
+  const handleNoticeList = async () => {
+    let promise = new Promise((resolve, reject) => {
+      setTimeout(() => resolve('success'), 100);
+    });
+
+    let result = await promise;
+
+    if (noticeList === 'openDiv') {
       setNoticeList('hiddenDiv');
+    } else {
+      setNoticeList('openDiv');
     }
+  };
+
+  const handleMenuList = async () => {
+    let promise = new Promise((resolve, reject) => {
+      setTimeout(() => resolve('success'), 100);
+    });
+
+    let result = await promise;
+
+    if (menuList === 'openDiv') {
+      setMenuList('hiddenDiv');
+    } else {
+      setMenuList('openDiv');
+    }
+  };
+
+  const closeAllthings = e => {
+    const noticeDiv = document.querySelector('.noticeList');
+    const menuDiv = document.querySelector('.mainheader .menu');
+
+    if (noticeList === 'openDiv' && !noticeDiv.contains(e.target))
+      setNoticeList('hiddenDiv');
+    if (menuList === 'openDiv' && !menuDiv.contains(e.target))
+      setMenuList('hiddenDiv');
+  };
+
+  // For Notice Bar scroll decoration
+  const handleScroll = async event => {
+    setScroll(event);
+
+    let promise = new Promise((resolve, reject) => {
+      setTimeout(() => resolve('success'), 1000);
+    });
+
+    let result = await promise;
+
+    setScroll(null);
   };
 
   const handleMenuClose = () => {
@@ -66,6 +113,7 @@ function Header() {
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
     <Menu
+      className="menu"
       anchorEl={anchorEl}
       anchorOrigin={{
         vertical: 'top',
@@ -134,6 +182,14 @@ function Header() {
     </Menu>
   );
 
+  useEffect(() => {
+    window.addEventListener('click', closeAllthings);
+
+    return () => {
+      window.removeEventListener('click', closeAllthings);
+    };
+  });
+
   return (
     <div className="mainheader">
       <Box sx={{ flexGrow: 1, backgroundColor: 'primary.main', opacity: '1' }}>
@@ -159,7 +215,7 @@ function Header() {
                 aria-label="account of current user"
                 aria-controls={menuId}
                 aria-haspopup="true"
-                onClick={handleProfileMenuOpen}
+                onClick={handleMenuList}
                 color="inherit"
               >
                 <Avatar alt="Image" src="image from BE" />
@@ -168,7 +224,7 @@ function Header() {
                 size="large"
                 aria-label="show new notifications"
                 color="inherit"
-                onClick={handleNoticeListIsOpen}
+                onClick={handleNoticeList}
               >
                 <NotificationsIcon props={17}></NotificationsIcon>
               </IconButton>
@@ -190,7 +246,27 @@ function Header() {
         {renderMobileMenu}
         {renderMenu}
 
-        <div className={noticeList + ' noticeList'}>
+        <div className={'menu ' + menuList}>
+          <Link href="/mypage" underline="none" color="inherit">
+            <MenuItem onClick={handleMenuClose}>My Page</MenuItem>
+          </Link>
+          <Link href="/setting" underline="none" color="inherit">
+            <MenuItem onClick={handleMenuClose}>Setting</MenuItem>
+          </Link>
+          <Link href="/login" underline="none" color="inherit">
+            <MenuItem onClick={handleMenuClose}>Login</MenuItem>
+          </Link>
+        </div>
+
+        <div
+          className={
+            noticeList +
+            ' noticeList' +
+            (scroll === null ? ' scrollHidden' : '')
+          }
+          onScroll={handleScroll}
+          ref={el}
+        >
           <NoticeCard />
           <NoticeCard />
           <NoticeCard />
