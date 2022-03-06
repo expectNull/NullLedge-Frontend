@@ -4,7 +4,7 @@ import KeyboardArrowDownOutlinedIcon from '@mui/icons-material/KeyboardArrowDown
 import IconButton from '@mui/material/IconButton';
 import React, { useState } from 'react';
 
-export default function Card() {
+function Card() {
   const [like, setLike] = useState(0);
 
   function upClick() {
@@ -46,3 +46,37 @@ export default function Card() {
     </div>
   );
 }
+
+function NoticeCard() {
+  // 현재 user와 질문글 user가 같을 경우
+  const questionPost = '1234';
+  const questionTitle = 'BFS 질문입니다! 어떻게 해결해야할까요?';
+  const user = 'Me';
+  const questionUser = 'You';
+  return (
+    <div className="noticeCard">
+      <div>
+        {user === questionUser ? (
+          <>
+            <div>
+              {questionPost + '번 글(' + questionTitle + ')에 답글이 달렸네요!'}
+            </div>
+            <div>채택하고 포인트를 받으세요!</div>
+          </>
+        ) : (
+          <>
+            <div>
+              {questionPost +
+                '번 글(' +
+                questionTitle +
+                ')에서 답글 요청이 왔네요!'}
+            </div>
+            <div>포인트를 받으러 답변해볼까요?</div>
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
+
+export { Card, NoticeCard };
