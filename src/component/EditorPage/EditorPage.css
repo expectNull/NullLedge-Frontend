@@ -52,3 +52,7 @@ input:focus {
 #tag_container {
   display: flex;
 }
+
+#tag_list .tags {
+  margin: 3px 2px;
+}
