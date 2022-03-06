@@ -4,6 +4,7 @@ import LoadingBar from '../../utils/LoadingBar/LoadingBar';
 import Like from '../../utils/Like/Like';
 import Tag from '../../utils/Tag/Tag';
 import Link from '@mui/material/Link';
+import { NoticeCard } from '../../utils/Card/Card';
 import { Search, StyledInputBase, SearchIconWrapper } from './HeaderStyled';
 import {
   AppBar,
@@ -32,6 +33,7 @@ import { NotificationsIcon, LogoIcon } from '../Icon/Icon';
 function Header() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const [noticeList, setNoticeList] = React.useState('hiddenDiv');
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -42,6 +44,14 @@ function Header() {
 
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
+  };
+
+  const handleNoticeListIsOpen = () => {
+    if (noticeList === 'hiddenDiv') {
+      setNoticeList('openDiv');
+    } else {
+      setNoticeList('hiddenDiv');
+    }
   };
 
   const handleMenuClose = () => {
@@ -158,6 +168,7 @@ function Header() {
                 size="large"
                 aria-label="show new notifications"
                 color="inherit"
+                onClick={handleNoticeListIsOpen}
               >
                 <NotificationsIcon props={17}></NotificationsIcon>
               </IconButton>
@@ -178,6 +189,17 @@ function Header() {
         </AppBar>
         {renderMobileMenu}
         {renderMenu}
+
+        <div className={noticeList + ' noticeList'}>
+          <NoticeCard />
+          <NoticeCard />
+          <NoticeCard />
+          <NoticeCard />
+          <NoticeCard />
+          <NoticeCard />
+          <NoticeCard />
+          <NoticeCard />
+        </div>
       </Box>
     </div>
   );
@@ -212,10 +234,9 @@ function QuestionHeader() {
           <h1>Questions</h1>
         </div>
         <Button
-          className="ask_button"
+          className={'ask_button' + 'save_btn'}
           variant="contained"
           color="primary"
-          className="save_btn"
         >
           <Link href="/ask" underline="none" color="inherit">
             Ask Question
