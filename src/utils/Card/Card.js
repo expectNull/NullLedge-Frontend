@@ -49,10 +49,10 @@ function Card() {
 
 function NoticeCard() {
   // 현재 user와 질문글 user가 같을 경우
-  const questionPost = '1234';
-  const questionTitle = 'BFS 질문입니다! 어떻게 해결해야할까요?';
-  const user = 'Me';
-  const questionUser = 'You';
+  const questionPost = '1234'; // post 번호
+  const questionTitle = 'BFS 질문입니다! 어떻게 해결해야할까요?'; // post title
+  const user = 'Me'; // 로그인 유저
+  const questionUser = 'You'; // post 작성자
   return (
     <div className="noticeCard">
       <div>
