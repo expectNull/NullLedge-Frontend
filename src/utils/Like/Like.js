@@ -102,9 +102,8 @@ const Like = ({ like_cnt, post_id }) => {
               >
                 <ThumbUpIcon
                   fontSize="small"
-                  className="likebtn"
+                  className={'likebtn ' + 'icon'}
                   color={like === 1 ? 'primary' : ''}
-                  className="icon"
                 />
               </IconButton>
             </span>
@@ -119,9 +118,8 @@ const Like = ({ like_cnt, post_id }) => {
               >
                 <ThumbDownIcon
                   fontSize="small"
-                  className="likebtn"
+                  className={'likebtn ' + 'icon'}
                   color={like === -1 ? 'primary' : ''}
-                  className="icon"
                 />
               </IconButton>
             </span>
