@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import MyEditor from '../../utils/MyEditor/MyEditor';
 import Tag from '../../utils/Tag/Tag';
+import { Alert } from '../../utils/Alert/Alert';
 
 import './EditorPage.css';
 
@@ -76,7 +77,7 @@ function EditorPage(props) {
   };
   const handleSave = async () => {
     if (title.length == 0) {
-      alert('제목은 공백일 수 없습니다.');
+      Alert('error', '제목은 공백일 수 없습니다.');
       return;
     }
     const editorInstance = await editorRef.current.getInstance();
