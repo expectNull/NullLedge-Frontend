@@ -18,15 +18,9 @@ async function signUp(email, pw, pw_check, nm, status) {
     return;
   }
 
-  // 이게 프론트에서 백으로 얘가 넘어가면 안 되는 거였나??
-  // 뭐였지.
-  let salt = await bcrypt.genSalt();
-  let hashed = await bcrypt.hash(pw, salt);
-
   const info = {
     email: email,
-    salt: salt,
-    hashed: hashed,
+    pw: pw,
     nm: nm,
     status: status,
   };
