@@ -6,7 +6,7 @@ import MyEditor from '../../utils/MyEditor/MyEditor';
 import Tag from '../../utils/Tag/Tag';
 
 import './EditorPage.css';
-// ㅅㅂ 이거 함수 안에 어떻게 넣냐
+
 let tags = {};
 
 function getAll() {
