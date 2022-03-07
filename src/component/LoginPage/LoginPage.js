@@ -32,6 +32,14 @@ async function logIn(email, pw) {
 }
 
 function LoginPage(props) {
+  const onKeyUp = e => {
+    if (e.keyCode === 13) {
+      let email = document.getElementById('idField').value;
+      let pw = document.getElementById('pwField').value;
+      logIn(email, pw);
+    }
+  };
+
   return (
     <div className="loginpage">
       <div className="loginDiv">
@@ -42,7 +50,12 @@ function LoginPage(props) {
         <br />
         <label htmlFor="pwField">Password</label>
         <br />
-        <input id="pwField" type="password" className="field" />
+        <input
+          id="pwField"
+          type="password"
+          className="field"
+          onKeyUp={onKeyUp}
+        />
         <br />
         <button
           className="loginbtn"

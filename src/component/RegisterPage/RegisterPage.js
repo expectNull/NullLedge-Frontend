@@ -44,7 +44,6 @@ async function signUp(email, pw, pw_check, nm, status) {
     pwLabel.innerText = 'Password';
     pwDiv.classList.remove('warning');
   }
-
   if (pw !== pw_check || pw === '') {
     repwDiv.classList.add('warning');
     repwLabel.innerText = 'Check Password - 비밀번호가 다릅니다.';
@@ -56,13 +55,9 @@ async function signUp(email, pw, pw_check, nm, status) {
 
   if (error) return;
 
-  let salt = await bcrypt.genSalt();
-  let hashed = await bcrypt.hash(pw, salt);
-
   const info = {
     email: email,
-    salt: salt,
-    hashed: hashed,
+    pw: pw,
     nm: nm,
     status: status,
   };
