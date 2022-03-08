@@ -1,12 +1,14 @@
 .registerPage {
   text-align: center;
-  margin: 100px;
+  margin: 100px auto;
 }
 
-.registerDiv {
-  display: inline-block;
+.loginDiv {
+  text-align: left;
+  margin: auto;
   text-align: left;
   width: 30vw;
+  min-width: 300px;
 }
 
 .registerBtn {
@@ -51,8 +53,6 @@
   height: 40px;
   display: inline-block;
   margin: 5px 0px 20px;
-
-  transition: 0.5s;
 }
 
 .register {
