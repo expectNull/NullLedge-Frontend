@@ -89,27 +89,13 @@
 .question_header h1 {
   margin-left: 20px;
   font-family: Roboto;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 44px;
 }
 
 .top_header .header_title {
   display: inline-block;
   width: 75%;
-}
-
-@media screen and (max-width: 950px) {
-  .top_header .header_title {
-    display: inline-block;
-    width: 70%;
-  }
-}
-
-@media screen and (max-width: 800px) {
-  .top_header .header_title {
-    display: inline-block;
-    width: 60%;
-  }
 }
 
 .top_header {
@@ -119,5 +105,32 @@
 .question_header h1,
 .question_header .ask_button {
   display: inline-block;
-  width: 80%;
+  width: 90%;
+}
+
+@media screen and (max-width: 950px) {
+  .question_header h1,
+  .question_header .ask_button {
+    display: inline-block;
+    width: 85%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .question_header h1,
+  .question_header .ask_button {
+    display: inline-block;
+    width: 80%;
+  }
+}
+
+.header_title h1 {
+  font-weight: 500;
+}
+
+.rank_header h1 {
+  margin-left: 20px;
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 44px;
 }

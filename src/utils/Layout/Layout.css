@@ -19,5 +19,9 @@
 }
 .layout .content {
   width: 60vw;
-  min-width: 400px;
+  min-width: 570px;
+}
+
+.rank_table thead {
+  border: 1px solid grey;
 }
