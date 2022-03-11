@@ -18,7 +18,7 @@ function LogoIcon() {
   return (
     <div>
       <Typography variant="h6" noWrap component="div">
-        NullLedge
+        Whyrano
       </Typography>
     </div>
   );
