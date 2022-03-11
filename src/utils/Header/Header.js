@@ -350,8 +350,16 @@ function TagHeader({ value }) {
   );
   return;
 }
-function UsersHeader() {
-  return;
+function RankHeader() {
+  return (
+    <div className="rank_header">
+      <div className="top_header">
+        <div className="header_title">
+          <h1>Ranking</h1>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 async function getTag(postId) {
@@ -409,4 +417,4 @@ function PostHeader({ post_nm, ymd, view, like, post_id }) {
   );
 }
 
-export { Header, QuestionHeader, TagHeader, UsersHeader, PostHeader };
+export { Header, QuestionHeader, TagHeader, RankHeader, PostHeader };

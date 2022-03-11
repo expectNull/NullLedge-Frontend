@@ -54,7 +54,8 @@
 
 .post_date {
   color: #acb3b9;
-  font-size: 1.4vh;
+  font-size: 10px;
+  display: inline-block;
 }
 
 .post_container .post_nm {
