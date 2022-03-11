@@ -3,36 +3,42 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import validator from 'validator';
 
+import { useDispatch } from 'react-redux';
+import { setLogin } from '../../actions/controlLogin';
+import { checkCookie } from '../../utils/checkCookie';
 import './LoginPage.css';
 
-async function logIn(email, pw) {
-  if (!validator.isEmail(email)) {
-    alert('Email 형식을 지켜주세요.');
-    return;
-  }
-  const info = {
-    email: email,
-    pw: pw,
-  };
-
-  let response = await axios.post(
-    process.env.REACT_APP_API_URL + '/getLogin',
-    info,
-    { withCredentials: true },
-  );
-
-  console.log(response);
-  let ret = response.data;
-  console.log(ret);
-  if ('error' in ret) {
-    alert(`${ret.error}`);
-  } else {
-    // 로그인 성공 리다이렉션 필요.
-  }
-}
-
 function LoginPage(props) {
-  const onKeyUp = e => {
+  const dispatch = useDispatch();
+
+  async function logIn(email, pw) {
+    if (!validator.isEmail(email)) {
+      alert('Email 형식을 지켜주세요.');
+      return;
+    }
+    const info = {
+      email: email,
+      pw: pw,
+    };
+
+    let response = await axios.post(
+      process.env.REACT_APP_API_URL + '/getLogin',
+      info,
+      { withCredentials: true },
+    );
+
+    let ret = response.data;
+    if ('error' in ret) {
+      alert(`${ret.error}`);
+    } else {
+      // 로그인 성공 리다이렉션 필요.
+      let ret = await checkCookie();
+      dispatch(setLogin(ret));
+      window.location.href = '/';
+    }
+  }
+
+  const onKeyUp = async e => {
     if (e.keyCode === 13) {
       let email = document.getElementById('idField').value;
       let pw = document.getElementById('pwField').value;
@@ -59,10 +65,10 @@ function LoginPage(props) {
         <br />
         <button
           className="loginbtn"
-          onClick={() => {
+          onClick={async () => {
             let email = document.getElementById('idField').value;
             let pw = document.getElementById('pwField').value;
-            logIn(email, pw);
+            await logIn(email, pw);
           }}
         >
           Login now
