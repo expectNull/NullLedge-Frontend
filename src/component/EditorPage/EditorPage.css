@@ -25,7 +25,8 @@ input:focus {
 
 #tag_txt,
 #problem_id_txt {
-  width: 10%;
+  width: 15%;
+  min-width: 150px;
   text-align: center;
   padding: 1vh;
   border: none;

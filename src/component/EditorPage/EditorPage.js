@@ -103,12 +103,41 @@ function EditorPage(props) {
         />
 
         <div className="tagGroup">
-          <input
-            type="text"
-            id="problem_id_txt"
-            placeholder="문제 번호 입력"
-            onChange={onProIdChange}
-          />
+          <select type="text" id="problem_id_txt">
+            <option value="none">카테고리</option>
+            <option value="컴퓨터 프로그래밍">컴퓨터 프로그래밍</option>
+            <option value="확률과 통계">확률과 통계</option>
+            <option value="자료구조">자료구조</option>
+            <option value="컴퓨터구조">컴퓨터구조</option>
+            <option value="알고리즘">알고리즘</option>
+            <option value="이산수학">이산수학</option>
+            <option value="선형대수">선형대수</option>
+            <option value="논리회로">논리회로</option>
+            <option value="계산이론">계산이론</option>
+            <option value="디지털신호처리">디지털신호처리</option>
+            <option value="객체지향설계">객체지향설계</option>
+            <option value="시스템프로그래밍">시스템프로그래밍</option>
+            <option value="수치프로그래밍">수치프로그래밍</option>
+            <option value="웹프로그래밍">웹프로그래밍</option>
+            <option value="데이터베이스">데이터베이스</option>
+            <option value="운영체제">운영체제</option>
+            <option value="데이터통신">데이터통신</option>
+            <option value="프로그래밍언어개론">프로그래밍언어개론</option>
+            <option value="전자회로">전자회로</option>
+            <option value="영상처리">영상처리</option>
+            <option value="컴파일러개론">컴파일러개론</option>
+            <option value="컴퓨터네트워크">컴퓨터네트워크</option>
+            <option value="컴퓨터그래픽스">컴퓨터그래픽스</option>
+            <option value="기계학습">기계학습</option>
+            <option value="임베디드소프트웨어">임베디드소프트웨어</option>
+            <option value="데이터과학">데이터과학</option>
+            <option value="딥러닝">딥러닝</option>
+            <option value="인공지능">인공지능</option>
+            <option value="시스템 및 네트워크 보안">
+              시스템 및 네트워크 보안
+            </option>
+            <option value="정보보호">정보보호</option>
+          </select>
           <input
             type="text"
             id="tag_txt"
