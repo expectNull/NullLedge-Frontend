@@ -1,11 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
-import LoadingBar from '../../utils/LoadingBar/LoadingBar';
-import Like from '../../utils/Like/Like';
-import Tag from '../../utils/Tag/Tag';
+import { useSelector } from 'react-redux';
+
 import Link from '@mui/material/Link';
-import { NoticeCard } from '../../utils/Card/Card';
-import { Search, StyledInputBase, SearchIconWrapper } from './HeaderStyled';
 import {
   AppBar,
   Box,
@@ -20,16 +17,29 @@ import {
   Stack,
   Button,
 } from '@mui/material';
-
-import './Header.css';
-
 import SearchIcon from '@mui/icons-material/Search';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import Avatar from '@mui/material/Avatar';
 import { styled } from '@mui/material/styles';
 
+import LoadingBar from '../../utils/LoadingBar/LoadingBar';
+import Like from '../../utils/Like/Like';
+import Tag from '../../utils/Tag/Tag';
+import { NoticeCard } from '../../utils/Card/Card';
+import { Search, StyledInputBase, SearchIconWrapper } from './HeaderStyled';
 import { NotificationsIcon, LogoIcon } from '../Icon/Icon';
-import { ConstructionOutlined } from '@mui/icons-material';
+
+import './Header.css';
+
+export async function removeCookie() {
+  let response = await (
+    await axios.post(
+      process.env.REACT_APP_API_URL + '/removeCookie',
+      {},
+      { withCredentials: true },
+    )
+  ).data;
+}
 
 function Header() {
   const el = useRef();
@@ -41,6 +51,7 @@ function Header() {
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+  const login = useSelector(store => store.loginReducer);
 
   const handleProfileMenuOpen = event => {
     setAnchorEl(event.currentTarget);
@@ -101,9 +112,14 @@ function Header() {
     setScroll(null);
   };
 
-  const handleMenuClose = () => {
+  const handleMenuClose = thing => {
     setAnchorEl(null);
     handleMobileMenuClose();
+
+    if (thing) {
+      removeCookie();
+      window.location.href = '/';
+    }
   };
 
   const handleMobileMenuOpen = event => {
@@ -134,9 +150,21 @@ function Header() {
       <Link href="/setting" underline="none" color="inherit">
         <MenuItem onClick={handleMenuClose}>Setting</MenuItem>
       </Link>
-      <Link href="/login" underline="none" color="inherit">
-        <MenuItem onClick={handleMenuClose}>Login</MenuItem>
-      </Link>
+      {login.token === undefined ? (
+        <Link href="/login" underline="none" color="inherit">
+          <MenuItem onClick={handleMenuClose}>Login</MenuItem>
+        </Link>
+      ) : (
+        <Link>
+          <MenuItem
+            onClick={() => {
+              handleMenuClose('logout');
+            }}
+          >
+            Logout
+          </MenuItem>
+        </Link>
+      )}
     </Menu>
   );
 
@@ -253,9 +281,21 @@ function Header() {
           <Link href="/setting" underline="none" color="inherit">
             <MenuItem onClick={handleMenuClose}>Setting</MenuItem>
           </Link>
-          <Link href="/login" underline="none" color="inherit">
-            <MenuItem onClick={handleMenuClose}>Login</MenuItem>
-          </Link>
+          {login.token === undefined ? (
+            <Link href="/login" underline="none" color="inherit">
+              <MenuItem onClick={handleMenuClose}>Login</MenuItem>
+            </Link>
+          ) : (
+            <Link href="/" underline="none" color="inherit">
+              <MenuItem
+                onClick={() => {
+                  handleMenuClose('logout');
+                }}
+              >
+                Logout
+              </MenuItem>
+            </Link>
+          )}
         </div>
 
         <div
@@ -289,7 +329,7 @@ function QuestionHeader() {
     textAlign: 'center',
     color: theme.palette.text.secondary,
   }));
-
+  const login = useSelector(store => store.loginReducer);
   const [value, setValue] = React.useState('newest');
 
   React.useEffect(() => {
@@ -314,7 +354,12 @@ function QuestionHeader() {
           variant="contained"
           color="primary"
         >
-          <Link href="/ask" underline="none" color="inherit">
+          <Link
+            // login 정보를 이용해서 리다이렉션 페이지 변경.
+            href={login.token === undefined ? '/login' : '/ask'}
+            underline="none"
+            color="inherit"
+          >
             Ask Question
           </Link>
         </Button>

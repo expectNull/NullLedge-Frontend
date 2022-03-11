@@ -12,7 +12,7 @@ export default function Notice() {
   const [post, setPost] = useState(-1);
   const [close, setClose] = useState(false);
   const handleClose = () => setClose(true);
-  console.log(close);
+  // console.log(close);
 
   // load를 했는지 확인하는 함수 필요
   // useEffect(() => {
