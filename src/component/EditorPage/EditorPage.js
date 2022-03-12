@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import MyEditor from '../../utils/MyEditor/MyEditor';
@@ -23,6 +24,7 @@ function EditorPage(props) {
   const [title, setTitle] = useState('');
   const [ProId, setProId] = useState('');
   const [html_content, setContent] = useState('');
+  const login = useSelector(store => store.loginReducer);
   // let tags = {};
   const editorRef = useRef();
 
@@ -31,7 +33,7 @@ function EditorPage(props) {
       title: title,
       tags: getAll(tags),
       html_content: html_content,
-      user_id: 1,
+      user_token: login.token,
       problem_id: Number(ProId),
       type_gb: 0,
       //view_cnt -> mysql 초기값 0 설정
