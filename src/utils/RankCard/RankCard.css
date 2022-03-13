@@ -3,24 +3,24 @@
 }
 
 .rank_idx {
-  width: 9.090909090909092%;
+  width: 9%;
 }
 
 .rank_name {
-  width: 20%;
+  width: 15%;
 }
 
 .rank_status {
-  width: 40%;
+  width: 30%;
 }
 .rank_point {
-  width: 9.090909090909092%;
+  width: 10%;
 }
 
 .rank_reply {
-  width: 9.090909090909092%;
+  width: 10%;
 }
 
 .rank_ask {
-  width: 9.090909090909092%;
+  width: 10%;
 }
