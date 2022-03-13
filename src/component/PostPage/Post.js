@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
-
+import { useSelector } from 'react-redux';
 import { Layout } from '../../utils/Layout/Layout';
 import { PostHeader } from '../../utils/Header/Header';
 import { UserCard } from '../../utils/UserCard/UserCard';
@@ -59,6 +59,7 @@ function PostPage() {
   const [replys, setreplys] = useState(-1);
   const [html_content, setContent] = useState(-1);
   const { postid } = useParams();
+  const login = useSelector(store => store.loginReducer);
 
   useEffect(() => {
     const getStuff = async () => {
@@ -74,7 +75,7 @@ function PostPage() {
     const info = {
       parent_post_id: postid,
       html_content: html_content,
-      user_id: 1,
+      user_token: login.token,
       type_gb: 1,
     };
 
