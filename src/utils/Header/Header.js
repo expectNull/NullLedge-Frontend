@@ -239,25 +239,33 @@ function Header() {
             </Search>
             <Box sx={{ flexGrow: 1 }} />
             <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-              <IconButton
-                size="large"
-                edge="end"
-                aria-label="account of current user"
-                aria-controls={menuId}
-                aria-haspopup="true"
-                onClick={handleMenuList}
-                color="inherit"
-              >
-                <Avatar alt="Image" src="image from BE" />
-              </IconButton>
-              <IconButton
-                size="large"
-                aria-label="show new notifications"
-                color="inherit"
-                onClick={handleNoticeList}
-              >
-                <NotificationsIcon props={17}></NotificationsIcon>
-              </IconButton>
+              {login.token === undefined ? (
+                <Link href="/login" underline="none" color="inherit">
+                  Login
+                </Link>
+              ) : (
+                <>
+                  <IconButton
+                    size="large"
+                    edge="end"
+                    aria-label="account of current user"
+                    aria-controls={menuId}
+                    aria-haspopup="true"
+                    onClick={handleMenuList}
+                    color="inherit"
+                  >
+                    <Avatar alt="Image" src="image from BE" />
+                  </IconButton>
+                  <IconButton
+                    size="large"
+                    aria-label="show new notifications"
+                    color="inherit"
+                    onClick={handleNoticeList}
+                  >
+                    <NotificationsIcon props={17}></NotificationsIcon>
+                  </IconButton>
+                </>
+              )}
             </Box>
             <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
               <IconButton
