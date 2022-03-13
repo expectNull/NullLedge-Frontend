@@ -84,7 +84,7 @@ function PostPage() {
       info,
     );
     if (response.data.length === 0) {
-      alert('작성이 완료되었습니다.');
+      alert('success', '작성이 완료되었습니다.');
     }
   }
 
@@ -104,7 +104,7 @@ function PostPage() {
     const getContent_html = await editorInstance.getHTML();
     const getContent_md = await editorInstance.getMarkdown();
     if (getContent_md.length == 0) {
-      alert('공백입니다.');
+      Alert('warning', '공백입니다.');
       return;
     }
     setContent(getContent_html);
