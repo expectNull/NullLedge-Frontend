@@ -69,7 +69,7 @@ async function signUp(email, pw, pw_check, nm, status) {
     Alert('success', `동일한 ${ret.error}이 존재합니다.`);
   } else {
     alert('회원 가입이 완료되었습니다.');
-    window.location.href = process.env.REACT_APP_API_URL + '/login';
+    window.location.href = '/login';
   }
 }
 
