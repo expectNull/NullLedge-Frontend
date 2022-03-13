@@ -115,14 +115,11 @@ function Header() {
   const handleMenuClose = thing => {
     setAnchorEl(null);
     handleMobileMenuClose();
+  };
 
-    const logout = async thing => {
-      if (thing) {
-        await removeCookie();
-        window.location.href = '/';
-      }
-    };
-    logout(thing);
+  const logout = async thing => {
+    await removeCookie();
+    window.location.href = '/';
   };
 
   const handleMobileMenuOpen = event => {
@@ -160,8 +157,8 @@ function Header() {
       ) : (
         <Link>
           <MenuItem
-            onClick={() => {
-              handleMenuClose('logout');
+            onClick={async () => {
+              await logout();
             }}
           >
             Logout
@@ -291,8 +288,8 @@ function Header() {
           ) : (
             <Link href="/" underline="none" color="inherit">
               <MenuItem
-                onClick={() => {
-                  handleMenuClose('logout');
+                onClick={async () => {
+                  await logout();
                 }}
               >
                 Logout
