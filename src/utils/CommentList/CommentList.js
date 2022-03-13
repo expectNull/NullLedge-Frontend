@@ -50,7 +50,7 @@ export default function CommentList({ parent_id }) {
   idx = 1;
   const handleAdd = async (editorRef, post_id) => {
     if (editorRef.current.value.length === 0) {
-      alert('댓글이 비어있습니다.');
+      Alert('warning', '댓글이 비어있습니다.');
       return;
     }
     setContent(editorRef.current.value);

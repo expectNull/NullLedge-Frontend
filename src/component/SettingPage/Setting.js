@@ -62,7 +62,7 @@ function SettingPage({}) {
           variant="contained"
           color="success"
           onClick={() => {
-            alert('saved!');
+            Alert('success', 'saved!');
           }}
         >
           Save

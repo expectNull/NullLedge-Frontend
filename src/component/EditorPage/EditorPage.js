@@ -45,7 +45,7 @@ function EditorPage(props) {
       info,
     );
     if (response.data.length === 0) {
-      alert('작성이 완료되었습니다.');
+      Alert('작성이 완료되었습니다.');
     }
     return response;
   }
