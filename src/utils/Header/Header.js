@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
+import wait from 'waait';
 import { useSelector } from 'react-redux';
 
 import Link from '@mui/material/Link';
@@ -119,6 +120,7 @@ function Header() {
 
   const logout = async thing => {
     await removeCookie();
+    await wait(30);
     window.location.href = '/';
   };
 
@@ -155,7 +157,7 @@ function Header() {
           <MenuItem onClick={handleMenuClose}>Login</MenuItem>
         </Link>
       ) : (
-        <Link>
+        <Link underline="none" color="inherit">
           <MenuItem
             onClick={async () => {
               await logout();
