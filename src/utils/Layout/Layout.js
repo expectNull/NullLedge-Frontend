@@ -3,6 +3,7 @@ import React from 'react';
 
 import { Box } from '@material-ui/core';
 import { Nav, RightNav } from '../Nav/Nav';
+import Footer from '../../utils/Footer/Footer';
 
 import { UserCard } from '../UserCard/UserCard';
 import { RankHeader } from '../../utils/Header/Header';
@@ -43,6 +44,7 @@ export function Layout({ children }) {
         </div>
         <RightNav />
       </Box>
+      <Footer />
     </div>
   );
 }

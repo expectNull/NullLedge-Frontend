@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Router } from './Router';
 import { Header } from './utils/Header/Header';
 import { AlertDiv } from './utils/Alert/Alert';
-import Footer from './utils/Footer/Footer';
 import { checkCookie } from './utils/checkCookie';
 import { setLogin } from './actions/controlLogin';
 
@@ -34,7 +33,6 @@ function App() {
       <BRouter>
         <Router />
       </BRouter>
-      <Footer />
     </div>
   );
 }

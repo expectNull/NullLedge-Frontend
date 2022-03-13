@@ -19,11 +19,14 @@ a:hover {
 }
 
 .sidebarLeft {
+  margin-left: 60px;
+  margin-right: 20px;
   min-width: 20vh;
   width: auto;
 }
 
 .sidebarRight {
+  margin-left: 20px;
   min-width: 20vh;
   width: auto;
 }
