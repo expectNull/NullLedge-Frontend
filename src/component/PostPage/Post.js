@@ -10,7 +10,7 @@ import PostViewer from '../../utils/PostViewer/PostViewer';
 import CommentList from '../../utils/CommentList/CommentList';
 import MyEditor from '../../utils/MyEditor/MyEditor';
 import Like from '../../utils/Like/Like';
-
+import { Alert, AlertDiv } from '../../utils/Alert/Alert';
 import './Post.css';
 import { Button } from '@mui/material';
 

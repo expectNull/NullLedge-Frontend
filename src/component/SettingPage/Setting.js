@@ -1,7 +1,7 @@
 import React from 'react';
 import './Setting.css';
 import Button from '@mui/material/Button';
-
+import { Alert, AlertDiv } from '../../utils/Alert/Alert';
 function SettingPage({}) {
   return (
     <div className="SettingPage">

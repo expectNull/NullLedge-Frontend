@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import LoadingBar from '../LoadingBar/LoadingBar';
 import Comment from '../../utils/Comment/Comment';
-
+import { Alert, AlertDiv } from '../../utils/Alert/Alert';
 import { Button, Stack } from '@mui/material';
 import './CommentList.css';
 import axios from 'axios';
