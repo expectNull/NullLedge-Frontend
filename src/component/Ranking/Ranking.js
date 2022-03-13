@@ -15,6 +15,33 @@ function Ranking() {
           reply="3"
           ask="23"
         />
+
+        <RankCard
+          idx="2"
+          name="Jang"
+          status="쿠쿠"
+          point="1735"
+          reply="3"
+          ask="23"
+        />
+
+        <RankCard
+          idx="3"
+          name="Jang"
+          status="쿠쿠"
+          point="1735"
+          reply="3"
+          ask="23"
+        />
+
+        <RankCard
+          idx="4"
+          name="Jang"
+          status="쿠쿠"
+          point="1735"
+          reply="3"
+          ask="23"
+        />
       </Layout>
     </>
   );
