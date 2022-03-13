@@ -116,10 +116,13 @@ function Header() {
     setAnchorEl(null);
     handleMobileMenuClose();
 
-    if (thing) {
-      removeCookie();
-      window.location.href = '/';
-    }
+    const logout = async thing => {
+      if (thing) {
+        await removeCookie();
+        window.location.href = '/';
+      }
+    };
+    logout(thing);
   };
 
   const handleMobileMenuOpen = event => {
