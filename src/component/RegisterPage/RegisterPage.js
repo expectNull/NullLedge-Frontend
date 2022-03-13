@@ -8,7 +8,6 @@ import './RegisterPage.css';
 async function signUp(email, pw, pw_check, nm, status) {
   // 만약 실시간으로 email 형식을 체크 하고 싶으면
   // input태그에다가 onChange를 걸고 계속 validator로 체킹하면 됨.
-  Alert('warning', 'example');
 
   const reg = new RegExp(
     /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^*+=-]).{8,16}$/,
@@ -66,9 +65,9 @@ async function signUp(email, pw, pw_check, nm, status) {
   ).data;
 
   if ('error' in ret) {
-    Alert('success', `동일한 ${ret.error}이 존재합니다.`);
+    Alert('error', `동일한 ${ret.error}이 존재합니다.`);
   } else {
-    alert('회원 가입이 완료되었습니다.');
+    Alert('success', '회원 가입이 완료되었습니다.');
     window.location.href = '/login';
   }
 }
@@ -92,7 +91,7 @@ function RegisterPage(props) {
               let idLabel = document.querySelector('#idLabel');
 
               idDiv.classList.remove('warning');
-              idLabel.innerText('Email');
+              idLabel.innerText = 'Email';
             }}
           />
           <br />
@@ -109,7 +108,7 @@ function RegisterPage(props) {
               let pwLabel = document.querySelector('#pwLabel');
 
               pwDiv.classList.remove('warning');
-              pwLabel.innerText('Password');
+              pwLabel.innerText = 'Password';
             }}
           />
           <br />
@@ -126,7 +125,7 @@ function RegisterPage(props) {
               let repwLabel = document.querySelector('#repwLabel');
 
               repwDiv.classList.remove('warning');
-              repwLabel.innerText('Check Password');
+              repwLabel.innerText = 'Check Password';
             }}
           />
           <br />

@@ -6,6 +6,7 @@ import validator from 'validator';
 import { useDispatch } from 'react-redux';
 import { setLogin } from '../../actions/controlLogin';
 import { checkCookie } from '../../utils/checkCookie';
+import { Alert } from '../../utils/Alert/Alert';
 import './LoginPage.css';
 
 function LoginPage(props) {
@@ -13,7 +14,7 @@ function LoginPage(props) {
 
   async function logIn(email, pw) {
     if (!validator.isEmail(email)) {
-      alert('Email 형식을 지켜주세요.');
+      Alert('error', 'Email 형식을 지켜주세요.');
       return;
     }
     const info = {
@@ -29,7 +30,7 @@ function LoginPage(props) {
 
     let ret = response.data;
     if ('error' in ret) {
-      alert(`${ret.error}`);
+      Alert('error', `${ret.error}`);
     } else {
       // 로그인 성공 리다이렉션 필요.
       let ret = await checkCookie();
