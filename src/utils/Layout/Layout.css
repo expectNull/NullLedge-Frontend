@@ -7,6 +7,7 @@
 }
 
 .layout_box {
+  min-height: 100vh;
 }
 
 .layout {
