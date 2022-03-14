@@ -38,12 +38,13 @@
   padding-bottom: 15px;
 }
 
-a {
+.sectionDiv a {
   text-decoration-line: none;
+  color: rgb(185, 190, 195);
 }
-a:link {
-  color: white;
+.sectionDiv a:link {
+  color: rgb(185, 190, 195);
 }
-a:hover {
-  color: red;
+.sectionDiv a:hover {
+  color: orange;
 }
