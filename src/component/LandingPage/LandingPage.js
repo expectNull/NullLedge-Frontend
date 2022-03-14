@@ -47,7 +47,7 @@ function LandingPage() {
 
   return (
     <>
-      <Notice />
+      {/* <Notice /> */}
       <Layout>
         <QuestionHeader />
         {posts === -1 ? (

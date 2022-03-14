@@ -32,15 +32,16 @@ import { NotificationsIcon, LogoIcon } from '../Icon/Icon';
 
 import './Header.css';
 
-export async function removeCookie() {
-  let response = await (
-    await axios.post(
-      process.env.REACT_APP_API_URL + '/removeCookie',
-      {},
-      { withCredentials: true },
-    )
-  ).data;
-}
+// async function removeCookie() {
+//   let response = await (
+//     await axios.post(
+//       process.env.REACT_APP_API_URL + '/removeCookie',
+//       {},
+//       { withCredentials: true },
+//     )
+//   ).data;
+//   console.log('remove Cookie');
+// }
 
 function Header() {
   const el = useRef();
@@ -75,6 +76,16 @@ function Header() {
       setNoticeList('openDiv');
     }
   };
+  async function removeCookie() {
+    let response = await (
+      await axios.post(
+        process.env.REACT_APP_API_URL + '/removeCookie',
+        {},
+        { withCredentials: true },
+      )
+    ).data;
+    console.log('remove Cookie');
+  }
 
   const handleMenuList = async () => {
     let promise = new Promise((resolve, reject) => {
@@ -120,8 +131,8 @@ function Header() {
 
   const logout = async thing => {
     await removeCookie();
-    await wait(30);
-    window.location.href = '/';
+    await wait(300);
+    // window.location.href = '/';
   };
 
   const handleMobileMenuOpen = event => {
@@ -157,15 +168,16 @@ function Header() {
           <MenuItem onClick={handleMenuClose}>Login</MenuItem>
         </Link>
       ) : (
-        <Link underline="none" color="inherit">
-          <MenuItem
-            onClick={async () => {
-              await logout();
-            }}
-          >
-            Logout
-          </MenuItem>
-        </Link>
+        // <Link underline="none" color="inherit">
+        <button
+          onClick={async () => {
+            await logout();
+          }}
+        >
+          Logout
+        </button>
+
+        // </Link>
       )}
     </Menu>
   );
@@ -472,4 +484,31 @@ function PostHeader({ post_nm, ymd, view, like, post_id }) {
   );
 }
 
-export { Header, QuestionHeader, TagHeader, RankHeader, PostHeader };
+function tempHeader(props) {
+  return (
+    <div>
+      <Stack
+        direction="row"
+        justifyContent="flex-end"
+        alignItems="baseline"
+        spacing={8}
+      >
+        <Tabs value={value} onChange={handleChange} aria-label="Sorting Tabs">
+          <Tab value="whyrano" label="whyrano" />
+          <Tab value="login" label="Login" />
+        </Tabs>
+      </Stack>
+    </div>
+  );
+}
+
+export default Header;
+
+export {
+  Header,
+  QuestionHeader,
+  TagHeader,
+  RankHeader,
+  PostHeader,
+  tempHeader,
+};
