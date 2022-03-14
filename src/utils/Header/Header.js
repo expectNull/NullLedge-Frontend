@@ -132,7 +132,7 @@ function Header() {
   const logout = async thing => {
     await removeCookie();
     await wait(300);
-    // window.location.href = '/';
+    window.location.href = '/';
   };
 
   const handleMobileMenuOpen = event => {
@@ -308,15 +308,15 @@ function Header() {
               <MenuItem onClick={handleMenuClose}>Login</MenuItem>
             </Link>
           ) : (
-            <Link href="/" underline="none" color="inherit">
-              <MenuItem
-                onClick={async () => {
-                  await logout();
-                }}
-              >
-                Logout
-              </MenuItem>
-            </Link>
+            // <Link href="/" underline="none" color="inherit">
+            <MenuItem
+              onClick={async () => {
+                await logout();
+              }}
+            >
+              Logout
+            </MenuItem>
+            // </Link>
           )}
         </div>
 
@@ -484,23 +484,23 @@ function PostHeader({ post_nm, ymd, view, like, post_id }) {
   );
 }
 
-function tempHeader(props) {
-  return (
-    <div>
-      <Stack
-        direction="row"
-        justifyContent="flex-end"
-        alignItems="baseline"
-        spacing={8}
-      >
-        <Tabs value={value} onChange={handleChange} aria-label="Sorting Tabs">
-          <Tab value="whyrano" label="whyrano" />
-          <Tab value="login" label="Login" />
-        </Tabs>
-      </Stack>
-    </div>
-  );
-}
+// function tempHeader(props) {
+//   return (
+//     <div>
+//       <Stack
+//         direction="row"
+//         justifyContent="flex-end"
+//         alignItems="baseline"
+//         spacing={8}
+//       >
+//         <Tabs value={value} onChange={handleChange} aria-label="Sorting Tabs">
+//           <Tab value="whyrano" label="whyrano" />
+//           <Tab value="login" label="Login" />
+//         </Tabs>
+//       </Stack>
+//     </div>
+//   );
+// }
 
 export default Header;
 
@@ -510,5 +510,5 @@ export {
   TagHeader,
   RankHeader,
   PostHeader,
-  tempHeader,
+  // tempHeader,
 };

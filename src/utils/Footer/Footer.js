@@ -16,30 +16,36 @@ function Footer(props) {
         <div className="sectionDiv">
           <ul>
             <li className="title">ExceptNull Team</li>
-            <li>Kim HyunSoo</li>
-            <li>Jang ShinHyung</li>
-            <li>Park ByeongHwi</li>
+            <a href="https://github.com/dblepart99">
+              <li>Kim HyunSoo</li>
+            </a>
+            <a href="https://github.com/LONGNEW">
+              <li>Jang ShinHyung</li>
+            </a>
+            <a href="https://github.com/BHwi">
+              <li>Park ByeongHwi</li>
+            </a>
           </ul>
         </div>
         <div className="sectionDiv">
           <ul>
             <li className="title">ChungNam National Univ.</li>
-            <li>Dept. Computer Engineering</li>
+            <li>The Division of Computer Convergence.</li>
             <li>Dept. Artificial Intelligence</li>
-            <li>Group SPG</li>
-            <li>DCS-Learing</li>
+            {/* <li></li> */}
+            {/* <li>DCS-Learing</li> */}
           </ul>
         </div>
         <div className="sectionDiv">
           <ul>
-            <li className="title">내용 적어주세용</li>
-            <li>내용 적어주세용</li>
-            <li>내용 적어주세용</li>
-            <li>내용 적어주세용</li>
+            <li className="title">Contact</li>
+            <li>whyrano.team@gmail.com</li>
+            <a href="https://github.com/expectNull">
+              <li>By. ExpectNull</li>
+            </a>
           </ul>
         </div>
       </div>
-      {/* <a href="https://github.com/excpetNull">By. ExceptNull</a> */}
     </div>
   );
 }
