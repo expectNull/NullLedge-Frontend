@@ -74,7 +74,7 @@ export function PostItem({
                   avatar={
                     <Avatar alt="Natacha" src="/static/images/avatar/1.jpg" />
                   }
-                  label="Avatar"
+                  label={user_nm}
                   variant="outlined"
                   clickable
                 />

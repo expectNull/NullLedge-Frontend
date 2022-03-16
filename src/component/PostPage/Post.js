@@ -81,22 +81,25 @@ function PostPage() {
     const info = {
       parent_post_id: postid,
       html_content: html_content,
-      user_token: login.token,
       type_gb: 1,
     };
 
+    // try catch 로 묶어야 할 듯 이런 것들.
     var response = await axios.post(
       process.env.REACT_APP_API_URL + '/setReply',
       info,
+      { withCredentials: true },
     );
     if (response.data.length === 0) {
-      alert('success', '작성이 완료되었습니다.');
+      // 여기 wait 혹은 다른 방식으로 하든지 해야 할 수도
+      Alert('success', '작성이 완료되었습니다.');
     }
   }
 
   useEffect(() => {
     // console.log(html_content);
   }, [html_content]);
+
   useEffect(async () => {
     if (typeof html_content == 'number') {
       return;

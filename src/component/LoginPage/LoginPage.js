@@ -10,8 +10,6 @@ import { Alert } from '../../utils/Alert/Alert';
 import './LoginPage.css';
 
 function LoginPage(props) {
-  const dispatch = useDispatch();
-
   async function logIn(email, pw) {
     if (!validator.isEmail(email)) {
       Alert('error', 'Email 형식을 지켜주세요.');
@@ -33,8 +31,6 @@ function LoginPage(props) {
       Alert('error', `${ret.error}`);
     } else {
       // 로그인 성공 리다이렉션 필요.
-      let ret = await checkCookie();
-      dispatch(setLogin(ret));
       window.location.href = '/';
     }
   }

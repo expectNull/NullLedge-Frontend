@@ -6,6 +6,7 @@ import Button from '@mui/material/Button';
 import MyEditor from '../../utils/MyEditor/MyEditor';
 import Tag from '../../utils/Tag/Tag';
 import { Alert } from '../../utils/Alert/Alert';
+import { checkCookie } from '../../utils/checkCookie';
 
 import './EditorPage.css';
 
@@ -24,7 +25,7 @@ function EditorPage(props) {
   const [title, setTitle] = useState('');
   const [ProId, setProId] = useState('');
   const [html_content, setContent] = useState('');
-  const login = useSelector(store => store.loginReducer);
+
   // let tags = {};
   const editorRef = useRef();
 
@@ -33,7 +34,6 @@ function EditorPage(props) {
       title: title,
       tags: getAll(tags),
       html_content: html_content,
-      user_token: login.token,
       problem_id: Number(ProId),
       type_gb: 0,
       //view_cnt -> mysql 초기값 0 설정
@@ -43,9 +43,10 @@ function EditorPage(props) {
     var response = await axios.post(
       process.env.REACT_APP_API_URL + '/setpost',
       info,
+      { withCredentials: true },
     );
     if (response.data.length === 0) {
-      Alert('작성이 완료되었습니다.');
+      Alert('success', '작성이 완료되었습니다.');
     }
     return response;
   }
