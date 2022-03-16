@@ -29,19 +29,9 @@ import Tag from '../../utils/Tag/Tag';
 import { NoticeCard } from '../../utils/Card/Card';
 import { Search, StyledInputBase, SearchIconWrapper } from './HeaderStyled';
 import { NotificationsIcon, LogoIcon } from '../Icon/Icon';
+import { checkCookie } from '../checkCookie';
 
 import './Header.css';
-
-// async function removeCookie() {
-//   let response = await (
-//     await axios.post(
-//       process.env.REACT_APP_API_URL + '/removeCookie',
-//       {},
-//       { withCredentials: true },
-//     )
-//   ).data;
-//   console.log('remove Cookie');
-// }
 
 function Header() {
   const el = useRef();
@@ -53,7 +43,15 @@ function Header() {
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-  const login = useSelector(store => store.loginReducer);
+  const [token, setToken] = useState(-1);
+
+  useEffect(() => {
+    const getCookie = async () => {
+      let ret = await checkCookie();
+      setToken(ret);
+    };
+    getCookie();
+  }, []);
 
   const handleProfileMenuOpen = event => {
     setAnchorEl(event.currentTarget);
@@ -163,7 +161,9 @@ function Header() {
       <Link href="/setting" underline="none" color="inherit">
         <MenuItem onClick={handleMenuClose}>Setting</MenuItem>
       </Link>
-      {login.token === undefined ? (
+      {token === -1 ? (
+        'loading'
+      ) : token === undefined ? (
         <Link href="/login" underline="none" color="inherit">
           <MenuItem onClick={handleMenuClose}>Login</MenuItem>
         </Link>
@@ -251,7 +251,9 @@ function Header() {
             </Search>
             <Box sx={{ flexGrow: 1 }} />
             <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-              {login.token === undefined ? (
+              {token === -1 ? (
+                'loading'
+              ) : token === undefined ? (
                 <Link href="/login" underline="none" color="inherit">
                   Login
                 </Link>
@@ -274,7 +276,7 @@ function Header() {
                     color="inherit"
                     onClick={handleNoticeList}
                   >
-                    <NotificationsIcon props={17}></NotificationsIcon>
+                    <NotificationsIcon props={0}></NotificationsIcon>
                   </IconButton>
                 </>
               )}
@@ -303,7 +305,9 @@ function Header() {
           <Link href="/setting" underline="none" color="inherit">
             <MenuItem onClick={handleMenuClose}>Setting</MenuItem>
           </Link>
-          {login.token === undefined ? (
+          {token === -1 ? (
+            'loading'
+          ) : token === undefined ? (
             <Link href="/login" underline="none" color="inherit">
               <MenuItem onClick={handleMenuClose}>Login</MenuItem>
             </Link>
@@ -351,8 +355,16 @@ function QuestionHeader() {
     textAlign: 'center',
     color: theme.palette.text.secondary,
   }));
-  const login = useSelector(store => store.loginReducer);
   const [value, setValue] = React.useState('newest');
+  const [token, setToken] = useState(-1);
+
+  useEffect(() => {
+    const getCookie = async () => {
+      let ret = await checkCookie();
+      setToken(ret);
+    };
+    getCookie();
+  }, []);
 
   React.useEffect(() => {
     showSortedPage(value);
@@ -375,10 +387,11 @@ function QuestionHeader() {
           className={'ask_button' + 'save_btn'}
           variant="contained"
           color="primary"
+          disabled={token === -1 ? true : false}
         >
           <Link
             // login 정보를 이용해서 리다이렉션 페이지 변경.
-            href={login.token === undefined ? '/login' : '/ask'}
+            href={token === undefined ? '/login' : '/ask'}
             underline="none"
             color="inherit"
           >
