@@ -27,18 +27,24 @@ function spreadDiv(item) {
     >
       <PostViewer className="postviewer" content={item.content} />
       <div style={{ textAlign: 'right' }}>
-        <div>
-          <span>
-            <b>답글이 마음에 드시나요?</b>
-          </span>
-          <Like className="like" like_cnt={0} post_id={item.post_id} />
-        </div>
         <UserCard
           className="usercard"
           name={item.user_nm}
           np={item.user_np}
           status={item.user_status}
         />
+        <div className="like-helper">
+          <table>
+            <tr>
+              <td>
+                <b>답글이 도움이 되셨나요?</b>
+              </td>
+              <td>
+                <Like className="like" like_cnt={0} post_id={item.post_id} />
+              </td>
+            </tr>
+          </table>
+        </div>
       </div>
       <CommentList parent_id={item.post_id} />
     </div>

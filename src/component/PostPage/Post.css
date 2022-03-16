@@ -59,3 +59,16 @@
 .postPage .postviewer {
   text-align: right;
 }
+
+.like-helper .like {
+  display: flex;
+}
+
+.like-helper {
+  text-align: right;
+  margin-right: 1vw;
+}
+
+.like-helper table {
+  display: inline-block !important;
+}
