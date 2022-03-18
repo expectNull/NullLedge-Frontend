@@ -15,7 +15,7 @@ function Footer(props) {
         </div>
         <div className="sectionDiv">
           <ul>
-            <li className="title">ExceptNull Team</li>
+            <li className="title">ExpectNull Team</li>
             <a href="https://github.com/dblepart99">
               <li>Kim HyunSoo</li>
             </a>
