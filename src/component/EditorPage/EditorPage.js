@@ -84,7 +84,8 @@ function EditorPage(props) {
       return;
     }
     const editorInstance = await editorRef.current.getInstance();
-    const getContent_html = await editorInstance.getHTML();
+    // const getContent_html = await editorInstance.getHTML();
+    const getContent_html = await editorInstance.getMarkdown();
     setContent(getContent_html);
   };
 

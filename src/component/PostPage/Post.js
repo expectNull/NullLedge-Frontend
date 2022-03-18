@@ -116,7 +116,7 @@ function PostPage() {
       Alert('warning', '공백입니다.');
       return;
     }
-    setContent(getContent_html);
+    setContent(getContent_md);
   };
 
   return (
