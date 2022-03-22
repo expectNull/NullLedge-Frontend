@@ -2,7 +2,10 @@ import './Card.css';
 import KeyboardArrowUpOutlinedIcon from '@mui/icons-material/KeyboardArrowUpOutlined';
 import KeyboardArrowDownOutlinedIcon from '@mui/icons-material/KeyboardArrowDownOutlined';
 import IconButton from '@mui/material/IconButton';
+
+import axios from 'axios';
 import React, { useState } from 'react';
+import wait from 'waait';
 
 function Card() {
   const [like, setLike] = useState(0);
@@ -47,31 +50,56 @@ function Card() {
   );
 }
 
-function NoticeCard() {
-  // 현재 user와 질문글 user가 같을 경우
-  const questionPost = '1234'; // post 번호
-  const questionTitle = 'BFS 질문입니다! 어떻게 해결해야할까요?'; // post title
-  const user = 'Me'; // 로그인 유저
-  const questionUser = 'You'; // post 작성자
+function NoticeCard({
+  notice_id,
+  post_id,
+  parent,
+  title,
+  user,
+  type,
+  ymd,
+  content,
+}) {
+  // parent == 댓글의 경우 질문글의 제목이 들어있음.
+  // title에는 답글의 경우 제목이 들어있음.
+  // type | 1. 답글, 2. 댓글, 3. 답글 요청
+  // post_id를 통해 클릭해서 넘겨 줘야 함.
+  // 현재는 읽었어도 가지고는 옴....
+
+  async function updateNotice() {
+    const info = {
+      post_id: notice_id,
+    };
+
+    await axios.post(process.env.REACT_APP_API_URL + '/updateNotice', info);
+  }
+
+  async function onClick() {
+    await updateNotice();
+    await wait(20);
+    window.location.href = `/post/${post_id}`;
+  }
+
   return (
     <div className="noticeCard">
-      <div>
-        {user === questionUser ? (
+      <div className="not_hover" onClick={onClick}>
+        {type === 1 ? (
           <>
-            <div>
-              {questionPost + '번 글(' + questionTitle + ')에 답글이 달렸네요!'}
-            </div>
+            <div>{`${post_id}번 글(${title})에 ${user}의 답글이 달렸네요!`}</div>
             <div>채택하고 포인트를 받으세요!</div>
           </>
-        ) : (
+        ) : type === 3 ? (
           <>
-            <div>
-              {questionPost +
-                '번 글(' +
-                questionTitle +
-                ')에서 답글 요청이 왔네요!'}
-            </div>
+            <div>{`${post_id}번 글 [${title}]에 답글 요청이 왔네요!`}</div>
             <div>포인트를 받으러 답변해볼까요?</div>
+          </>
+        ) : (
+          // 여기 글 같은 경우 답글의 댓글인데 post_id를 주는게 맞나 싶네
+          // 질문글에 댓글이 달리면 parent로 찾으면 안 되서 삼항 연산자로 체킹함.
+          <>
+            <div>{`${
+              parent === undefined ? title : parent
+            } 글에 ${user}의 댓글이 달렸네요!`}</div>
           </>
         )}
       </div>

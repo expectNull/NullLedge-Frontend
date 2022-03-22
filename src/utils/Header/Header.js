@@ -33,6 +33,18 @@ import { checkCookie } from '../checkCookie';
 
 import './Header.css';
 
+async function getNotice(token) {
+  const info = {
+    mail: token,
+  };
+
+  let response = await (
+    await axios.post(process.env.REACT_APP_API_URL + '/getNotice', info)
+  ).data;
+
+  return response;
+}
+
 function Header() {
   const el = useRef();
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -44,10 +56,12 @@ function Header() {
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
   const [token, setToken] = useState(-1);
+  const [notice, setNotice] = useState(-1);
 
   useEffect(() => {
     const getCookie = async () => {
       let ret = await checkCookie();
+      setNotice(await getNotice(ret));
       setToken(ret);
     };
     getCookie();
@@ -205,7 +219,7 @@ function Header() {
           aria-label="show new notifications"
           color="inherit"
         >
-          <NotificationsIcon props={17} />
+          <NotificationsIcon props={notice === -1 ? 0 : notice.length} />
         </IconButton>
         <p>Notifications</p>
       </MenuItem>
@@ -276,7 +290,9 @@ function Header() {
                     color="inherit"
                     onClick={handleNoticeList}
                   >
-                    <NotificationsIcon props={0}></NotificationsIcon>
+                    <NotificationsIcon
+                      props={notice === -1 ? 0 : notice.length}
+                    ></NotificationsIcon>
                   </IconButton>
                 </>
               )}
@@ -333,14 +349,27 @@ function Header() {
           onScroll={handleScroll}
           ref={el}
         >
-          <NoticeCard />
-          <NoticeCard />
-          <NoticeCard />
-          <NoticeCard />
-          <NoticeCard />
-          <NoticeCard />
-          <NoticeCard />
-          <NoticeCard />
+          {notice === -1 ? (
+            <></>
+          ) : (
+            notice.map(
+              item => (
+                console.log(item),
+                (
+                  <NoticeCard
+                    notice_id={item.notice_id}
+                    post_id={item.post_id}
+                    parent={item.parent_nm}
+                    title={item.nm}
+                    user={item.user_nm}
+                    type={item.type_gb}
+                    ymd={item.ymd}
+                    content={item.content}
+                  />
+                )
+              ),
+            )
+          )}
         </div>
       </Box>
     </div>
