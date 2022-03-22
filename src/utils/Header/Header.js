@@ -32,6 +32,7 @@ import { NotificationsIcon, LogoIcon } from '../Icon/Icon';
 import { checkCookie } from '../checkCookie';
 
 import './Header.css';
+import { Delete } from '@material-ui/icons';
 
 async function getNotice(token) {
   const info = {
@@ -483,18 +484,64 @@ async function getTag(postId) {
 
 function PostHeader({ post_nm, ymd, view, like, post_id }) {
   const [tags, setTags] = useState(-1);
+  const [replys, setreplys] = useState(-1);
+  const [token, setToken] = useState(-1);
   let idx = 0;
 
   useEffect(() => {
     const getStuff = async () => {
       setTags(await getTag(post_id));
+      setreplys(await getSomething(post_id, 'getReplys'));
     };
+    const getCookie = async () => {
+      let ret = await checkCookie();
+      setToken(ret);
+    };
+    getCookie();
     getStuff();
   }, []);
 
+  async function getSomething(id, pos) {
+    const info = {
+      post_id: Number(id),
+    };
+
+    return await (
+      await axios.post(`${process.env.REACT_APP_API_URL}/${pos}`, info)
+    ).data;
+  }
+
+  async function removePost(id) {
+    const info = {
+      post_id: Number(id),
+    };
+
+    await axios.post(`${process.env.REACT_APP_API_URL}/removePost`, info);
+    alert('글이 정상적으로 삭제되었습니다.');
+    window.location.href = '/';
+  }
+
+  // if replys in here, can't remove
+  // to do : post's user === login user -> show remove button
   return (
     <div className="titleDiv">
-      <h1>{post_nm}</h1>
+      <h1>
+        {post_nm}
+        {replys === -1 ? (
+          ''
+        ) : replys.length > 0 ? (
+          ''
+        ) : (
+          <IconButton
+            size="small"
+            onClick={() => {
+              removePost(post_id);
+            }}
+          >
+            <Delete fontSize="small" />
+          </IconButton>
+        )}
+      </h1>
       <div>
         <table>
           <tbody>
