@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import LoadingBar from '../LoadingBar/LoadingBar';
 import Comment from '../../utils/Comment/Comment';
 import { Alert, AlertDiv } from '../../utils/Alert/Alert';
+import { checkCookie } from '../checkCookie';
 import { Button, Stack } from '@mui/material';
 import './CommentList.css';
 import axios from 'axios';
@@ -17,11 +18,11 @@ async function getSomething(id, pos) {
   ).data;
 }
 
-async function saveComment(post_id, comment_content, user_token) {
+async function saveComment(post_id, comment_content) {
   const info = {
     parent_post_id: post_id,
-    comment: comment_content,
-    user_token: user_token, // user_id : user_id
+    user_token: await checkCookie(),
+    comment: comment_content, // user_id : user_id
     type_gb: 2,
   };
   // if (comment_content.length == 0) {
@@ -46,7 +47,6 @@ function getIdx() {
 export default function CommentList({ parent_id }) {
   const [comments, setComments] = useState(-1);
   const [content, setContent] = useState(-1);
-  const login = useSelector(store => store.loginReducer);
   idx = 1;
   const handleAdd = async (editorRef, post_id) => {
     if (editorRef.current.value.length === 0) {
@@ -68,7 +68,7 @@ export default function CommentList({ parent_id }) {
       return;
     }
     const getStuff = async () => {
-      await saveComment(parent_id, content, login.token);
+      await saveComment(parent_id, content);
       setComments(await getSomething(parent_id, 'getCommentList'));
     };
     getStuff();
