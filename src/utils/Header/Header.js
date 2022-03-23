@@ -255,7 +255,7 @@ function Header() {
             <Link href="/" underline="none" color="white">
               <LogoIcon />
             </Link>
-            <Search className="Search">
+            {/* <Search className="Search">
               <SearchIconWrapper>
                 <SearchIcon />
               </SearchIconWrapper>
@@ -263,7 +263,7 @@ function Header() {
                 placeholder="Search…"
                 inputProps={{ 'aria-label': 'search' }}
               />
-            </Search>
+            </Search> */}
             <Box sx={{ flexGrow: 1 }} />
             <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
               {token === -1 ? (
