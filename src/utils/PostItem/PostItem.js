@@ -19,7 +19,8 @@ export function PostItem({
   content,
 }) {
   // SQL 쿼리로 Like, answers, post의 이름, 날짜, 작성자 정보
-  let parsedContent = content.replaceAll(/(<([^>]+)>)/gi, ' ');
+  content = content.replaceAll(/\`\`\`[^]*\`\`\`/gi, '[작성 코드]');
+  content = content.replaceAll('#', '');
 
   return (
     <>
@@ -60,7 +61,7 @@ export function PostItem({
               to={`/post/${post_id}`}
               style={{ textDecoration: 'none', color: 'black' }}
             >
-              <p className="post_content">{parsedContent}</p>
+              <p className="post_content">{content}</p>
             </Link>
           </div>
 
