@@ -85,15 +85,15 @@ function PostPage() {
     };
 
     // try catch 로 묶어야 할 듯 이런 것들.
-    // var response = await axios.post(
-    //   process.env.REACT_APP_API_URL + '/setReply',
-    //   info,
-    //   { withCredentials: true },
-    // );
-    // if (response.data.length === 0) {
-    // 여기 wait 혹은 다른 방식으로 하든지 해야 할 수도
-    Alert('success', '작성이 완료되었습니다.');
-    // }
+    var response = await axios.post(
+      process.env.REACT_APP_API_URL + '/setReply',
+      info,
+      { withCredentials: true },
+    );
+    if (response.data.length === 0) {
+      // 여기 wait 혹은 다른 방식으로 하든지 해야 할 수도
+      Alert('success', '작성이 완료되었습니다.');
+    }
     console.log(info.html_content);
   }
 
@@ -106,7 +106,7 @@ function PostPage() {
       return;
     }
     await savePost();
-    // window.location.href = `/post/${postid}`;
+    window.location.href = `/post/${postid}`;
   }, [html_content]);
 
   const handleSave = async () => {
