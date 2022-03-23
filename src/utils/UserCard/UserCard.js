@@ -10,7 +10,7 @@ export function UserCard({ name, np, status }) {
           <tr>
             <td className="imgbox" rowSpan={3}>
               <Link to={'/mypage/' + name}>
-                <img src="userimg.png" className="userImg"></img>
+                <img src="/images/userimg.png" className="userImg"></img>
               </Link>
             </td>
 
