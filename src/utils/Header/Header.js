@@ -29,7 +29,7 @@ import Tag from '../../utils/Tag/Tag';
 import { NoticeCard } from '../../utils/Card/Card';
 import { Search, StyledInputBase, SearchIconWrapper } from './HeaderStyled';
 import { NotificationsIcon, LogoIcon } from '../Icon/Icon';
-import { checkCookie } from '../checkCookie';
+import { checkCookie, checkUser } from '../checkCookie';
 
 import './Header.css';
 import { Delete } from '@material-ui/icons';
@@ -353,23 +353,18 @@ function Header() {
           {notice === -1 ? (
             <></>
           ) : (
-            notice.map(
-              item => (
-                console.log(item),
-                (
-                  <NoticeCard
-                    notice_id={item.notice_id}
-                    post_id={item.post_id}
-                    parent={item.parent_nm}
-                    title={item.nm}
-                    user={item.user_nm}
-                    type={item.type_gb}
-                    ymd={item.ymd}
-                    content={item.content}
-                  />
-                )
-              ),
-            )
+            notice.map(item => (
+              <NoticeCard
+                notice_id={item.notice_id}
+                post_id={item.post_id}
+                parent={item.parent_nm}
+                title={item.nm}
+                user={item.user_nm}
+                type={item.type_gb}
+                ymd={item.ymd}
+                content={item.content}
+              />
+            ))
           )}
         </div>
       </Box>
@@ -486,6 +481,7 @@ function PostHeader({ post_nm, ymd, view, like, post_id }) {
   const [tags, setTags] = useState(-1);
   const [replys, setreplys] = useState(-1);
   const [token, setToken] = useState(-1);
+  const [postToken, setPostToken] = useState(-1);
   let idx = 0;
 
   useEffect(() => {
@@ -495,6 +491,7 @@ function PostHeader({ post_nm, ymd, view, like, post_id }) {
     };
     const getCookie = async () => {
       let ret = await checkCookie();
+      setPostToken(await checkUser(post_id));
       setToken(ret);
     };
     getCookie();
@@ -527,11 +524,9 @@ function PostHeader({ post_nm, ymd, view, like, post_id }) {
     <div className="titleDiv">
       <h1>
         {post_nm}
-        {replys === -1 ? (
-          ''
-        ) : replys.length > 0 ? (
-          ''
-        ) : (
+        {token === -1 || postToken === -1 || replys === -1 ? (
+          <></>
+        ) : replys.length < 1 && token === postToken ? (
           <IconButton
             size="small"
             onClick={() => {
@@ -540,6 +535,8 @@ function PostHeader({ post_nm, ymd, view, like, post_id }) {
           >
             <Delete fontSize="small" />
           </IconButton>
+        ) : (
+          <></>
         )}
       </h1>
       <div>
