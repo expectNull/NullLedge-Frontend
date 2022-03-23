@@ -357,6 +357,7 @@ function Header() {
               <NoticeCard
                 notice_id={item.notice_id}
                 post_id={item.post_id}
+                parent_id={item.parent_id}
                 parent={item.parent_nm}
                 title={item.nm}
                 user={item.user_nm}

@@ -13,6 +13,7 @@ import Like from '../../utils/Like/Like';
 import { Alert, AlertDiv } from '../../utils/Alert/Alert';
 import './Post.css';
 import { Button } from '@mui/material';
+import { checkCookie } from '../../utils/checkCookie';
 
 let idx = 0;
 function spreadDiv(item) {
@@ -65,7 +66,24 @@ function PostPage() {
   const [replys, setreplys] = useState(-1);
   const [html_content, setContent] = useState(-1);
   const { postid } = useParams();
-  const login = useSelector(store => store.loginReducer);
+  const [user, setUser] = useState(-1);
+  const [myPage, setMyPage] = useState(-1);
+
+  async function checkMyPost() {
+    const info = {
+      post_id: Number(postid),
+    };
+
+    let cookie = await checkCookie();
+    if (cookie === undefined) cookie = false;
+
+    let ret = await (
+      await axios.post(`${process.env.REACT_APP_API_URL}/checkUser`, info)
+    ).data._KEN;
+
+    setMyPage(cookie === ret);
+    setUser(cookie);
+  }
 
   useEffect(() => {
     const getStuff = async () => {
@@ -73,6 +91,7 @@ function PostPage() {
       setreplys(await getSomething(postid, 'getReplys'));
     };
     getStuff();
+    checkMyPost();
   }, []);
 
   const editorRef = useRef();
@@ -156,20 +175,37 @@ function PostPage() {
           <hr />
           <h1 className="answer">Answers</h1>
           {/* 답변글들 뿌리기 */}
-          {replys === -1 ? <LoadingBar /> : replys.map(item => spreadDiv(item))}
+          {replys === -1 ? (
+            <LoadingBar />
+          ) : replys.length === 0 ? (
+            <div>아직 답변이 작성되지 않았어요..</div>
+          ) : (
+            replys.map(item => spreadDiv(item))
+          )}
           <hr />
-          <div>
-            <MyEditor
-              // initialProps={'# 답글을 작성해주세요. '}
-              previewProps={'tab'}
-              heightProps={'30vh'}
-              refProps={editorRef}
-            />
-          </div>
-          <Button id="save_btn" variant="contained" onClick={handleSave}>
-            답글 달기
-          </Button>
-          <hr />
+          {!user || myPage ? (
+            <></>
+          ) : (
+            <>
+              <div>
+                <MyEditor
+                  // initialProps={'# 답글을 작성해주세요. '}
+                  previewProps={'tab'}
+                  heightProps={'30vh'}
+                  refProps={editorRef}
+                />
+              </div>
+              <Button
+                disbaled="true"
+                id="save_btn"
+                variant="contained"
+                onClick={handleSave}
+              >
+                답글 달기
+              </Button>
+              <hr />
+            </>
+          )}
         </div>
       </Layout>
     </div>

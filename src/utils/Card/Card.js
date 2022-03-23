@@ -53,6 +53,7 @@ function Card() {
 function NoticeCard({
   notice_id,
   post_id,
+  parent_id,
   parent,
   title,
   user,
@@ -77,7 +78,8 @@ function NoticeCard({
   async function onClick() {
     await updateNotice();
     await wait(20);
-    window.location.href = `/post/${post_id}`;
+
+    window.location.href = `/post/${parent_id === -1 ? post_id : parent_id}`;
   }
 
   return (
