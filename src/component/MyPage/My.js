@@ -62,7 +62,7 @@ function MyPage({}) {
           <tbody>
             <tr>
               <td className="imgbox" rowSpan={3}>
-                <img src="userimg.png" className="userImg"></img>
+                <img src="/images/userimg.png" className="userImg"></img>
               </td>
               <td className="nickname">{info === -1 ? '...' : info.user_nm}</td>
             </tr>
