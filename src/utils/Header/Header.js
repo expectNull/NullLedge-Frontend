@@ -353,7 +353,7 @@ function Header() {
           {notice === -1 ? (
             <></>
           ) : (
-            notice.map(item => (
+            notice.content.map(item => (
               <NoticeCard
                 notice_id={item.notice_id}
                 post_id={item.post_id}
