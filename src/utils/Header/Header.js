@@ -299,16 +299,37 @@ function Header() {
               )}
             </Box>
             <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
-              <IconButton
-                size="large"
-                aria-label="show more"
-                aria-controls={mobileMenuId}
-                aria-haspopup="true"
-                onClick={handleMobileMenuOpen}
-                color="inherit"
-              >
-                <MoreIcon />
-              </IconButton>
+              {token === -1 ? (
+                'loading'
+              ) : token === undefined ? (
+                <Link href="/login" underline="none" color="inherit">
+                  Login
+                </Link>
+              ) : (
+                <>
+                  <IconButton
+                    size="large"
+                    edge="end"
+                    aria-label="account of current user"
+                    aria-controls={menuId}
+                    aria-haspopup="true"
+                    onClick={handleMenuList}
+                    color="inherit"
+                  >
+                    <Avatar alt="Image" src="image from BE" />
+                  </IconButton>
+                  <IconButton
+                    size="large"
+                    aria-label="show new notifications"
+                    color="inherit"
+                    onClick={handleNoticeList}
+                  >
+                    <NotificationsIcon
+                      props={notice === -1 ? 0 : notice.length}
+                    ></NotificationsIcon>
+                  </IconButton>
+                </>
+              )}
             </Box>
           </Toolbar>
         </AppBar>

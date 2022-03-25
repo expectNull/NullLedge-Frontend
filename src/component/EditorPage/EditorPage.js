@@ -11,6 +11,7 @@ import { checkCookie } from '../../utils/checkCookie';
 import './EditorPage.css';
 
 let tags = {};
+const id_txt = document.getElementById('problem_id_txt');
 
 function getAll() {
   let ret = [];
@@ -18,6 +19,7 @@ function getAll() {
   for (let tag in tags) {
     ret.push(tag);
   }
+  ret.push(id_txt.value);
   return ret;
 }
 
@@ -81,6 +83,9 @@ function EditorPage(props) {
   const handleSave = async () => {
     if (title.length == 0) {
       Alert('error', '제목은 공백일 수 없습니다.');
+      return;
+    } else if (id_txt.value === 'none') {
+      Alert('error', '카테고리를 선택해주세요.');
       return;
     }
     const editorInstance = await editorRef.current.getInstance();
@@ -149,7 +154,9 @@ function EditorPage(props) {
             placeholder="태그 입력"
             onKeyUp={onKeyUp}
           />
-
+          <span className="arrow_box">
+            태그를 입력하고 Enter를 누르면 적용됩니다!
+          </span>
           <div id="tag_container">
             <div id="tag_list"></div>
           </div>
