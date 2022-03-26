@@ -1,0 +1,23 @@
+.rank_table {
+  border-collapse: collapse;
+  text-align: left;
+  line-height: 1.5;
+  margin: auto;
+  width: 90%;
+}
+
+.rank_table thead {
+  border-bottom: 2px solid grey;
+}
+
+.rank_table th {
+  padding: 0px 0px 20px 20px;
+}
+
+.rank_table td {
+  padding: 15px 0px 15px 20px;
+}
+
+.rank_table tr {
+  border-bottom: 1px solid grey;
+}
