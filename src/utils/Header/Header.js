@@ -469,7 +469,7 @@ function TagHeader({ value }) {
   return (
     <div className="question_header">
       <div className="top_header">
-        <div className="header_title">
+        <div className="tag_title">
           <h1>{value ? `Tag : ${value}` : `Tags`}</h1>
         </div>
       </div>
@@ -525,7 +525,6 @@ function PostHeader({ post_nm, ymd, view, like, post_id }) {
         await axios.post(process.env.REACT_APP_API_URL + '/getUserAuth', info)
       ).data;
       setAuth(response);
-      console.log(response);
     };
     getCookie();
     getStuff();
