@@ -26,7 +26,6 @@ function Ranking() {
   }, []);
 
   function spreadDiv(item) {
-    console.log(item);
     return (
       <RankCard
         idx={item.RANKING}
