@@ -9,7 +9,6 @@ import { PostItem } from '../../utils/PostItem/PostItem';
 import { TagHeader } from '../../utils/Header/Header';
 
 async function getAllTag(value) {
-  console.log(`inside ${value}`);
   const info = {
     TAG_NM: value,
   };
@@ -19,11 +18,11 @@ async function getAllTag(value) {
   ).data;
 }
 
+let idx = 0;
 function TagPage(props) {
   //
   const [tags, setTags] = useState(-1);
   const { value } = useParams();
-  let idx = 0;
 
   useEffect(() => {
     const getStuff = async () => {
@@ -40,7 +39,6 @@ function TagPage(props) {
           {tags === -1 ? (
             <LoadingBar />
           ) : value ? (
-            (console.log(`print tag : ${value}, ${tags}`),
             tags.map(item => {
               idx++;
               return (
@@ -56,15 +54,13 @@ function TagPage(props) {
                   content={item.content}
                 />
               );
-            }))
+            })
           ) : (
-            (console.log(`print tag : ${value}, ${tags}`),
             tags.map(item => {
-              idx++;
               // item.cnt를 통해 해당 태그의 글의 수를 알 수 있음.
               // 이미 던지게 해둠.
-              return <Tag idx={idx} value={item.tag_nm} />;
-            }))
+              return <Tag idx={idx++} value={item.tag_nm} />;
+            })
           )}
         </div>
       </Layout>
