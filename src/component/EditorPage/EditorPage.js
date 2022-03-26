@@ -11,15 +11,14 @@ import { checkCookie } from '../../utils/checkCookie';
 import './EditorPage.css';
 
 let tags = {};
-const id_txt = document.getElementById('problem_id_txt');
+let id_value = '';
 
 function getAll() {
   let ret = [];
-  console.log(tags);
   for (let tag in tags) {
-    ret.push(tag);
+    if (tag !== id_value) ret.push(tag);
   }
-  ret.push(id_txt.value);
+  ret.push(id_value);
   return ret;
 }
 
@@ -80,11 +79,13 @@ function EditorPage(props) {
       tagInput.value = '';
     }
   };
+
   const handleSave = async () => {
+    id_value = document.getElementById('problem_id_txt').value;
     if (title.length == 0) {
       Alert('error', '제목은 공백일 수 없습니다.');
       return;
-    } else if (id_txt.value === 'none') {
+    } else if (id_value === 'none') {
       Alert('error', '카테고리를 선택해주세요.');
       return;
     }
