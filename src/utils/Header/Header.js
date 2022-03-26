@@ -500,6 +500,7 @@ async function getTag(postId) {
 }
 
 function PostHeader({ post_nm, ymd, view, like, post_id }) {
+  const [auth, setAuth] = useState(-1);
   const [tags, setTags] = useState(-1);
   const [replys, setreplys] = useState(-1);
   const [token, setToken] = useState(-1);
@@ -516,8 +517,19 @@ function PostHeader({ post_nm, ymd, view, like, post_id }) {
       setPostToken(await checkUser(post_id));
       setToken(ret);
     };
+    const getAuth = async () => {
+      const info = {
+        token: await checkCookie(),
+      };
+      let response = await (
+        await axios.post(process.env.REACT_APP_API_URL + '/getUserAuth', info)
+      ).data;
+      setAuth(response);
+      console.log(response);
+    };
     getCookie();
     getStuff();
+    getAuth();
   }, []);
 
   async function getSomething(id, pos) {
@@ -536,8 +548,10 @@ function PostHeader({ post_nm, ymd, view, like, post_id }) {
     };
 
     await axios.post(`${process.env.REACT_APP_API_URL}/removePost`, info);
-    alert('글이 정상적으로 삭제되었습니다.');
-    window.location.href = '/';
+    if (confirm('글을 삭제하시겠습니까?')) {
+      alert('글이 정상적으로 삭제되었습니다.');
+      window.location.href = '/';
+    }
   }
 
   // if replys in here, can't remove
@@ -548,7 +562,7 @@ function PostHeader({ post_nm, ymd, view, like, post_id }) {
         {post_nm}
         {token === -1 || postToken === -1 || replys === -1 ? (
           <></>
-        ) : replys.length < 1 && token === postToken ? (
+        ) : (replys.length < 1 && token === postToken) || auth > 0 ? (
           <IconButton
             size="small"
             onClick={() => {
