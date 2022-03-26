@@ -29,9 +29,15 @@ function Footer(props) {
         </div>
         <div className="sectionDiv">
           <ul>
-            <li className="title">ChungNam National Univ.</li>
-            <li>The Division of Computer Convergence.</li>
-            <li>Dept. Artificial Intelligence</li>
+            <a href="https://plus.cnu.ac.kr/">
+              <li className="title">ChungNam National Univ.</li>
+            </a>
+            <a href="https://computer.cnu.ac.kr/computer/">
+              <li>The Division of Computer Convergence.</li>
+            </a>
+            <a href="https://homepage.cnu.ac.kr/ai/">
+              <li>Dept. Artificial Intelligence</li>
+            </a>
             {/* <li></li> */}
             {/* <li>DCS-Learing</li> */}
           </ul>
