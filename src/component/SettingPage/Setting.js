@@ -26,6 +26,8 @@ function SettingPage({}) {
     getInfo();
   }, []);
 
+  async function changeNickName() {}
+
   return (
     <div className="SettingPage">
       <div className="helper">
@@ -77,6 +79,7 @@ function SettingPage({}) {
               <td>
                 <Button
                   variant="contained"
+                  disabled
                   onClick={() => {
                     alert('저장되었습니다.');
                   }}
@@ -93,6 +96,7 @@ function SettingPage({}) {
               <td>
                 <Button
                   variant="contained"
+                  disabled
                   onClick={() => {
                     alert('저장되었습니다.');
                   }}
@@ -110,6 +114,7 @@ function SettingPage({}) {
               <td>
                 <Button
                   variant="contained"
+                  disabled
                   onClick={() => {
                     alert('저장되었습니다.');
                   }}
