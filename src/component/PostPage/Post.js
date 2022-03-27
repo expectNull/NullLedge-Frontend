@@ -111,7 +111,7 @@ function PostPage() {
     );
     if (response.data.length === 0) {
       // 여기 wait 혹은 다른 방식으로 하든지 해야 할 수도
-      Alert('success', '작성이 완료되었습니다.');
+      alert('작성이 완료되었습니다.');
     }
     console.log(info.html_content);
   }
@@ -133,7 +133,7 @@ function PostPage() {
     const getContent_html = await editorInstance.getHTML();
     const getContent_md = await editorInstance.getMarkdown();
     if (getContent_md.length == 0) {
-      Alert('warning', '공백입니다.');
+      alert('공백입니다.');
       return;
     }
     setContent(getContent_md);

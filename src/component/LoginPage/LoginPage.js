@@ -12,7 +12,7 @@ import './LoginPage.css';
 function LoginPage(props) {
   async function logIn(email, pw) {
     if (!validator.isEmail(email)) {
-      Alert('error', 'Email 형식을 지켜주세요.');
+      alert('Email 형식을 지켜주세요.');
       return;
     }
     const info = {
@@ -28,7 +28,7 @@ function LoginPage(props) {
 
     let ret = response.data;
     if ('error' in ret) {
-      Alert('error', `${ret.error}`);
+      alert(`${ret.error}`);
     } else {
       // 로그인 성공 리다이렉션 필요.
       window.location.href = '/';
