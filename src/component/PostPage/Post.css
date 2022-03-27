@@ -72,3 +72,11 @@
 .like-helper table {
   display: inline-block !important;
 }
+
+.content a:visited {
+  color: blue;
+}
+
+.usercard a:visited {
+  color: black;
+}

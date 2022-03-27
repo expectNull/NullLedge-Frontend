@@ -31,6 +31,9 @@ function SettingPage({}) {
   return (
     <div className="SettingPage">
       <div className="helper">
+        <br />
+        <br />
+        <br />
         <h1>Edit Information</h1>
         <hr></hr>
         <table className="userInfo">
