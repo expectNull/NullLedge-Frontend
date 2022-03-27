@@ -69,6 +69,14 @@ function PostPage() {
   const [user, setUser] = useState(-1);
   const [myPage, setMyPage] = useState(-1);
 
+  async function updateView() {
+    const info = {
+      post_id: Number(postid),
+    };
+
+    await axios.post(`${process.env.REACT_APP_API_URL}/updateView`, info);
+  }
+
   async function checkMyPost() {
     const info = {
       post_id: Number(postid),
@@ -89,6 +97,7 @@ function PostPage() {
     const getStuff = async () => {
       setPosts(await getSomething(postid, 'getAsk'));
       setreplys(await getSomething(postid, 'getReplys'));
+      await updateView();
     };
     getStuff();
     checkMyPost();

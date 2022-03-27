@@ -547,7 +547,7 @@ function PostHeader({ post_nm, ymd, view, like, post_id }) {
     };
 
     await axios.post(`${process.env.REACT_APP_API_URL}/removePost`, info);
-    if (confirm('글을 삭제하시겠습니까?')) {
+    if (window.confirm('글을 삭제하시겠습니까?')) {
       alert('글이 정상적으로 삭제되었습니다.');
       window.location.href = '/';
     }
