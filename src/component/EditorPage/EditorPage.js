@@ -47,7 +47,7 @@ function EditorPage(props) {
       { withCredentials: true },
     );
     if (response.data.length === 0) {
-      Alert('success', '작성이 완료되었습니다.');
+      alert('작성이 완료되었습니다.');
     }
     return response;
   }
@@ -83,10 +83,10 @@ function EditorPage(props) {
   const handleSave = async () => {
     id_value = document.getElementById('problem_id_txt').value;
     if (title.length == 0) {
-      Alert('error', '제목은 공백일 수 없습니다.');
+      alert('제목은 공백일 수 없습니다.');
       return;
     } else if (id_value === 'none') {
-      Alert('error', '카테고리를 선택해주세요.');
+      alert('카테고리를 선택해주세요.');
       return;
     }
     const editorInstance = await editorRef.current.getInstance();
