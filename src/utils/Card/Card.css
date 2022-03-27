@@ -38,3 +38,7 @@
 .not_hover:hover {
   cursor: pointer;
 }
+
+.noticeCard .saw div {
+  color: rgb(180, 180, 180);
+}

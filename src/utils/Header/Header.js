@@ -385,6 +385,7 @@ function Header() {
                 type={item.type_gb}
                 ymd={item.ymd}
                 content={item.content}
+                check_gb={item.check_gb}
               />
             ))
           )}

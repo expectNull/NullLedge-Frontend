@@ -60,6 +60,7 @@ function NoticeCard({
   type,
   ymd,
   content,
+  check_gb,
 }) {
   // parent == 댓글의 경우 질문글의 제목이 들어있음.
   // title에는 답글의 경우 제목이 들어있음.
@@ -84,7 +85,10 @@ function NoticeCard({
 
   return (
     <div className="noticeCard">
-      <div className="not_hover" onClick={onClick}>
+      <div
+        className={(check_gb === 1 ? 'saw ' : '') + ' not_hover'}
+        onClick={onClick}
+      >
         {type === 1 ? (
           <>
             <div>{`${post_id}번 글(${title})에 ${user}의 답글이 달렸네요!`}</div>
