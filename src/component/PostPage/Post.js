@@ -95,8 +95,16 @@ function PostPage() {
 
   useEffect(() => {
     const getStuff = async () => {
-      setPosts(await getSomething(postid, 'getAsk'));
-      setreplys(await getSomething(postid, 'getReplys'));
+      let temp_ask = await getSomething(postid, 'getAsk');
+      if (temp_ask.err !== undefined) {
+        // 404 필요.
+        window.location.href = '/';
+        return;
+      }
+
+      let temp_rep = await getSomething(postid, 'getReplys');
+      setPosts(temp_ask);
+      setreplys(temp_rep);
       await updateView();
     };
     getStuff();
