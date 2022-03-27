@@ -120,18 +120,6 @@ function SettingPage({}) {
             </tr>
           </tbody>
         </table>
-<<<<<<< Updated upstream
-        <Button
-          variant="contained"
-          color="success"
-          onClick={() => {
-            alert('저장되었습니다.');
-          }}
-        >
-          Save
-        </Button>
-=======
->>>>>>> Stashed changes
       </div>
     </div>
   );
