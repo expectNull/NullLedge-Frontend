@@ -121,14 +121,19 @@ function PostPage() {
     };
 
     // try catch 로 묶어야 할 듯 이런 것들.
-    var response = await axios.post(
-      process.env.REACT_APP_API_URL + '/setReply',
-      info,
-      { withCredentials: true },
-    );
-    if (response.data.length === 0) {
+    var response = await (
+      await axios.post(process.env.REACT_APP_API_URL + '/setReply', info, {
+        withCredentials: true,
+      })
+    ).data;
+
+    if ('err' in response) {
+      return response;
+    }
+    if (response.length === 0) {
       // 여기 wait 혹은 다른 방식으로 하든지 해야 할 수도
       alert('작성이 완료되었습니다.');
+      return false;
     }
     console.log(info.html_content);
   }
@@ -141,7 +146,12 @@ function PostPage() {
     if (typeof html_content == 'number') {
       return;
     }
-    await savePost();
+
+    let ret = await savePost();
+    if (ret) {
+      alert(ret.err);
+      return;
+    }
     window.location.href = `/post/${postid}`;
   }, [html_content]);
 
