@@ -50,6 +50,19 @@ function LandingPage() {
       {/* <Notice /> */}
       <Layout>
         <QuestionHeader />
+        <PostItem
+          key={-1}
+          post_id={3}
+          like={0}
+          ans={0}
+          view={0}
+          post_nm={'[공지 WhyRano : 한국형 스택오버 플로우]'}
+          ymd={'2022-03-25 15:31:28'}
+          user_nm={'dblepart99'}
+          content={
+            'WhyRano : 한국형 스택오버 플로우 팀 ExpectNull에서 충남대학교 컴퓨터융합학부, 인공지능학과 학생들을 위한 질의응답 서비스 한국형 스택오버플로우 "Whyrano" 가 3월 28일 정식 런칭했습니다!!'
+          }
+        />
         {posts === -1 ? (
           <div className="loadingBar">
             <LoadingBar />
