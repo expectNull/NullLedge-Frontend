@@ -21,7 +21,7 @@ async function getSomething(id, pos) {
 async function saveComment(post_id, comment_content, token) {
   const info = {
     parent_post_id: post_id,
-    user_token: token,
+    user_token: await checkCookie(),
     comment: comment_content, // user_id : user_id
     type_gb: 2,
   };
