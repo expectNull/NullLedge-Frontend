@@ -547,15 +547,27 @@ function PostHeader({ post_nm, ymd, view, like, post_id }) {
   }
 
   async function removePost(id) {
+    if (!window.confirm('글을 삭제하시겠습니까?')) {
+      return;
+    }
+
     const info = {
       post_id: Number(id),
     };
 
-    await axios.post(`${process.env.REACT_APP_API_URL}/removePost`, info);
-    if (window.confirm('글을 삭제하시겠습니까?')) {
-      alert('글이 정상적으로 삭제되었습니다.');
-      window.location.href = '/';
+    let ret = await (
+      await axios.post(`${process.env.REACT_APP_API_URL}/removePost`, info, {
+        withCredentials: true,
+      })
+    ).data;
+
+    if ('err' in ret.data) {
+      alert('비정상적인 접근입니다.');
+      return;
     }
+
+    alert('글이 정상적으로 삭제되었습니다.');
+    window.location.href = '/';
   }
 
   // if replys in here, can't remove
