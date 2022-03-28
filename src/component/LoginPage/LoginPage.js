@@ -70,9 +70,9 @@ function LoginPage(props) {
         >
           Login now
         </button>
-        <button className="googlebtn">Sign-in with Google</button>
+        {/* <button className="googlebtn">Sign-in with Google</button> */}
         <span>
-          Don't have an account? <Link to="/register">Make account now</Link>
+          Don't have an account? <Link to="/register">회원 가입</Link>
         </span>
       </div>
     </div>
