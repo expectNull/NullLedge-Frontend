@@ -454,7 +454,11 @@ function QuestionHeader() {
         alignItems="baseline"
         spacing={8}
       >
-        <Tabs value={value} onChange={handleChange} aria-label="Sorting Tabs">
+        <Tabs
+          value={value}
+          // onChange={handleChange}
+          aria-label="Sorting Tabs"
+        >
           <Tab value="newest" label="Newest" />
           <Tab value="like" label="Like" />
           <Tab value="view" label="View" />
