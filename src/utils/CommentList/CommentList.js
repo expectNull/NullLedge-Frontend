@@ -18,10 +18,10 @@ async function getSomething(id, pos) {
   ).data;
 }
 
-async function saveComment(post_id, comment_content) {
+async function saveComment(post_id, comment_content, token) {
   const info = {
     parent_post_id: post_id,
-    user_token: await checkCookie(),
+    user_token: token,
     comment: comment_content, // user_id : user_id
     type_gb: 2,
   };
@@ -47,8 +47,15 @@ function getIdx() {
 export default function CommentList({ parent_id }) {
   const [comments, setComments] = useState(-1);
   const [content, setContent] = useState(-1);
+  const [token, setToken] = useState(-1);
+
   idx = 1;
   const handleAdd = async (editorRef, post_id) => {
+    if (token === undefined) {
+      alert('로그인이 필요합니다.');
+      return;
+    }
+
     if (editorRef.current.value.length === 0) {
       alert('댓글이 비어있습니다.');
       return;
@@ -59,6 +66,7 @@ export default function CommentList({ parent_id }) {
   useEffect(() => {
     const getStuff = async () => {
       setComments(await getSomething(parent_id, 'getCommentList'));
+      setToken(await checkCookie());
     };
     getStuff();
   }, []);
@@ -90,7 +98,7 @@ export default function CommentList({ parent_id }) {
           className="save_btn"
           variant="contained"
           onClick={() => {
-            handleAdd(editorRef, parent_id);
+            handleAdd(editorRef, parent_id, token);
           }}
         >
           Add
