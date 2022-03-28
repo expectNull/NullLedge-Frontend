@@ -232,7 +232,7 @@ function Header() {
           aria-haspopup="true"
           color="inherit"
         >
-          <Avatar alt="User Image" src="../../../public/logo192.png" />
+          <Avatar alt="User Image" src="/images/userimg.png" />
         </IconButton>
         <p>User</p>
       </MenuItem>
