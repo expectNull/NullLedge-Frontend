@@ -560,8 +560,9 @@ function PostHeader({ post_nm, ymd, view, like, post_id }) {
         withCredentials: true,
       })
     ).data;
+    console.log(ret.success);
 
-    if ('err' in ret.data) {
+    if (ret.success != 1) {
       alert('비정상적인 접근입니다.');
       return;
     }
