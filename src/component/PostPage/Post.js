@@ -127,9 +127,10 @@ function PostPage() {
       })
     ).data;
 
-    if ('err' in response) {
+    if (response.success !== 1) {
       return response;
     }
+
     if (response.length === 0) {
       // 여기 wait 혹은 다른 방식으로 하든지 해야 할 수도
       alert('작성이 완료되었습니다.');
