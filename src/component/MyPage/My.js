@@ -10,7 +10,7 @@ import './My.css';
 let idx = 0;
 
 function MyPage({}) {
-  const { name } = useParams();
+  const { userid } = useParams();
   const [info, setInfo] = useState(-1);
   const [ask, setAsk] = useState(-1);
   const [reply, setReply] = useState(-1);
@@ -33,7 +33,7 @@ function MyPage({}) {
   }
   async function getInfo() {
     const info = {
-      user: name,
+      user: userid,
       token: await checkCookie(),
     };
 

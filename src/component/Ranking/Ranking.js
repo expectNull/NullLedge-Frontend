@@ -29,6 +29,7 @@ function Ranking() {
     return (
       <RankCard
         idx={item.RANKING}
+        userid={item.USER_ID}
         name={item.USER_NICK_NM}
         status={item.STATUS_CONTENT}
         point={item.NULLPOINT_AMT}
