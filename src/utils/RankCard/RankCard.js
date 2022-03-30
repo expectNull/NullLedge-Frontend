@@ -2,13 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './RankCard.css';
 
-const RankCard = ({ idx, name, status, point, reply, ask }) => {
+const RankCard = ({ idx, userid, name, status, point, reply, ask }) => {
   return (
     <tr className="rank_row">
       <td className="rank_idx">{idx}</td>
       <td className="rank_name">
         <Link
-          to={`/mypage/${name}`}
+          to={`/mypage/${userid}`}
           style={{ color: '#1976d2', textDecoration: 'none' }}
         >
           {name}
