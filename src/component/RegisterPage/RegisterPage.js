@@ -16,22 +16,34 @@ async function signUp(email, pw, pw_check, nm, status) {
   let idDiv = document.querySelector('#idField');
   let pwDiv = document.querySelector('#pwField');
   let repwDiv = document.querySelector('#repwField');
+  let nmDiv = document.querySelector('#nmField');
+
   let idLabel = document.querySelector('#idLabel');
   let pwLabel = document.querySelector('#pwLabel');
   let repwLabel = document.querySelector('#repwLabel');
+  let nmLabel = document.querySelector('#nmLabel');
+
   let error = false;
+
+  // 공백, 특수문자 체크
+  let special = new RegExp(/[()`~!@#$%^&*|\\\'\";:\/?\s]/gi);
+  if (nm.length === 0 || special.test(nm)) {
+    nmDiv.classList.add('warning');
+    nmLabel.innerText = '길이는 1이상이고 특수문자, 공백은 넣을 수 없습니다.';
+    error = true;
+  } else {
+    nmLabel.innerText = '닉네임을 지정해주세요.';
+    nmDiv.classList.remove('warning');
+  }
 
   if (!validator.isEmail(email)) {
     idDiv.classList.add('warning');
-    console.log(idLabel);
     idLabel.innerText = 'Email - Email 형식으로 입력해주세요.';
     error = true;
   } else {
     idLabel.innerText = 'Email';
     idDiv.classList.remove('warning');
   }
-
-  console.log(reg.test(pw));
 
   if (!reg.test(pw)) {
     pwDiv.classList.add('warning');
@@ -42,6 +54,7 @@ async function signUp(email, pw, pw_check, nm, status) {
     pwLabel.innerText = 'Password';
     pwDiv.classList.remove('warning');
   }
+
   if (pw !== pw_check || pw === '') {
     repwDiv.classList.add('warning');
     repwLabel.innerText = 'Check Password - 비밀번호가 다릅니다.';
@@ -129,9 +142,11 @@ function RegisterPage(props) {
             }}
           />
           <br />
-          <label htmlFor="nickNm">닉네임을 지정해주세요.</label>
+          <label htmlFor="nmField" id="nmLabel">
+            닉네임을 지정해주세요.
+          </label>
           <br />
-          <input id="nickNm" className="field" />
+          <input id="nmField" className="field" />
           <br />
           <label htmlFor="userStatus">상태메세지를 작성해주세요.</label>
           <br />
@@ -148,7 +163,7 @@ function RegisterPage(props) {
               let email = document.getElementById('idField').value;
               let pw = document.getElementById('pwField').value;
               let pw_check = document.getElementById('repwField').value;
-              let nm = document.getElementById('nickNm').value;
+              let nm = document.getElementById('nmField').value;
               let status = document.getElementById('userStatus').value;
               signUp(email, pw, pw_check, nm, status);
             }}
