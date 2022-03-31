@@ -19,7 +19,6 @@ import 'prismjs/components/prism-java.js';
 // import 'prismjs/components/prism-log.js';
 import 'prismjs/components/prism-nginx.js';
 import 'prismjs/components/prism-ocaml.js';
-import 'prismjs/components/prism-php.js';
 // import 'prismjs/components/prism-regex.js';
 // import 'prismjs/components/prism-ruby.js';
 import 'prismjs/components/prism-sql.js';
@@ -29,10 +28,8 @@ import 'prismjs/components/prism-sql.js';
 // import 'prismjs/components/prism-csv.js';
 // import 'prismjs/components/prism-yaml.js';
 
-import 'codemirror/lib/codemirror.css';
-import '@toast-ui/editor/dist/toastui-editor.css';
-import 'prismjs/components/prism-python.js';
 import { Editor } from '@toast-ui/react-editor';
+
 import '@toast-ui/editor-plugin-code-syntax-highlight/dist/toastui-editor-plugin-code-syntax-highlight.css';
 import codeSyntaxHighlight from '@toast-ui/editor-plugin-code-syntax-highlight';
 

@@ -20,7 +20,6 @@ import 'prismjs/components/prism-java.js';
 // import 'prismjs/components/prism-log.js';
 import 'prismjs/components/prism-nginx.js';
 import 'prismjs/components/prism-ocaml.js';
-import 'prismjs/components/prism-php.js';
 // import 'prismjs/components/prism-regex.js';
 // import 'prismjs/components/prism-ruby.js';
 import 'prismjs/components/prism-sql.js';
@@ -37,7 +36,7 @@ function PostViewer({ content }) {
   return (
     <Viewer
       className="MyViewer"
-      plugins={[codeSyntaxHighlight, { highlighter: Prism }]}
+      plugins={[[codeSyntaxHighlight, { highlighter: Prism }]]}
       initialValue={content}
     />
   );
