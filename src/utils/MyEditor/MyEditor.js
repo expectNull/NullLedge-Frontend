@@ -3,9 +3,10 @@ import Prism from 'prismjs';
 import 'prismjs/themes/prism.css';
 import './MyEditor.css';
 
+import 'codemirror/lib/codemirror.css';
 import '@toast-ui/editor/dist/toastui-editor.css';
+import 'prismjs/components/prism-python.js';
 import { Editor } from '@toast-ui/react-editor';
-
 import '@toast-ui/editor-plugin-code-syntax-highlight/dist/toastui-editor-plugin-code-syntax-highlight.css';
 import codeSyntaxHighlight from '@toast-ui/editor-plugin-code-syntax-highlight';
 
