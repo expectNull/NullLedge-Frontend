@@ -117,6 +117,7 @@ function EditorPage(props) {
           <select type="text" id="problem_id_txt">
             <option value="none">카테고리</option>
             <option value="컴퓨터 프로그래밍">컴퓨터 프로그래밍</option>
+            <option value="컴퓨터 입문">컴퓨터 입문</option>
             <option value="확률과 통계">확률과 통계</option>
             <option value="자료구조">자료구조</option>
             <option value="컴퓨터구조">컴퓨터구조</option>
@@ -148,6 +149,7 @@ function EditorPage(props) {
               시스템 및 네트워크 보안
             </option>
             <option value="정보보호">정보보호</option>
+            <option value="공지">공지</option>
           </select>
           <input
             type="text"
