@@ -1,5 +1,6 @@
 import React from 'react';
 import Prism from 'prismjs';
+import axios from 'axios';
 import './MyEditor.css';
 
 import 'prismjs/themes/prism.css';
@@ -37,6 +38,26 @@ import 'tui-color-picker/dist/tui-color-picker.css';
 import '@toast-ui/editor-plugin-color-syntax/dist/toastui-editor-plugin-color-syntax.css';
 import colorSyntax from '@toast-ui/editor-plugin-color-syntax';
 
+const uploadImage = async blob => {
+  const formData = new FormData();
+  formData.append('image', blob);
+
+  // 출력을 위한 코드
+  for (let key of formData.keys()) {
+    console.log(key);
+  }
+  // 서버로부터 이미지 주소 받아옴
+  let url = await axios.post(
+    process.env.REACT_APP_API_URL + '/setImg',
+    formData,
+    {
+      withCredentials: true,
+    },
+  );
+
+  return url.data.url;
+};
+
 function MyEditor({
   // initialProps,
   previewProps,
@@ -54,6 +75,12 @@ function MyEditor({
         width={widthProps}
         height={heightProps}
         ref={refProps}
+        hooks={{
+          addImageBlobHook: async (Blob, callback) => {
+            const img_url = await uploadImage(Blob);
+            callback(`${process.env.REACT_APP_API_URL}${img_url}`, ' ');
+          },
+        }}
       />
     </div>
   );
