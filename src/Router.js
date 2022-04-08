@@ -9,6 +9,7 @@ import RegisterPage from './component/RegisterPage/RegisterPage';
 import SettingPage from './component/SettingPage/Setting';
 import TagPage from './component/TagPage/TagPage';
 import EditorPage from './component/EditorPage/EditorPage';
+import ImgPage from './component/ImgPage/ImgPage';
 
 export function Router() {
   return (
@@ -25,6 +26,7 @@ export function Router() {
       <Route exact path="/tags" element={<TagPage />} />
       <Route exact path="/tags/:value" element={<TagPage />} />
       <Route exact path="/ask" element={<EditorPage />} />
+      <Route exact path="/image/:userId/:date/:path" element={<ImgPage />} />
     </Routes>
   );
 }
