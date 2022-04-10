@@ -11,15 +11,15 @@
 .post_like,
 .post_ans,
 .post_view {
-  padding: 0.3vh;
-  margin-right: 0.3vh;
+  padding: 3px;
+  margin-right: 0.3vw;
   margin-bottom: 0.3vh;
   text-align: right;
 }
 
 .post_ans {
   background-color: #62b47d;
-  border-radius: 0.4vh;
+  border-radius: 5px;
 }
 
 .post_view {
@@ -28,10 +28,11 @@
 .post_inside {
   width: 100%;
   text-align: left;
+  margin-left: 5px;
 }
 
 .post_content {
-  margin: 0.2vh 0vh 0.1vh;
+  margin: 0.2vh 0 0.1vh;
 }
 
 .post_user {
@@ -49,7 +50,7 @@
 }
 
 .svg_margin {
-  margin-right: 0.3vh;
+  margin-right: 0.3vw;
 }
 
 .post_date {
@@ -80,7 +81,6 @@
 }
 
 .post_numbers div {
-  width: 8vw;
   min-width: 120px;
 }
 
