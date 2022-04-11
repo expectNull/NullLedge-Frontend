@@ -65,16 +65,14 @@ function LandingPage() {
         />
         <PostItem
           key={-1}
-          post_id={44}
+          post_id={78}
           like={0}
           ans={0}
           view={0}
-          post_nm={'[공지 : Whyrano 질문 입력시 사진 첨부하는 방법]'}
-          ymd={'2022-03-31 04:05:48'}
+          post_nm={'[공지 - 업데이트 : Whyrano 질문 입력시 사진 첨부하는 방법]'}
+          ymd={'2022-04-11 01:07:19'}
           user_nm={'관리자1'}
-          content={
-            '질문 작성 시 사진 첨부하는 방법  현재 Whyrano 사이트에서는 사진을 바로 업로드하는 기능이 구현중에 있어, 이와 관련한 불편함을 드려 대단히 죄송합니다.  그래서 글에 사진을 게재하기 위해서는 이미지의 링크를 첨부하는 형식으로 진행해야합니다.  먼저 Github 계정을 이용하여, [https://github.com/expectNull/Whyrano-image/issues](https://github.com/expectNull/Whyrano-image/issues)에 접속 합니다.'
-          }
+          content={'이제 Whyrano에 질문 작성시 이미지를 업로드할 수 있습니다!'}
         />
         {posts === -1 ? (
           <div className="loadingBar">
