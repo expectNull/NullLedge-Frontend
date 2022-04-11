@@ -43,9 +43,9 @@ const uploadImage = async blob => {
   formData.append('image', blob);
 
   // 출력을 위한 코드
-  for (let key of formData.keys()) {
-    console.log(key);
-  }
+  // for (let key of formData.keys()) {
+  //   console.log(key);
+  // }
   // 서버로부터 이미지 주소 받아옴
   let url = await axios.post(
     process.env.REACT_APP_API_URL + '/setImg',
