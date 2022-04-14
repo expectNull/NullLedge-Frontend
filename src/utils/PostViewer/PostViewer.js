@@ -6,7 +6,7 @@ import { Viewer } from '@toast-ui/react-editor';
 import 'prismjs/themes/prism.css';
 import 'codemirror/lib/codemirror.css';
 import '@toast-ui/editor/dist/toastui-editor.css';
-
+import 'prismjs/components/prism-latex.js';
 import 'prismjs/components/prism-python.js';
 // import 'prismjs/components/prism-django.js';
 import 'prismjs/components/prism-docker.js';

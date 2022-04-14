@@ -18,6 +18,7 @@ import 'prismjs/components/prism-java.js';
 // import 'prismjs/components/prism-json.js';
 // import 'prismjs/components/prism-kotlin';
 // import 'prismjs/components/prism-log.js';
+import 'prismjs/components/prism-latex.js';
 import 'prismjs/components/prism-nginx.js';
 import 'prismjs/components/prism-ocaml.js';
 // import 'prismjs/components/prism-regex.js';
