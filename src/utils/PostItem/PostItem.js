@@ -21,6 +21,7 @@ export function PostItem({
   // SQL 쿼리로 Like, answers, post의 이름, 날짜, 작성자 정보
   content = content.replaceAll(/\`\`\`[^]*\`\`\`/gi, '[작성 코드]');
   content = content.replaceAll('#', '');
+  content = content.replaceAll(/\!\[[^]*\][^]*\)/gi, '[그림]');
 
   return (
     <>
