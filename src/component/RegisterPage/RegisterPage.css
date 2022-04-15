@@ -73,10 +73,11 @@ h1 {
   color: #1a202c;
 }
 
-label {
+label,
+.loginDiv .title {
   font-family: Roboto;
   font-style: normal;
-  font-weight: normal;
+  font-weight: 600;
   font-size: 14px;
   line-height: 19px;
   margin: 10px 0px;
@@ -88,4 +89,15 @@ label {
   border: 0.5px solid red;
 
   transition: 0.5s;
+}
+
+.selectSubject label {
+  display: inline-block;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 19px;
+  margin: 10px 0px;
+  color: #4a5568;
 }

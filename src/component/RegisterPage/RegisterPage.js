@@ -4,6 +4,21 @@ import axios from 'axios';
 import { Alert, AlertDiv } from '../../utils/Alert/Alert';
 
 import './RegisterPage.css';
+import { Checkbox } from '@mui/material';
+
+function getTags() {
+  let div = document.getElementsByClassName('selectSubject')[0];
+  let tags = div.getElementsByTagName('input');
+  let tag = [];
+
+  for (let i = 0; i < tags.length; i++) {
+    if (tags[i].checked) {
+      tag.push(tags[i].value);
+    }
+  }
+
+  return tag;
+}
 
 async function signUp(email, pw, pw_check, nm, status) {
   // 만약 실시간으로 email 형식을 체크 하고 싶으면
@@ -71,7 +86,10 @@ async function signUp(email, pw, pw_check, nm, status) {
     pw: pw,
     nm: nm,
     status: status,
+    tags: getTags(),
   };
+
+  console.log(info);
 
   var ret = await (
     await axios.post(process.env.REACT_APP_API_URL + '/setRegister', info)
@@ -156,6 +174,139 @@ function RegisterPage(props) {
             placeholder="잘 부탁드립니다."
           />
           <br />
+
+          <span className="title">답변 가능한 과목을 선택해주세요.</span>
+
+          <div className="selectSubject">
+            <label>
+              <input type="checkbox" value="컴퓨터 프로그래밍" />
+              컴퓨터 프로그래밍
+            </label>
+            <label>
+              <input type="checkbox" value="컴퓨터과학적사고" />
+              컴퓨터과학적사고
+            </label>
+            <label>
+              <input type="checkbox" value="컴퓨터 입문" />
+              컴퓨터 입문
+            </label>
+            <label>
+              <input type="checkbox" value="확률과 통계" />
+              확률과 통계
+            </label>
+            <label>
+              <input type="checkbox" value="자료구조" />
+              자료구조
+            </label>
+            <label>
+              <input type="checkbox" value="컴퓨터구조" />
+              컴퓨터구조
+            </label>
+            <label>
+              <input type="checkbox" value="알고리즘" />
+              알고리즘
+            </label>
+            <label>
+              <input type="checkbox" value="이산수학" />
+              이산수학
+            </label>
+            <label>
+              <input type="checkbox" value="선형대수" />
+              선형대수
+            </label>
+            <label>
+              <input type="checkbox" value="논리회로" />
+              논리회로
+            </label>
+            <label>
+              <input type="checkbox" value="계산이론" />
+              계산이론
+            </label>
+            <label>
+              <input type="checkbox" value="디지털신호처리" />
+              디지털신호처리
+            </label>
+            <label>
+              <input type="checkbox" value="객체지향설계" />
+              객체지향설계
+            </label>
+            <label>
+              <input type="checkbox" value="시스템프로그래밍" />
+              시스템프로그래밍
+            </label>
+            <label>
+              <input type="checkbox" value="수치프로그래밍" />
+              수치프로그래밍
+            </label>
+            <label>
+              <input type="checkbox" value="웹프로그래밍" />
+              웹프로그래밍
+            </label>
+            <label>
+              <input type="checkbox" value="데이터베이스" />
+              데이터베이스
+            </label>
+            <label>
+              <input type="checkbox" value="운영체제" />
+              운영체제
+            </label>
+            <label>
+              <input type="checkbox" value="데이터통신" />
+              데이터통신
+            </label>
+            <label>
+              <input type="checkbox" value="프로그래밍언어개론" />
+              프로그래밍언어개론
+            </label>
+            <label>
+              <input type="checkbox" value="전자회로" />
+              전자회로
+            </label>
+            <label>
+              <input type="checkbox" value="영상처리" />
+              영상처리
+            </label>
+            <label>
+              <input type="checkbox" value="컴파일러개론" />
+              컴파일러개론
+            </label>
+            <label>
+              <input type="checkbox" value="컴퓨터네트워크" />
+              컴퓨터네트워크
+            </label>
+            <label>
+              <input type="checkbox" value="컴퓨터그래픽스" />
+              컴퓨터그래픽스
+            </label>
+            <label>
+              <input type="checkbox" value="기계학습" />
+              기계학습
+            </label>
+            <label>
+              <input type="checkbox" value="임베디드소프트웨어" />
+              임베디드소프트웨어
+            </label>
+            <label>
+              <input type="checkbox" value="데이터과학" />
+              데이터과학
+            </label>
+            <label>
+              <input type="checkbox" value="딥러닝" />
+              딥러닝
+            </label>
+            <label>
+              <input type="checkbox" value="인공지능" />
+              인공지능
+            </label>
+            <label>
+              <input type="checkbox" value="시스템 및 네트워크 보안" />
+              시스템 및 네트워크 보안
+            </label>
+            <label>
+              <input type="checkbox" value="정보보호" />
+              정보보호
+            </label>
+          </div>
 
           <button
             className="registerBtn"
