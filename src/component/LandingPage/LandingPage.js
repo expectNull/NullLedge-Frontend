@@ -60,6 +60,7 @@ function LandingPage() {
           post_nm={'[공지 WhyRano : 한국형 스택오버 플로우]'}
           ymd={'2022-03-28 15:42:48'}
           user_nm={'관리자1'}
+          user_id={3}
           content={
             'WhyRano : 한국형 스택오버 플로우 팀 ExpectNull에서 충남대학교 컴퓨터융합학부, 인공지능학과 학생들을 위한 질의응답 서비스 한국형 스택오버플로우 "Whyrano" 가 3월 28일 정식 런칭했습니다!!'
           }
@@ -73,6 +74,7 @@ function LandingPage() {
           post_nm={'[공지 - 업데이트 : Whyrano 질문 입력시 사진 첨부하는 방법]'}
           ymd={'2022-04-11 01:07:19'}
           user_nm={'관리자1'}
+          user_id={3}
           content={'이제 Whyrano에 질문 작성시 이미지를 업로드할 수 있습니다!'}
         />
         {posts === -1 ? (
