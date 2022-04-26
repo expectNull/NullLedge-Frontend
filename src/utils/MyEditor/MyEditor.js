@@ -6,6 +6,8 @@ import './MyEditor.css';
 import 'prismjs/themes/prism.css';
 import 'codemirror/lib/codemirror.css';
 import '@toast-ui/editor/dist/toastui-editor.css';
+import 'prismjs/plugins/match-braces/prism-match-braces.js';
+import 'prismjs/plugins/match-braces/prism-match-braces.css';
 
 import 'prismjs/components/prism-python.js';
 // import 'prismjs/components/prism-django.js';
