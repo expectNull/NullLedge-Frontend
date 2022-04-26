@@ -22,6 +22,9 @@ function Nav() {
       <Link to="/ranking" className={isClick(['ranking'], page) + ' nav_link'}>
         Rank
       </Link>
+      <Link to="/post/106" className={isClick(['출석부'], page) + ' nav_link'}>
+        출석부
+      </Link>
     </Stack>
   );
 }
