@@ -22,6 +22,7 @@ function spreadDiv(item) {
   return (
     <PostItem
       key={idx++}
+      user_id={item['user_id']}
       post_id={item['post_id']}
       like={item['like_cnt']}
       ans={item['ans_cnt']}

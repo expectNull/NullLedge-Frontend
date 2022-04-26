@@ -18,7 +18,7 @@ const RankCard = ({ idx, userid, name, status, point, reply, ask }) => {
       <td className="rank_point">{point}</td>
       <td className="rank_reply">
         <Link
-          to={`/mypage/${name}`}
+          to={`/mypage/${userid}`}
           style={{ color: '#1976d2', textDecoration: 'none' }}
         >
           {reply}
@@ -26,7 +26,7 @@ const RankCard = ({ idx, userid, name, status, point, reply, ask }) => {
       </td>
       <td className="rank_ask">
         <Link
-          to={`/mypage/${name}`}
+          to={`/mypage/${userid}`}
           style={{ color: '#1976d2', textDecoration: 'none' }}
         >
           {ask}

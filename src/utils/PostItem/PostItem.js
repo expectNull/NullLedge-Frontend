@@ -10,6 +10,7 @@ import CampaignIcon from '@mui/icons-material/Campaign';
 
 export function PostItem({
   post_id,
+  user_id,
   like,
   ans,
   view,
@@ -69,7 +70,7 @@ export function PostItem({
           <div className="card-helper">
             <Stack className="card" direction="row" alignItems="center">
               <Link
-                to={`/mypage/${user_nm}`}
+                to={`/mypage/${user_id}`}
                 style={{ marginRight: '2vh', textDecoration: 'none' }}
               >
                 <Chip

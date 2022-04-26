@@ -33,6 +33,7 @@ function spreadDiv(item) {
           name={item.user_nm}
           np={item.user_np}
           status={item.user_status}
+          user_id={item.user_id}
         />
         <div className="like-helper">
           <table>
@@ -194,6 +195,7 @@ function PostPage() {
                 className="usercard"
                 name={posts.user_nm}
                 np={posts.user_np}
+                user_id={posts.user_id}
                 status={posts.user_status}
               />
             </>

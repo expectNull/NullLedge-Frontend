@@ -41,7 +41,7 @@ export default function Comment({ post_id, idx }) {
 
                 <div className="ymd">
                   {' - '}
-                  <Link className="name" to={`/mypage/${info.user_nm}`}>
+                  <Link className="name" to={`/mypage/${info.user_id}`}>
                     {info.user_nm}
                   </Link>
                   {'   '}
