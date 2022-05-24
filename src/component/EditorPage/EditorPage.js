@@ -121,6 +121,7 @@ function EditorPage(props) {
             <option value="컴퓨터 입문">컴퓨터 입문</option>
             <option value="확률과 통계">확률과 통계</option>
             <option value="자료구조">자료구조</option>
+            <option value="기초프로젝트랩">기초프로젝트랩</option>
             <option value="컴퓨터구조">컴퓨터구조</option>
             <option value="알고리즘">알고리즘</option>
             <option value="이산수학">이산수학</option>
@@ -171,7 +172,7 @@ function EditorPage(props) {
           previewProps={'vertical'}
           refProps={editorRef}
           widthProps={'100vh'}
-          heightProps={'75vh'}
+          heightProps={'65vh'}
         />
         <br />
 
